@@ -5,6 +5,9 @@ export function createHeader() {
   const authLink = "?page=login";
   const homeLink = "?page=accueil";
 
+  // Il faut ajouter les liens avec la structure suivante :
+  // const lien = "?page=lien";
+
   header.innerHTML = `
     <div class="container">
       <div class="branding">
