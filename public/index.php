@@ -4,7 +4,7 @@ declare(strict_types=1);
 require_once __DIR__ . '/../src/config/config.php';
 require_once __DIR__ . '/../src/helpers/functions.php';
 
-session_start();
+// session_start();
 
 
 $page = preg_replace('/[^a-z0-9_-]/', '', $_GET['page'] ?? 'accueil');

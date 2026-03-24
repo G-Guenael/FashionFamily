@@ -7,7 +7,7 @@
 <section class="auth">
     <div class="auth_container">
         <h1>Connexion</h1>
-        <form action="/login" method="post">
+        <form action="<?= BASE_URL . 'src/auth/login.php' ?>" method="POST">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required />
 
@@ -16,11 +16,11 @@
                 maxlength="72" required />
 
             <span>Mot de passe oublié ?
-                <a href="../page/MotDePasseOublie.html">Réinitialiser</a></span>
+                <a href="?page=forgot-password">Réinitialiser</a></span>
             <button type="submit">Se connecter</button>
         </form>
         <p>
-            Pas de compte ? <a href="../page/Inscription.html">S'inscrire</a>
+            Pas de compte ? <a href="?page=register">S'inscrire</a>
         </p>
     </div>
 </section>

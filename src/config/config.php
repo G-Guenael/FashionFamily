@@ -5,6 +5,7 @@ const ENV = 'development';
 const APP_NAME = 'Fashion Family';
 const APP_VERSION = '0.1';
 const APP_URL = 'http://localhost/fashion-family/public/';
+const BASE_URL = 'http://localhost/fashion-family/';
 const ANNEE_FONDATION = '2026';
 
 const PATH_ROOT = __DIR__ . '/../../';

@@ -63,6 +63,9 @@ export function createHeader(isLoggedIn = false) {
         <a href="?page=login" aria-label="Se connecter">
           <img src="${base}img/Vector.png" alt="Icône de connexion" />
         </a>
+        <a href="?page=register" aria-label="Se connecter">
+          <img src="${base}img/user-plus-solid.png" alt="Icône de connexion" />
+        </a>
         `
         }
       </div>

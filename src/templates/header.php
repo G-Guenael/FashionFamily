@@ -3,8 +3,6 @@
 $titrePage = $titrePage ?? APP_NAME;
 $description = $description ?? 'Site web de ' . APP_NAME;
 
-
-
 ?>
 
 <!doctype html>
