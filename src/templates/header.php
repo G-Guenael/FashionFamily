@@ -1,7 +1,8 @@
 <?php
 
-$titrePage = 'Page Accueuil' ?? APP_NAME;
+$titrePage = 'Page Accueil' ?? APP_NAME;
 $description = $description ?? 'Site web de ' . APP_NAME;
+
 
 
 ?>
@@ -25,5 +26,4 @@ $description = $description ?? 'Site web de ' . APP_NAME;
 
 <body>
     <header id="header" data-logged-in="<?= isset($_SESSION['user']) ? '1' : '0' ?>"></header>
-    <?php require_once __DIR__ . '/nav.php'; ?>
     <main>
