@@ -1,8 +1,7 @@
-export function createHeader() {
+export function createHeader(isLoggedIn = false) {
   const header = document.createElement("header");
 
   const base = "./";
-  const authLink = "?page=login";
   const homeLink = "?page=accueil";
 
   // Il faut ajouter les liens avec la structure suivante :
@@ -50,13 +49,22 @@ export function createHeader() {
       </div>
 
       <div class="header-actions">
-        <a href="${authLink}" aria-label="Compte utilisateur">
+        ${
+          !isLoggedIn
+            ? `
+        <a href="?page=dashboard" aria-label="Mon compte">
           <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
         </a>
-
         <a href="?page=cart" aria-label="Panier">
           <img src="${base}img/Icon.png" alt="Icône du panier" />
         </a>
+        `
+            : `
+        <a href="?page=login" aria-label="Se connecter">
+          <img src="${base}img/Vector.png" alt="Icône de connexion" />
+        </a>
+        `
+        }
       </div>
       <img src="${base}img/hamburger.png" alt="Menu" class="hamburger" aria-label="Menu de navigation mobile" />
     </div>

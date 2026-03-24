@@ -24,6 +24,6 @@ $description = $description ?? 'Site web de ' . APP_NAME;
 </head>
 
 <body>
-    <header id="header"></header>
+    <header id="header" data-logged-in="<?= isset($_SESSION['user']) ? '1' : '0' ?>"></header>
     <?php require_once __DIR__ . '/nav.php'; ?>
     <main>
