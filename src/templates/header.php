@@ -1,6 +1,6 @@
 <?php
 
-$titrePage = 'Page Accueil' ?? APP_NAME;
+$titrePage = $titrePage ?? APP_NAME;
 $description = $description ?? 'Site web de ' . APP_NAME;
 
 
