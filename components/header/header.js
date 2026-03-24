@@ -1,12 +1,9 @@
 export function createHeader() {
   const header = document.createElement("header");
 
-  const isInPageDir = location.pathname.includes("/page/");
-  const base = isInPageDir ? "../" : "./";
-  const authLink = isInPageDir
-    ? "./Authentification.html"
-    : "page/Authentification.html";
-  const homeLink = isInPageDir ? "../index.html" : "./index.html";
+  const base = "./";
+  const authLink = "?page=login";
+  const homeLink = "?page=accueil";
 
   header.innerHTML = `
     <div class="container">
@@ -54,7 +51,7 @@ export function createHeader() {
           <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
         </a>
 
-        <a href="${base}cart" aria-label="Panier">
+        <a href="?page=cart" aria-label="Panier">
           <img src="${base}img/Icon.png" alt="Icône du panier" />
         </a>
       </div>
