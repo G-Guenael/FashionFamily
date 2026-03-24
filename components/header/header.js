@@ -50,7 +50,7 @@ export function createHeader(isLoggedIn = false) {
 
       <div class="header-actions">
         ${
-          !isLoggedIn
+          isLoggedIn
             ? `
         <a href="?page=dashboard" aria-label="Mon compte">
           <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
