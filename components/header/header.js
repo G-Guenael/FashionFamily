@@ -3,9 +3,10 @@ export function createHeader() {
 
   const isInPageDir = location.pathname.includes("/page/");
   const base = isInPageDir ? "../" : "./";
-  const authLink = isInPageDir ? "./Authentification.html" : "page/Authentification.html";
+  const authLink = isInPageDir
+    ? "./Authentification.html"
+    : "page/Authentification.html";
   const homeLink = isInPageDir ? "../index.html" : "./index.html";
-  
 
   header.innerHTML = `
     <div class="container">
