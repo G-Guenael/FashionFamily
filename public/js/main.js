@@ -1,4 +1,4 @@
-import { createHeader, initHeader } from "./components/header/header.js";
+import { createHeader, initHeader } from "../../components/header/header.js";
 
 window.addEventListener("DOMContentLoaded", () => {
   const headerPlaceholder = document.getElementById("header");

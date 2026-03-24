@@ -1,6 +1,6 @@
 <?php
 
-$titrePage = $titrePage ?? APP_NAME;
+$titrePage = 'Page Accueuil' ?? APP_NAME;
 $description = $description ?? 'Site web de ' . APP_NAME;
 
 
@@ -17,7 +17,6 @@ $description = $description ?? 'Site web de ' . APP_NAME;
         <?= htmlspecialchars($titrePage, ENT_QUOTES, 'UTF-8') ?> —
         <?= APP_NAME ?>
     </title>
-    <link rel="stylesheet" href="styles.css" />
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap" rel="stylesheet" />
