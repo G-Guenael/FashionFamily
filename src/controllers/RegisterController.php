@@ -11,8 +11,12 @@ class RegisterController
         ];
     }
 
-    public function register(): array
+    public function register()
     {
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            echo 'Inscription réussie';
+        }
+
         return [
             'titrePage' => 'Bienvenue sur la boutique',
             'view' => 'register',

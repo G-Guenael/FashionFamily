@@ -14,7 +14,8 @@ class LoginController
     {
         // Logique de connexion (vérif email/password, session, etc.)
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo 'formulaire traité - connexion réussie';
+            $email = trim($_POST['email']);
+            $password = $_POST['password'];
         }
 
         return [
