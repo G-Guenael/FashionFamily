@@ -1,3 +1,8 @@
+<?php if (isset($success)): ?>
+    <p>
+        <?= $success ?>
+    </p>
+<?php endif; ?>
 <section class="login">
     <div class="login_container">
         <h2>Login</h2>

@@ -63,7 +63,8 @@ class RegisterController
 
         return [
             // 'error' => $error, //Cette variable peut être passée pour afficher les erreurs dans la vue si le formulaire n'est pas bien rempli
-            'titrePage' => 'Inscription réussie',
+            'success' => 'Inscription réussie, connectez-vous !',
+            'titrePage' => 'Connexion',
             'view' => 'login',
         ];
     }
