@@ -42,55 +42,59 @@ function fetchAll(string $table, $file = __DIR__ . '/../logs/errors_log_crud.txt
  * @return array        L'enregistrement trouvé
  * @throws NotFoundException Si introuvable
  */
-function fetchById(string $table, int $id): array
-{
-    $connexion = getConnexion();
+// function fetchById(string $table, int $id): array
+// {
+//     $connexion = getConnexion();
 
-    $stmt = mysqli_prepare($connexion, "SELECT * FROM `{$table}` WHERE id = ?");
-    mysqli_stmt_bind_param($stmt, "i", $id);
-    mysqli_stmt_execute($stmt);
+//     $stmt = mysqli_prepare($connexion, "SELECT * FROM `{$table}` WHERE id = ?");
+//     mysqli_stmt_bind_param($stmt, "i", $id);
+//     mysqli_stmt_execute($stmt);
 
-    $resultat = mysqli_stmt_get_result($stmt);
-    $enregistrement = mysqli_fetch_assoc($resultat);
+//     $resultat = mysqli_stmt_get_result($stmt);
+//     $enregistrement = mysqli_fetch_assoc($resultat);
 
-    mysqli_stmt_close($stmt);
+//     mysqli_stmt_close($stmt);
 
-    if (!$enregistrement) {
-        throw new NotFoundException("Enregistrement ID {$id} introuvable dans {$table}", 404);
-    }
+//     if (!$enregistrement) {
+//         throw new NotFoundException("Enregistrement ID {$id} introuvable dans {$table}", 404);
+//     }
 
-    return $enregistrement;
-}
+//     return $enregistrement;
+// }
 
 /**
  * Insère un enregistrement dans une table
  *
  * @param string $table   Nom de la table
- * @param array  $donnees Données à insérer ['colonne' => 'valeur']
- * @return int            ID de l'enregistrement inséré
+ * @param array  $data Données à insérer ['colonne' => 'valeur']
+ * @return bool            true ou false
  */
-function insert(string $table, array $donnees): int
+function insertUser(string $table, array $data, $file = __DIR__ . '/../logs/errors_log_crud.txt'): bool
 {
     $connexion = getConnexion();
 
-    $colonnes = implode(', ', array_keys($donnees));
-    $placeholders = implode(', ', array_fill(0, count($donnees), '?'));
+    if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {
+        reportErrorCrudInLogFile($file, "Nom de table invalide : {$table}");
+        return false;
+    }
 
-    $sql = "INSERT INTO `{$table}` ({$colonnes}) VALUES ({$placeholders})";
-    $stmt = mysqli_prepare($connexion, $sql);
+    if (empty($data)) {
+        reportErrorCrudInLogFile($file, "Données du formulaire vide");
+        return false;
+    }
 
-    // Construire les types dynamiquement
-    $types = buildTypes(array_values($donnees));
-    $valeurs = array_values($donnees);
+    $keys = array_keys($data);
 
-    mysqli_stmt_bind_param($stmt, $types, ...$valeurs);
-    mysqli_stmt_execute($stmt);
+    $columns = implode(', ', $keys);
 
-    $idInsere = mysqli_insert_id($connexion);
+    $placeholders = ':' . implode(', :', $keys);
 
-    mysqli_stmt_close($stmt);
+    $sql = "INSERT INTO `{$table}` ($columns) VALUES ($placeholders)";
 
-    return $idInsere;
+    $request = $connexion->prepare($sql);
+    $success = $request->execute($data);
+
+    return $success;
 }
 
 /**
@@ -101,30 +105,30 @@ function insert(string $table, array $donnees): int
  * @param array  $donnees Données à mettre à jour
  * @return int            Nombre de lignes affectées
  */
-function update(string $table, int $id, array $donnees): int
-{
-    $connexion = getConnexion();
+// function update(string $table, int $id, array $donnees): int
+// {
+//     $connexion = getConnexion();
 
-    $set = implode(', ', array_map(
-        fn(string $col): string => "`{$col}` = ?",
-        array_keys($donnees)
-    ));
+//     $set = implode(', ', array_map(
+//         fn(string $col): string => "`{$col}` = ?",
+//         array_keys($donnees)
+//     ));
 
-    $sql = "UPDATE `{$table}` SET {$set} WHERE id = ?";
-    $stmt = mysqli_prepare($connexion, $sql);
+//     $sql = "UPDATE `{$table}` SET {$set} WHERE id = ?";
+//     $stmt = mysqli_prepare($connexion, $sql);
 
-    $valeurs = array_values($donnees);
-    $valeurs[] = $id;   // Ajouter l'ID à la fin
-    $types = buildTypes($valeurs);
+//     $valeurs = array_values($donnees);
+//     $valeurs[] = $id;   // Ajouter l'ID à la fin
+//     $types = buildTypes($valeurs);
 
-    mysqli_stmt_bind_param($stmt, $types, ...$valeurs);
-    mysqli_stmt_execute($stmt);
+//     mysqli_stmt_bind_param($stmt, $types, ...$valeurs);
+//     mysqli_stmt_execute($stmt);
 
-    $lignesAffectees = mysqli_affected_rows($connexion);
-    mysqli_stmt_close($stmt);
+//     $lignesAffectees = mysqli_affected_rows($connexion);
+//     mysqli_stmt_close($stmt);
 
-    return $lignesAffectees;
-}
+//     return $lignesAffectees;
+// }
 
 /**
  * Supprime un enregistrement par son ID
@@ -133,19 +137,19 @@ function update(string $table, int $id, array $donnees): int
  * @param int    $id    ID de l'enregistrement
  * @return int          Nombre de lignes supprimées
  */
-function delete(string $table, int $id): int
-{
-    $connexion = getConnexion();
+// function delete(string $table, int $id): int
+// {
+//     $connexion = getConnexion();
 
-    $stmt = mysqli_prepare($connexion, "DELETE FROM `{$table}` WHERE id = ?");
-    mysqli_stmt_bind_param($stmt, "i", $id);
-    mysqli_stmt_execute($stmt);
+//     $stmt = mysqli_prepare($connexion, "DELETE FROM `{$table}` WHERE id = ?");
+//     mysqli_stmt_bind_param($stmt, "i", $id);
+//     mysqli_stmt_execute($stmt);
 
-    $lignesAffectees = mysqli_affected_rows($connexion);
-    mysqli_stmt_close($stmt);
+//     $lignesAffectees = mysqli_affected_rows($connexion);
+//     mysqli_stmt_close($stmt);
 
-    return $lignesAffectees;
-}
+//     return $lignesAffectees;
+// }
 
 /**
  * Construit la chaîne de types pour bind_param
@@ -154,13 +158,3 @@ function delete(string $table, int $id): int
  * @param array $valeurs Tableau de valeurs
  * @return string        Chaîne de types ("ssi", "iss", etc.)
  */
-function buildTypes(array $valeurs): string
-{
-    return implode('', array_map(function ($valeur): string {
-        if (is_int($valeur))
-            return 'i';
-        if (is_float($valeur))
-            return 'd';
-        return 's';
-    }, $valeurs));
-}

@@ -15,7 +15,7 @@ const PATH_PAGES = __DIR__ . '/../../pages/';
 const HOST = 'localhost';
 const DB = 'fashion_family';
 const USER = 'root';
-const PASS_DB = 'root';
+const PASS_DB = '';
 const CHARSET = 'utf8mb4';
 const DSN = "mysql:host=" . HOST . ';' . "dbname=" . DB . ';' . "charset=" . CHARSET;
 
