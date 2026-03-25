@@ -12,6 +12,19 @@ const PATH_ROOT = __DIR__ . '/../../';
 const PATH_TEMPLATES = __DIR__ . '/../templates/';
 const PATH_PAGES = __DIR__ . '/../../pages/';
 
+const HOST = 'localhost';
+const DB = 'fashion_family';
+const USER = 'root';
+const PASS_DB = '';
+const CHARSET = 'utf8mb4';
+const DSN = "mysql=" . HOST . ';' . "dbname=" . DB . ';' . "charset=" . CHARSET;
+
+const OPTIONS = [
+    PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
+    PDO::ATTR_DEFAULT_FETCH_MODE => PDO::FETCH_ASSOC,
+    PDO::ATTR_EMULATE_PREPARES => false,
+];
+
 if (ENV === 'development') {
     error_reporting(E_ALL);
     ini_set('display_errors', '1');

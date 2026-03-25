@@ -14,7 +14,7 @@ class RegisterController
     public function register()
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
-            echo 'Inscription réussie';
+
         }
 
         return [
