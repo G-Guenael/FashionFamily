@@ -1,14 +1,12 @@
 <?php
 declare(strict_types=1);
 
-require_once 'config.php';
-
 /**
  * Database.php
  * Gestion de la connexion à la base de données
  */
 
-function getConnexion(): PDO
+function getConnexion(): ?PDO
 {
     $connexion = null;
 
@@ -20,7 +18,8 @@ function getConnexion(): PDO
         $connexion = new PDO(DSN, USER, PASS_DB, OPTIONS);
         echo 'Connexion réussie';
     } catch (PDOException $e) {
-        echo 'connexion refusée : ' . $e->getMessage();
+        echo 'Connexion refusée : ';
+        reportErrorInLogFile(__DIR__ . '/../logs/errors_log_db.log', $e);
     }
 
     return $connexion;
