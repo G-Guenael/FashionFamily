@@ -9,4 +9,17 @@ class LoginController
             'view' => 'login',
         ];
     }
+
+    public function login()
+    {
+        // Logique de connexion (vérif email/password, session, etc.)
+        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+            echo 'formulaire traité - connexion réussie';
+        }
+
+        return [
+            'titrePage' => 'Dashboard',
+            'view' => 'dashboard',
+        ];
+    }
 }

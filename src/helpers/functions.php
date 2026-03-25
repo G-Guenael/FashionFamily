@@ -1,6 +1,11 @@
 <?php
 
-function add()
+/**
+ * Vérifie si un utilisateur est bien connecté
+ * Conditions: l'utilisateur doit avoir une session ouverte
+ * @return void
+ */
+function verifyUser()
 {
-    return 1;
+
 }

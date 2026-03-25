@@ -7,7 +7,7 @@
 <section class="auth">
     <div class="auth_container">
         <h1>Connexion</h1>
-        <form action="<?= BASE_URL . 'src/auth/login.php' ?>" method="POST">
+        <form action="?page=login&action=login" method="POST">
             <label for="email">Email</label>
             <input type="email" id="email" name="email" autocomplete="email" maxlength="254" required />
 

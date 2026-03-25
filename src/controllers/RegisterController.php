@@ -10,4 +10,12 @@ class RegisterController
             'view' => 'register',
         ];
     }
+
+    public function register(): array
+    {
+        return [
+            'titrePage' => 'Bienvenue sur la boutique',
+            'view' => 'register',
+        ];
+    }
 }
