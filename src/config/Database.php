@@ -10,7 +10,7 @@ require_once 'config.php';
 
 function getConnexion(): PDO
 {
-    static $connexion = null;
+    $connexion = null;
 
     if ($connexion !== null) {
         return $connexion;
@@ -20,7 +20,7 @@ function getConnexion(): PDO
         $connexion = new PDO(DSN, USER, PASS_DB, OPTIONS);
         echo 'Connexion réussie';
     } catch (PDOException $e) {
-        throw new PDOException($e->getMessage());
+        echo 'connexion refusée : ' . $e->getMessage();
     }
 
     return $connexion;

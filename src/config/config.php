@@ -15,9 +15,9 @@ const PATH_PAGES = __DIR__ . '/../../pages/';
 const HOST = 'localhost';
 const DB = 'fashion_family';
 const USER = 'root';
-const PASS_DB = '';
+const PASS_DB = 'root';
 const CHARSET = 'utf8mb4';
-const DSN = "mysql=" . HOST . ';' . "dbname=" . DB . ';' . "charset=" . CHARSET;
+const DSN = "mysql:host=" . HOST . ';' . "dbname=" . DB . ';' . "charset=" . CHARSET;
 
 const OPTIONS = [
     PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,
