@@ -460,6 +460,11 @@ section.hero {
   align-items: center;
 }
 
+.best_selling_container p,
+.stock {
+  text-align: center;
+}
+
 .produit_container {
   margin-top: 100px;
 }
@@ -469,6 +474,10 @@ section.hero {
   color: #0e1422;
   font-weight: bold;
   padding: 0 40px 40px 40px;
+}
+
+.produit_container p {
+  text-align: center;
 }
 
 .produit_card {
@@ -651,8 +660,7 @@ section.hero {
 /* --------- Responsive newsletter---------------------- */
 
 @media (width <= 768px) {
-
-  .newsletter{
+  .newsletter {
     margin-top: 50px;
   }
   .newsletter_container {
@@ -663,9 +671,8 @@ section.hero {
     padding-top: 20px;
   }
 
-  .newsletter_container h3{
+  .newsletter_container h3 {
     text-align: center;
-  
   }
 }
 
@@ -674,19 +681,129 @@ section.hero {
 .footer {
   width: 100%;
   min-height: 429px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .footer_container {
-  width: 1116px;
+  max-width: 1116px;
+  width: 100%;
   margin: auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   /* border: solid 1px red; */
 }
 
+.footer_left {
+  width: 272px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 .footer_logo {
   display: flex;
   /* justify-content: center; */
   align-items: center;
-  gap: 5px;
+  gap: 20px;
+}
+
+.footer_icon {
+  width: 120px;
+  height: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.footer_middle {
+  width: 450px;
+  height: 160px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  /* border: 2px solid red; */
+}
+
+.footer_middle nav {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.footer_middle nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+.footer_middle nav ul li {
+  list-style: none;
+}
+
+.footer_middle h3 {
+  font-size: 14px;
+  color: #878a92;
+  text-transform: uppercase;
+}
+
+.footer_right {
+  width: 272px;
+  height: 160px;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+}
+
+.footer_right h3 {
+  font-size: 14px;
+  color: #878a92;
+  text-transform: uppercase;
+  padding-bottom: 30px;
+}
+
+.footer_container_payment {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+/* --------------------Footer responsive------- */
+
+@media (width <= 768px) {
+  .footer_container {
+    flex-direction: column;
+    gap: 70px;
+    margin-top: 70px;
+  }
+
+  .footer_logo {
+    align-items: center;
+  }
+}
+
+.footer_right {
+  align-items: center;
+}
+
+
+/* ------------ CopyRight---------------------- */
+
+.copyright{
+  max-width: 1116px;
+  width: 100%;
+  height: 79px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: auto;
+  border-top: 1px solid #5c5f6a7a;
+}
+
+.copyright p{
+  color: #5C5F6A;
 }
 
 /* ------------Auth Section-------------------- */
