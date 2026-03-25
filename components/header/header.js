@@ -2,7 +2,7 @@ export function createHeader(isLoggedIn = false) {
   const header = document.createElement("header");
 
   const base = "./";
-  const homeLink = "?page=accueil";
+  const homeLink = "?page=home";
 
   // Il faut ajouter les liens avec la structure suivante :
   // const lien = "?page=lien";

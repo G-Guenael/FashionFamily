@@ -10,7 +10,7 @@ require_once __DIR__ . '/../src/helpers/functions.php';
 $page = preg_replace('/[^a-z0-9_-]/', '', $_GET['page'] ?? 'home');
 
 $controllerName = ucfirst($page) . 'Controller';
-$controllerPath = __DIR__ . '/../src/controllers/' . $controllerName . '.php';
+$controllerPath = __DIR__ . '/../src/Controllers/' . $controllerName . '.php';
 
 // L'action/méthode est passée via ?action=xxx, 'index' par défaut
 $methodName = preg_replace('/[^a-z0-9_-]/', '', $_GET['action'] ?? 'index');

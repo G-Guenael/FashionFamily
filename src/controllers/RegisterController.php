@@ -1,13 +1,13 @@
 <?php
 declare(strict_types=1);
 
-class HomeController
+class RegisterController
 {
     public function index(): array
     {
         return [
             'titrePage' => 'Bienvenue sur la boutique',
-            'view' => 'home',
+            'view' => 'register',
         ];
     }
 }
