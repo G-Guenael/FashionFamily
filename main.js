@@ -28,4 +28,5 @@ window.addEventListener("DOMContentLoaded", () => {
     const footer = createFooter();
     footerPlaceHolder.replaceWith(footer);
   }
+  
 });
