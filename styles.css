@@ -609,6 +609,64 @@ section.hero {
   align-items: center;
 }
 
+.newsletter h3{
+  font-size: 24px;
+  font-weight: bold;
+  color: #0E1422;
+}
+
+.newsletter p{
+  font-size: 14px;
+  color: #5C5F6A;
+  line-height: 1.75;
+}
+
+.newsletter_input{
+  width: 452px;
+  height: 45px;  
+}
+
+.newsletter input{
+  width: 320px;
+  height: 45px;
+}
+
+.newsletter ::placeholder{
+  width: 128px;
+  font-size: 14px;
+  line-height: 1.75;
+  color: #878A92;
+  padding-left: 10px;
+}
+
+.newsletter button{
+  width: 116px;
+  height: 44px;
+  background: #0E1422;
+  color: #fff;
+  font-size: 14px;
+  cursor: pointer;
+}
+/* ----------------------Footer------------------------- */
+
+.footer {
+  width: 100%;
+  min-height: 429px;
+}
+
+.footer_container{
+  width: 1116px;
+  margin: auto;
+  /* border: solid 1px red; */
+}
+
+.footer_logo{
+  display: flex;
+  /* justify-content: center; */
+  align-items: center;
+  gap: 5px;
+}
+
 /* ------------Auth Section-------------------- */
 
 .login {

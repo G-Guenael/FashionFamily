@@ -50,13 +50,13 @@ export function createHeader() {
       </div>
 
       <div class="header-actions">
+      <a href="${base}cart" aria-label="Panier">
+        <img src="${base}img/Icon.png" alt="Icône du panier" />
+      </a>
         <a href="${authLink}" aria-label="Compte utilisateur">
           <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
         </a>
 
-        <a href="${base}cart" aria-label="Panier">
-          <img src="${base}img/Icon.png" alt="Icône du panier" />
-        </a>
       </div>
       <img src="${base}img/hamburger.png" alt="Menu" class="hamburger" aria-label="Menu de navigation mobile" />
     </div>
