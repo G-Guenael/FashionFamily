@@ -10,7 +10,7 @@ class LoginController
         ];
     }
 
-    public function store(): array|bool
+    public function store(): void
     {
         $errors = [];
         // Logique de connexion (vérif email/password, session, etc.)
@@ -31,18 +31,32 @@ class LoginController
             $user = fetchByEmail('users', $email);
 
             if (!$user) {
-                return false;
+                $errors[] = "Email ou mot de passe incorrect";
             }
 
             if (!password_verify($password, $user['password'])) {
-                return false;
+                $errors[] = "Email ou mot de passe incorrect";
+                die("Erreru");
             }
+
+            $_SESSION['user'] = [
+                'id' => $user['id'],
+                'name' => $user['name'],
+                'role' => $user['role']
+            ];
+
+
+            // Redirection HTTP vers /dashboard
+            header('Location: ' . BASE_PATH . '/dashboard');
+            exit;
+
+
         }
 
-        return [
-            'success' => 'Connexion réussie ! Bienvenue sur votre dashboard',
-            'titrePage' => 'Dashboard de ' . $user['name'],
-            'view' => 'dashboard',
-        ];
+        // return [
+        //     'success' => 'Connexion réussie ! Bienvenue sur votre dashboard',
+        //     'titrePage' => 'Dashboard de ' . $user['name'],
+        //     'view' => 'dashboard',
+        // ];
     }
 }
