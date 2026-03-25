@@ -9,13 +9,16 @@ require_once __DIR__ . '/../src/helpers/crud.php';
 // session_start();
 
 
-$page = preg_replace('/[^a-z0-9_-]/', '', $_GET['page'] ?? 'home');
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+$uri = trim(substr($uri, strlen(BASE_PATH)), '/');
+$page = preg_replace('/[^a-z0-9_-]/', '', $uri ?: 'home');
 
 $controllerName = ucfirst($page) . 'Controller';
 $controllerPath = __DIR__ . '/../src/Controllers/' . $controllerName . '.php';
 
-// L'action/méthode est passée via ?action=xxx, 'index' par défaut
-$methodName = preg_replace('/[^a-z0-9_-]/', '', $_GET['action'] ?? 'index');
+// Routing par méthode HTTP : POST → store(), GET → index()
+$defaultMethod = ($_SERVER['REQUEST_METHOD'] === 'POST') ? 'store' : 'index';
+$methodName = preg_replace('/[^a-z0-9_-]/', '', $_GET['action'] ?? $defaultMethod);
 
 if (file_exists($controllerPath)) {
     require_once $controllerPath;

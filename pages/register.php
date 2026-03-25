@@ -8,7 +8,7 @@
 <section class="inscription">
     <div class="inscription_container">
         <h1>Inscription</h1>
-        <form action="?page=register&action=register" method="post">
+        <form action="<?= BASE_PATH ?>/register" method="POST">
             <label for="nom">Nom</label>
             <input type="text" id="nom" name="nom" minlength="3" maxlength="100" required />
             <label for="email">Email</label>

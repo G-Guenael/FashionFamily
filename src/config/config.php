@@ -4,8 +4,10 @@ declare(strict_types=1);
 const ENV = 'development';
 const APP_NAME = 'Fashion Family';
 const APP_VERSION = '0.1';
-const APP_URL = 'http://localhost/fashion-family/public/';
-const BASE_URL = 'http://localhost/fashion-family/';
+const APP_URL = 'http://localhost/fashionfamily/public/';
+const BASE_URL = 'http://localhost/fashionfamily/';
+const BASE_PATH = '/fashionfamily/public';
+//Si en prod avec virtual host : const BASE_PATH = '';
 const ANNEE_FONDATION = '2026';
 
 const PATH_ROOT = __DIR__ . '/../../';

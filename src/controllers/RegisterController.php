@@ -12,7 +12,7 @@ class RegisterController
         ];
     }
 
-    public function register(): array|bool
+    public function store(): array|bool
     {
         $errors = [];
         $validData = [];

@@ -10,7 +10,7 @@ class LoginController
         ];
     }
 
-    public function login(): array|bool
+    public function store(): array|bool
     {
         $errors = [];
         // Logique de connexion (vérif email/password, session, etc.)

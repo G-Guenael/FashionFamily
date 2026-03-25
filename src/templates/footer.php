@@ -3,7 +3,7 @@
 
 
 
-<script type="module" src="js/main.js"></script>
+<script type="module" src="<?= BASE_PATH ?>/js/main.js"></script>
 </body>
 
 </html>
