@@ -2,10 +2,10 @@ export function createHeader(isLoggedIn = false) {
   const header = document.createElement("header");
 
   const base = "./";
-  const homeLink = "?page=home";
+  const homeLink = "home";
 
   // Il faut ajouter les liens avec la structure suivante :
-  // const lien = "?page=lien";
+  // const lien = "lien";
 
   header.innerHTML = `
     <div class="container">
@@ -52,18 +52,18 @@ export function createHeader(isLoggedIn = false) {
         ${
           isLoggedIn
             ? `
-        <a href="?page=dashboard" aria-label="Mon compte">
+        <a href="dashboard" aria-label="Mon compte">
           <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
         </a>
-        <a href="?page=cart" aria-label="Panier">
+        <a href="cart" aria-label="Panier">
           <img src="${base}img/Icon.png" alt="Icône du panier" />
         </a>
         `
             : `
-        <a href="?page=login" aria-label="Se connecter">
+        <a href="login" aria-label="Se connecter">
           <img src="${base}img/Vector.png" alt="Icône de connexion" />
         </a>
-        <a href="?page=register" aria-label="Se connecter">
+        <a href="register" aria-label="Se connecter">
           <img src="${base}img/user-plus-solid.png" alt="Icône de connexion" />
         </a>
         `
