@@ -1,8 +1,6 @@
 <?php
 declare(strict_types=1);
-
-
-
+require_once __DIR__ . '/../config/Database.php';
 /**
  * crud.php
  * Fonctions CRUD génériques pour MySQL
@@ -14,28 +12,26 @@ declare(strict_types=1);
  * @param string $table Nom de la table
  * @return array        Tableau de résultats
  */
-function fetchAll(string $table, $file = __DIR__ . '/../logs/errors_log_crud.txt'): array
+function fetchAll(string $table, $file = __DIR__ . '/../logs/errors_log_crud.txt'): ?array
 {
     $connexion = getConnexion();
     // Nom de table sécurisé — pas de requête préparée possible sur les noms de tables
     // On valide donc le nom manuellement
     if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {
         reportErrorCrudInLogFile($file, "Nom de table invalide : {$table}");
+        return null;
     }
 
     $sql = "SELECT * FROM `{$table}`";
 
-    $requete = $connexion->prepare($sql);
-
-    $result = $requete->execute();
-
-    if (!$result) {
-        reportErrorCrudInLogFile($file, "Erreur lors de la requête fetchAll");
+    try {
+        $requete = $connexion->prepare($sql);
+        $requete->execute();
+        return $requete->fetchAll();
+    } catch (PDOException $e) {
+        reportErrorCrudInLogFile($file, "Erreur fetchAll sur la table '{$table}' : " . $e->getMessage());
+        return null;
     }
-
-    $users = $requete->fetchAll();
-
-    return $users;
 }
 
 /**
