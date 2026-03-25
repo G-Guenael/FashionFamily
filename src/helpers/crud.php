@@ -15,8 +15,7 @@ require_once __DIR__ . '/../config/Database.php';
 function fetchAll(string $table, $file = __DIR__ . '/../logs/errors_log_crud.txt'): ?array
 {
     $connexion = getConnexion();
-    // Nom de table sécurisé — pas de requête préparée possible sur les noms de tables
-    // On valide donc le nom manuellement
+
     if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {
         reportErrorCrudInLogFile($file, "Nom de table invalide : {$table}");
         return null;
@@ -40,27 +39,60 @@ function fetchAll(string $table, $file = __DIR__ . '/../logs/errors_log_crud.txt
  * @param string $table Nom de la table
  * @param int    $id    ID de l'enregistrement
  * @return array        L'enregistrement trouvé
- * @throws NotFoundException Si introuvable
+ * 
  */
-// function fetchById(string $table, int $id): array
-// {
-//     $connexion = getConnexion();
+function fetchById(string $table, int $id, $file = __DIR__ . '/../logs/errors_log_crud.txt'): bool|array
+{
+    $connexion = getConnexion();
 
-//     $stmt = mysqli_prepare($connexion, "SELECT * FROM `{$table}` WHERE id = ?");
-//     mysqli_stmt_bind_param($stmt, "i", $id);
-//     mysqli_stmt_execute($stmt);
+    if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {
+        reportErrorCrudInLogFile($file, "Nom de table invalide : {$table}");
+        return false;
+    }
 
-//     $resultat = mysqli_stmt_get_result($stmt);
-//     $enregistrement = mysqli_fetch_assoc($resultat);
+    $sql = "SELECT id FROM `{$table}` WHERE id = :id";
 
-//     mysqli_stmt_close($stmt);
+    $request = $connexion->prepare($sql);
 
-//     if (!$enregistrement) {
-//         throw new NotFoundException("Enregistrement ID {$id} introuvable dans {$table}", 404);
-//     }
+    $request->execute([
+        ':id' => $id
+    ]);
 
-//     return $enregistrement;
-// }
+    $user = $request->fetch();
+
+    return $user;
+
+}
+
+/**
+ * Récupère un enregistrement par son email
+ *
+ * @param string $table Nom de la table
+ * @param string    $email    email de l'enregistrement
+ * @return array        L'enregistrement trouvé
+ * 
+ */
+function fetchByEmail(string $table, string $email, $file = __DIR__ . '/../logs/errors_log_crud.txt'): bool|array
+{
+    $connexion = getConnexion();
+
+    if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {
+        reportErrorCrudInLogFile($file, "Nom de table invalide : {$table}");
+        return false;
+    }
+
+    $sql = "SELECT * FROM `{$table}` WHERE email = :email";
+
+    $request = $connexion->prepare($sql);
+
+    $request->execute([
+        ':email' => $email
+    ]);
+
+    $user = $request->fetch();
+
+    return $user;
+}
 
 /**
  * Insère un enregistrement dans une table
