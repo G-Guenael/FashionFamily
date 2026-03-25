@@ -16,10 +16,10 @@ function getConnexion(): ?PDO
 
     try {
         $connexion = new PDO(DSN, USER, PASS_DB, OPTIONS);
-        echo 'Connexion réussie';
+
     } catch (PDOException $e) {
-        echo 'Connexion refusée : ';
-        reportErrorInLogFile(__DIR__ . '/../logs/errors_log_db.log', $e);
+        echo 'Erreur de Connexion';
+        reportErrorDBInLogFile(__DIR__ . '/../logs/errors_log_db.txt', $e);
     }
 
     return $connexion;

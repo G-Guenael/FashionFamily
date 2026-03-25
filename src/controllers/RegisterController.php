@@ -16,8 +16,6 @@ class RegisterController
     {
         if ($_SERVER['REQUEST_METHOD'] === 'POST') {
             $connexion = getConnexion();
-
-            var_dump($connexion);
         }
 
         return [

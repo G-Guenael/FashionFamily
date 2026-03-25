@@ -12,7 +12,7 @@ const PATH_ROOT = __DIR__ . '/../../';
 const PATH_TEMPLATES = __DIR__ . '/../templates/';
 const PATH_PAGES = __DIR__ . '/../../pages/';
 
-const HOST = 'localhos';
+const HOST = 'localhost';
 const DB = 'fashion_family';
 const USER = 'root';
 const PASS_DB = 'root';

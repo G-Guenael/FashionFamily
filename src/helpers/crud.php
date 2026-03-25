@@ -1,0 +1,170 @@
+<?php
+declare(strict_types=1);
+
+
+
+/**
+ * crud.php
+ * Fonctions CRUD génériques pour MySQL
+ */
+
+/**
+ * Récupère tous les enregistrements d'une table
+ *
+ * @param string $table Nom de la table
+ * @return array        Tableau de résultats
+ */
+function fetchAll(string $table, $file = __DIR__ . '/../logs/errors_log_crud.txt'): array
+{
+    $connexion = getConnexion();
+    // Nom de table sécurisé — pas de requête préparée possible sur les noms de tables
+    // On valide donc le nom manuellement
+    if (!preg_match('/^[a-zA-Z0-9_]+$/', $table)) {
+        reportErrorCrudInLogFile($file, "Nom de table invalide : {$table}");
+    }
+
+    $sql = "SELECT * FROM `{$table}`";
+
+    $requete = $connexion->prepare($sql);
+
+    $result = $requete->execute();
+
+    if (!$result) {
+        reportErrorCrudInLogFile($file, "Erreur lors de la requête fetchAll");
+    }
+
+    $users = $requete->fetchAll();
+
+    return $users;
+}
+
+/**
+ * Récupère un enregistrement par son ID
+ *
+ * @param string $table Nom de la table
+ * @param int    $id    ID de l'enregistrement
+ * @return array        L'enregistrement trouvé
+ * @throws NotFoundException Si introuvable
+ */
+function fetchById(string $table, int $id): array
+{
+    $connexion = getConnexion();
+
+    $stmt = mysqli_prepare($connexion, "SELECT * FROM `{$table}` WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+
+    $resultat = mysqli_stmt_get_result($stmt);
+    $enregistrement = mysqli_fetch_assoc($resultat);
+
+    mysqli_stmt_close($stmt);
+
+    if (!$enregistrement) {
+        throw new NotFoundException("Enregistrement ID {$id} introuvable dans {$table}", 404);
+    }
+
+    return $enregistrement;
+}
+
+/**
+ * Insère un enregistrement dans une table
+ *
+ * @param string $table   Nom de la table
+ * @param array  $donnees Données à insérer ['colonne' => 'valeur']
+ * @return int            ID de l'enregistrement inséré
+ */
+function insert(string $table, array $donnees): int
+{
+    $connexion = getConnexion();
+
+    $colonnes = implode(', ', array_keys($donnees));
+    $placeholders = implode(', ', array_fill(0, count($donnees), '?'));
+
+    $sql = "INSERT INTO `{$table}` ({$colonnes}) VALUES ({$placeholders})";
+    $stmt = mysqli_prepare($connexion, $sql);
+
+    // Construire les types dynamiquement
+    $types = buildTypes(array_values($donnees));
+    $valeurs = array_values($donnees);
+
+    mysqli_stmt_bind_param($stmt, $types, ...$valeurs);
+    mysqli_stmt_execute($stmt);
+
+    $idInsere = mysqli_insert_id($connexion);
+
+    mysqli_stmt_close($stmt);
+
+    return $idInsere;
+}
+
+/**
+ * Met à jour un enregistrement par son ID
+ *
+ * @param string $table   Nom de la table
+ * @param int    $id      ID de l'enregistrement
+ * @param array  $donnees Données à mettre à jour
+ * @return int            Nombre de lignes affectées
+ */
+function update(string $table, int $id, array $donnees): int
+{
+    $connexion = getConnexion();
+
+    $set = implode(', ', array_map(
+        fn(string $col): string => "`{$col}` = ?",
+        array_keys($donnees)
+    ));
+
+    $sql = "UPDATE `{$table}` SET {$set} WHERE id = ?";
+    $stmt = mysqli_prepare($connexion, $sql);
+
+    $valeurs = array_values($donnees);
+    $valeurs[] = $id;   // Ajouter l'ID à la fin
+    $types = buildTypes($valeurs);
+
+    mysqli_stmt_bind_param($stmt, $types, ...$valeurs);
+    mysqli_stmt_execute($stmt);
+
+    $lignesAffectees = mysqli_affected_rows($connexion);
+    mysqli_stmt_close($stmt);
+
+    return $lignesAffectees;
+}
+
+/**
+ * Supprime un enregistrement par son ID
+ *
+ * @param string $table Nom de la table
+ * @param int    $id    ID de l'enregistrement
+ * @return int          Nombre de lignes supprimées
+ */
+function delete(string $table, int $id): int
+{
+    $connexion = getConnexion();
+
+    $stmt = mysqli_prepare($connexion, "DELETE FROM `{$table}` WHERE id = ?");
+    mysqli_stmt_bind_param($stmt, "i", $id);
+    mysqli_stmt_execute($stmt);
+
+    $lignesAffectees = mysqli_affected_rows($connexion);
+    mysqli_stmt_close($stmt);
+
+    return $lignesAffectees;
+}
+
+/**
+ * Construit la chaîne de types pour bind_param
+ * s = string, i = integer, d = double
+ *
+ * @param array $valeurs Tableau de valeurs
+ * @return string        Chaîne de types ("ssi", "iss", etc.)
+ */
+function buildTypes(array $valeurs): string
+{
+    return implode('', array_map(function ($valeur): string {
+        if (is_int($valeur))
+            return 'i';
+        if (is_float($valeur))
+            return 'd';
+        return 's';
+    }, $valeurs));
+}
