@@ -3,6 +3,7 @@ import { createNewsLetter } from "./components/newsletter.js/newsLetter.js";
 import { createFooter } from "./components/footer/footer.js";
 
 window.addEventListener("DOMContentLoaded", () => {
+  // HEADER
   const headerPlaceholder = document.getElementById("header");
   const header = createHeader();
 
@@ -13,31 +14,18 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   initHeader(header);
-});
 
-
-window.addEventListener("DOMContentLoaded", () => {
+  // NEWSLETTER (optionnelle)
   const newsPlaceHolder = document.getElementById("newsletter");
-  const newsLetter = createNewsLetter();
-
-  const main = document.querySelector("main"); // récupère le <main>
-
   if (newsPlaceHolder) {
-    newsPlaceHolder.replaceWith(newsLetter); // si placeholder existe
-  } else if (main) {
-    main.appendChild(newsLetter); // <-- clé : ajoute **à la fin du main**
-  } else {
-    document.body.appendChild(newsLetter); // fallback si pas de main
+    const newsLetter = createNewsLetter();
+    newsPlaceHolder.replaceWith(newsLetter);
+  }
+
+  // FOOTER (optionnel)
+  const footerPlaceHolder = document.getElementById("footer");
+  if (footerPlaceHolder) {
+    const footer = createFooter();
+    footerPlaceHolder.replaceWith(footer);
   }
 });
-
-window.addEventListener("DOMContentLoaded", ()=>{
-  const footerPlaceHolder = document.getElementById("footer")
-  const footer = createFooter()
-
-  if (footerPlaceHolder) {
-    footerPlaceHolder.replaceWith(footer);
-  } else {
-    document.body.prepend(footer);
-  }
-})

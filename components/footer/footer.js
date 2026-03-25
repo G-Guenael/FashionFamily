@@ -10,7 +10,7 @@ export function createFooter() {
 
     <div class="footer_left">
       <div class="footer_logo">
-        <img src="./img/logo_footer.png" alt="Logo Fashion Family">
+        <img src="${base}./img/logo_footer.png" alt="Logo Fashion Family">
         <h3>Fashion Family</h3>
       </div>
 
@@ -56,14 +56,16 @@ export function createFooter() {
    <div class="footer_right">
       <h3>Accepted Payments</h3>
       <div class="footer_container_payment">
-        <img src="./img/MasterCard.png" alt="Mastercard">
-        <img src="./img/AMEX.png" alt="American Express">
-        <img src="./img/Visa.png" alt="Visa">
+        <img src="${base}./img/MasterCard.png" alt="Mastercard">
+        <img src="${base}./img/AMEX.png" alt="American Express">
+        <img src="${base}./img/Visa.png" alt="Visa">
       </div>
     </div>
     
     </div>
-    
+      <div class="copyright">
+    <p>&copy 2026 All rights reserved</p>
+  </div>
     `;
 
   return footer;

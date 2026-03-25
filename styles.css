@@ -14,6 +14,10 @@ body {
   min-height: 100vh;
 }
 
+ .other-page .footer{
+  background: #f6f6f6;
+}
+
 a {
   text-decoration: none;
   color: inherit;
@@ -682,8 +686,7 @@ section.hero {
   width: 100%;
   min-height: 429px;
   display: flex;
-  justify-content: center;
-  align-items: center;
+  flex-direction: column;
 }
 
 .footer_container {
@@ -788,22 +791,21 @@ section.hero {
   align-items: center;
 }
 
-
 /* ------------ CopyRight---------------------- */
 
-.copyright{
+.copyright {
   max-width: 1116px;
   width: 100%;
   height: 79px;
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: auto;
+  margin: 0 auto;
   border-top: 1px solid #5c5f6a7a;
 }
 
-.copyright p{
-  color: #5C5F6A;
+.copyright p {
+  color: #5c5f6a;
 }
 
 /* ------------Auth Section-------------------- */
