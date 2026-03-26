@@ -1,7 +1,7 @@
 <!-- ERREURS INSCRIPTION : SI REGISTER.PHP ECHOUE -->
 <?php if (isset($errors)): ?>
     <?php foreach ($errors as $error): ?>
-        <span style="color: red"><?= htmlspecialchars($error) . "<br>" ?></span>
+        <span style="color: red"><?= htmlspecialchars($error, ENT_QUOTES, 'UTF-8') . "<br>" ?></span>
     <?php endforeach; ?>
 <?php endif; ?>
 
