@@ -10,7 +10,7 @@ require_once __DIR__ . '/../src/helpers/crud.php';
 
 session_start();
 
-sendSecurityHeaders(); // --> vérifier car la console du navigateur si fonction appelée => problème de chargement de la police
+// sendSecurityHeaders(); // --> vérifier car la console du navigateur si fonction appelée => problème de chargement de la police
 
 //Routage
 
