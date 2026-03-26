@@ -1,13 +1,14 @@
 <!-- MESSAGE DE SUCCES : PROVIENT DE REGISTER.PHP -->
-<?php if (isset($success)): ?>
+<?php if (isset($_SESSION['success'])): ?>
     <p>
-        <?= $success ?>
+        <?= htmlspecialchars($_SESSION['success']) ?>
     </p>
+    <?php unset($_SESSION['success']); ?>
 <?php endif; ?>
 <!-- ERREURS DE CONNEXION : SI LOGIN.PHP ECHOUE -->
 <?php if (isset($errors)): ?>
     <?php foreach ($errors as $error): ?>
-        <span style="color: red"><?= $error . "<br>" ?></span>
+        <span style="color: red"><?= htmlspecialchars($error) . "<br>" ?></span>
     <?php endforeach; ?>
 <?php endif; ?>
 

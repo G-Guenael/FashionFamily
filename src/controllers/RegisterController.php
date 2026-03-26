@@ -12,68 +12,61 @@ class RegisterController
         ];
     }
 
-    public function store(): array|bool
+    public function store(): array
     {
         $errors = [];
-        $validData = [];
 
-        if ($_SERVER['REQUEST_METHOD'] === 'POST') {
+        $name = trim($_POST['nom'] ?? '');
+        $email = trim($_POST['email'] ?? '');
+        $password = $_POST['password'] ?? '';
+        $password_confirmation = $_POST['password_confirmation'] ?? '';
 
-            $name = trim($_POST['nom'] ?? '');
-            $email = trim($_POST['email'] ?? '');
-            $password = $_POST['password'];
-            $password_confirmation = $_POST['password_confirmation'];
-
-            if (empty($name)) {
-                $errors[] = "Le nom est obligatoire";
-            } elseif (strlen($name) < 3) {
-                $errors[] = "Le nom doit comporter au moins 3 caractères";
-            }
-
-            if (empty($email)) {
-                $errors[] = "L'email est obligatoire";
-            } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-                $errors[] = "Email invalide";
-            }
-
-            if (empty($password) || strlen($password) < 6) {
-                $errors[] = "Le mot de passe est obligatoire (6 caractères requis)";
-            } elseif (!preg_match('/^(?=.*[0-9])(?=.*[^A-Za-z0-9]).{6,72}$/', $password)) {
-                $errors[] = "Le mot de passe doit contenir entre 6 et 72 caractères, contenir au moins un chiffre et au moins un symbole";
-            }
-
-            if ($password !== $password_confirmation) {
-                $errors[] = "Les mots de passe doivent correspondre";
-            }
-
-            if (!empty($errors)) {
-                return [
-                    'titrePage' => 'Inscription',
-                    'view' => 'register',
-                    'errors' => $errors
-                ];
-            }
-
-            if (empty($errors)) {
-                $validData = [
-                    'name' => $name,
-                    'email' => $email,
-                    'password' => password_hash($password, PASSWORD_DEFAULT)
-                ];
-
-                $insertUserToDB = insertUser('users', $validData);
-
-                if (!$insertUserToDB) {
-                    return false;
-                }
-            }
+        if (empty($name)) {
+            $errors[] = "Le nom est obligatoire";
+        } elseif (strlen($name) < 3) {
+            $errors[] = "Le nom doit comporter au moins 3 caractères";
         }
 
-        return [
+        if (empty($email)) {
+            $errors[] = "L'email est obligatoire";
+        } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+            $errors[] = "Email invalide";
+        }
 
-            'success' => 'Inscription réussie, connectez-vous !',
-            'titrePage' => 'Connexion',
-            'view' => 'login',
-        ];
+        if (empty($password) || strlen($password) < 6) {
+            $errors[] = "Le mot de passe est obligatoire (6 caractères requis)";
+        } elseif (!preg_match('/^(?=.*[0-9])(?=.*[^A-Za-z0-9]).{6,72}$/', $password)) {
+            $errors[] = "Le mot de passe doit contenir entre 6 et 72 caractères, contenir au moins un chiffre et au moins un symbole";
+        }
+
+        if ($password !== $password_confirmation) {
+            $errors[] = "Les mots de passe doivent correspondre";
+        }
+
+        if (!empty($errors)) {
+            return [
+                'titrePage' => 'Inscription',
+                'view' => 'register',
+                'errors' => $errors
+            ];
+        }
+
+        $inserted = insertUser('users', [
+            'name' => $name,
+            'email' => $email,
+            'password' => password_hash($password, PASSWORD_DEFAULT)
+        ]);
+
+        if (!$inserted) {
+            return [
+                'titrePage' => 'Inscription',
+                'view' => 'register',
+                'errors' => ["Une erreur est survenue lors de l'inscription, veuillez réessayer."]
+            ];
+        }
+
+        $_SESSION['success'] = 'Inscription réussie, connectez-vous !';
+        header('Location: ' . BASE_PATH . '/login');
+        exit;
     }
 }
