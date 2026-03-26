@@ -54,12 +54,12 @@ export function createHeader(isLoggedIn = false) {
             ? `
         <a href="dashboard" aria-label="Mon compte">
           <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
-          <!-- A SUPPRIMER -->
-          <span>Connecté</span>
-          <!-- A SUPPRIMER -->
         </a>
         <a href="cart" aria-label="Panier">
           <img src="${base}img/Icon.png" alt="Icône du panier" />
+        </a>
+        <a href="logout" aria-label="Déconnexion">
+          <img src="${base}img/logout.png" alt="Icône de déconnexion" />
         </a>
         `
             : `
