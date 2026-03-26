@@ -12,9 +12,6 @@
     <?php endforeach; ?>
 <?php endif; ?>
 
-
-
-
 <section class="login">
     <div class="login_container">
         <h2>Login</h2>

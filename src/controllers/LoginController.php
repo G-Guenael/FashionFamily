@@ -46,6 +46,8 @@ class LoginController
             ];
         }
 
+        session_regenerate_id(true);
+
         $_SESSION['user'] = [
             'id' => $user['id'],
             'name' => $user['name'],
