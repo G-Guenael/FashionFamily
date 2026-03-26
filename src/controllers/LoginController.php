@@ -51,7 +51,8 @@ class LoginController
         $_SESSION['user'] = [
             'id' => $user['id'],
             'name' => $user['name'],
-            'role' => $user['role']
+            'role' => $user['role'],
+            'connecte' => true
         ];
 
         $_SESSION['success_connexion'] = "Connexion réussie";
