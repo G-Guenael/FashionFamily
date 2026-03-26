@@ -1,3 +1,11 @@
+<!-- ERREURS INSCRIPTION : SI REGISTER.PHP ECHOUE -->
+<?php if (isset($errors)): ?>
+    <?php foreach ($errors as $error): ?>
+        <span style="color: red"><?= htmlspecialchars($error) . "<br>" ?></span>
+    <?php endforeach; ?>
+<?php endif; ?>
+
+
 <section class="login">
     <div class="login_container">
         <h2>Inscription</h2>
