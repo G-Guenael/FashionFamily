@@ -53,7 +53,7 @@ export function createHeader(isLoggedIn = false) {
           isLoggedIn
             ? `
         <a href="dashboard" aria-label="Mon compte">
-          <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
+          <img style="color: green" src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
         </a>
         <a href="cart" aria-label="Panier">
           <img src="${base}img/Icon.png" alt="Icône du panier" />
