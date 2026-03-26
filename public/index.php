@@ -1,12 +1,18 @@
 <?php
 declare(strict_types=1);
-session_start();
+
 
 require_once __DIR__ . '/../src/config/config.php';
 require_once __DIR__ . '/../src/helpers/security.php';
 require_once __DIR__ . '/../src/helpers/functions.php';
 require_once __DIR__ . '/../src/config/Database.php';
 require_once __DIR__ . '/../src/helpers/crud.php';
+
+session_start();
+
+sendSecurityHeaders();
+
+//Routage
 
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = trim(substr($uri, strlen(BASE_PATH)), '/');
