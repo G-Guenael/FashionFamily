@@ -142,18 +142,3 @@
         </div>
     </div>
 </section>
-
-
-<section class="newsletter">
-    <div class="newsletter_container">
-        <div class="newsletter_title">
-            <h3>Join our Newsletter</h3>
-            <p>We love to surprise our subscribers with occasional gifts.</p>
-        </div>
-        <div class="newsletter_input">
-            <label for=""></label>
-            <input type="text">
-            <button>Subscribe</button>
-        </div>
-    </div>
-</section>
