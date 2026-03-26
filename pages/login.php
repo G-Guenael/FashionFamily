@@ -1,8 +1,19 @@
+<!-- MESSAGE DE SUCCES : PROVIENT DE REGISTER.PHP -->
 <?php if (isset($success)): ?>
     <p>
         <?= $success ?>
     </p>
 <?php endif; ?>
+<!-- ERREURS DE CONNEXION : SI LOGIN.PHP ECHOUE -->
+<?php if (isset($errors)): ?>
+    <?php foreach ($errors as $error): ?>
+        <span style="color: red"><?= $error . "<br>" ?></span>
+    <?php endforeach; ?>
+<?php endif; ?>
+
+
+
+
 <section class="login">
     <div class="login_container">
         <h2>Login</h2>

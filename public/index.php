@@ -8,9 +8,6 @@ require_once __DIR__ . '/../src/helpers/functions.php';
 require_once __DIR__ . '/../src/config/Database.php';
 require_once __DIR__ . '/../src/helpers/crud.php';
 
-
-
-
 $uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 $uri = trim(substr($uri, strlen(BASE_PATH)), '/');
 $page = preg_replace('/[^a-z0-9_-]/', '', $uri ?: 'home');
