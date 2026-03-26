@@ -52,6 +52,8 @@ class LoginController
             'role' => $user['role']
         ];
 
+        $_SESSION['success_connexion'] = "Connexion réussie";
+
         header('Location: ' . BASE_PATH . '/dashboard');
         exit;
     }
