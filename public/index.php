@@ -10,7 +10,7 @@ require_once __DIR__ . '/../src/helpers/crud.php';
 
 session_start();
 
-sendSecurityHeaders();
+// sendSecurityHeaders(); --> vérifier car la console du navigateur si fonction appelée
 
 //Routage
 
