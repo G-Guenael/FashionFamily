@@ -41,7 +41,7 @@
 </section>
 
 <section class="best-selling">
-    <h3>Best Selling</h3>
+    <h3>Les 5 derniers articles ajoutés</h3>
     <div class="best_selling_container">
         <!-- Génération des articles avec une boucle PHP -->
         <?php foreach ($articles as $a): ?>
@@ -55,6 +55,8 @@
                     <span>En stock : <?= $a['quantity'] ?></span>
                     <span>€<?= $a['price'] ?></span>
                 </div>
+                <button><a href="<?= BASE_URL . '/shop/detail/' . $a['id'] ?>">Voir plus</a></button>
+                <button><a href="">Ajouter au panier</a></button>
             </div>
         <?php endforeach; ?>
     </div>

@@ -42,3 +42,16 @@ function getSomeArticles(int $numberArticles): array
 
     return $articles;
 }
+
+function getArticleById(int $id): array
+{
+    $db = getDbConnection();
+
+    $query = "SELECT * FROM articles WHERE id = ?";
+
+    $article = dbQueryOne($db, $query, [$id]);
+
+    closeDbConnection($db);
+
+    return $article;
+}

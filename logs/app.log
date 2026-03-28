@@ -372,3 +372,4 @@
 [2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
 [2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
 [2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
+[2026-03-28 17:26:45] [error] Erreur [2] : Undefined array key "name" dans C:\laragon\www\FashionFamily\src\controllers\shop.php à la ligne 21
