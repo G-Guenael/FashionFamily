@@ -21,8 +21,8 @@ function index()
 
     // Préparer les données pour la vue
     $data = [
-        'title' => "Page d'accueil - " . APP_NAME,
-        'description' => "Page d'accueil - " . APP_NAME,
+        'title' => APP_NAME . " : Achetez et vendez des articles partout dans le monde",
+        'description' => "Achetez ou vendez facilement des articles neufs ou d'occasion sur, près de chez vous ou mis en vente par des particuliers.",
         'articles' => $articles
     ];
 

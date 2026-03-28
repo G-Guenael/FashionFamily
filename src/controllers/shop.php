@@ -19,7 +19,8 @@ function detail(int $id)
 
     $data = [
         'title' => $article['title'],
-        'description' => '',
+        'image' => $article['image_path'],
+        'description' => APP_NAME . " - Découvrez notre article : " . $article['title'],
         'article' => $article
     ];
 

@@ -7,6 +7,7 @@
     <meta name="description" content="<?= $description ?>">
     <title><?= escape($title ?? 'Fashion Family') ?></title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/styles.css">
+    <meta property="og:image" content="<?= BASE_URL . $image ?>">
 </head>
 
 <body>

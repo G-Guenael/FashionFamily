@@ -1,4 +1,8 @@
-<?php partial('header', ['title' => $title, 'description' => $description]); ?>
+<?php partial('header', [
+    'title' => $title,
+    'description' => $description,
+    'image' => $image
+]); ?>
 
 <h1>Détail</h1>
 
@@ -9,4 +13,5 @@
 <p>En stock: <?= $article['quantity'] ?></p>
 <img src="<?= BASE_URL . $article['image_path'] ?>" alt="">
 <button><a href="">Ajouter au panier</a></button>
+
 <?php partial('footer'); ?>
