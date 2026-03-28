@@ -32,7 +32,7 @@ function about()
 {
     $data = [
         'title' => 'À propos',
-        'description' => 'PHP Starter Pack - Framework procédural professionnel'
+        'description' => APP_NAME . ' est une plateforme de e-commerce/MarketPlace'
     ];
 
     view('home/about', $data);

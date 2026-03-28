@@ -1,11 +1,10 @@
-export function createHeader(isLoggedIn = false) {
+export function createHeader(isLoggedIn = false, baseUrl = "") {
   const header = document.createElement("header");
 
-  const base = "./";
-  const homeLink = "home";
-
-  // Il faut ajouter les liens avec la structure suivante :
-  // const lien = "lien";
+  const base = baseUrl ? baseUrl + "/" : "./";
+  const homeLink = baseUrl ? baseUrl + "/home" : "home";
+  const about = baseUrl + "/home/about";
+  const contact = baseUrl + "/home/contact";
 
   header.innerHTML = `
     <div class="container">
@@ -33,8 +32,8 @@ export function createHeader(isLoggedIn = false) {
               </ul>
             </li>
 
-            <li><a href="#">About</a></li>
-            <li><a href="#">Contact</a></li>
+            <li><a href="${about}">About</a></li>
+            <li><a href="${contact}">Contact</a></li>
 
             <li>
               <form role="search" action="/search">
@@ -52,21 +51,21 @@ export function createHeader(isLoggedIn = false) {
         ${
           isLoggedIn
             ? `
-        <a href="dashboard" aria-label="Mon compte">
+        <a href="${baseUrl}/dashboard" aria-label="Mon compte">
           <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
         </a>
-        <a href="cart" aria-label="Panier">
+        <a href="${baseUrl}/cart" aria-label="Panier">
           <img src="${base}img/Icon.png" alt="Icône du panier" />
         </a>
-        <a href="logout" aria-label="Déconnexion">
+        <a href="${baseUrl}/logout" aria-label="Déconnexion">
           <img src="${base}img/logout.png" alt="Icône de déconnexion" />
         </a>
         `
             : `
-        <a href="login" aria-label="Se connecter">
+        <a href="${baseUrl}/login" aria-label="Se connecter">
           <img src="${base}img/Vector.png" alt="Icône de connexion" />
         </a>
-        <a href="register" aria-label="Se connecter">
+        <a href="${baseUrl}/register" aria-label="Se connecter">
           <img src="${base}img/user-plus-solid.png" alt="Icône de connexion" />
         </a>
         `

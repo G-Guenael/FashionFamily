@@ -5,8 +5,9 @@ import { createFooter } from "../components/footer/footer.js";
 window.addEventListener("DOMContentLoaded", () => {
   // HEADER
   const headerPlaceholder = document.getElementById("header");
-  const isLoggedIn = headerPlaceholder?.dataset.loggedIn === "1"; // lit data-logged-in (camelCase auto par le navigateur)
-  const header = createHeader(isLoggedIn);
+  const isLoggedIn = headerPlaceholder?.dataset.loggedIn === "1";
+  const baseUrl = headerPlaceholder?.dataset.baseUrl ?? "";
+  const header = createHeader(isLoggedIn, baseUrl);
 
   if (headerPlaceholder) {
     headerPlaceholder.replaceWith(header);
