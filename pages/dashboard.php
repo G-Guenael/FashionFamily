@@ -8,6 +8,4 @@
 
 <h1>Dashboard de <?= cleanHtml($_SESSION['user']['name']) ?></h1>
 
-<?php
-var_dump(cleanHtml($_SESSION['user']));
-?>
+<!-- VUE DU DASHBOARD .... -->
