@@ -1,4 +1,4 @@
-<?php partial('header', ['title' => $title]); ?>
+<?php partial('header', ['title' => $title, 'description' => $description]); ?>
 
 <div class="container">
     <h1><?= escape($title) ?></h1>
