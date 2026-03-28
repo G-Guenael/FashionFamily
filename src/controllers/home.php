@@ -19,6 +19,8 @@ function index()
         'description' => "Page d'accueil - " . APP_NAME,
     ];
 
+    //TODO : IMPORTER LES DONNEES DES ARTICLES EN DB (exemple : les articles les plus vendus ou tous les articles où on peut chercher par prix, catégories, etc...)
+
     // Charger la vue
     view('home/index', $data);
 }
