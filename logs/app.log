@@ -373,3 +373,10 @@
 [2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
 [2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
 [2026-03-28 17:26:45] [error] Erreur [2] : Undefined array key "name" dans C:\laragon\www\FashionFamily\src\controllers\shop.php à la ligne 21
+[2026-03-28 17:34:08] [error] Erreur de requête : SQLSTATE[23000]: Integrity constraint violation: 1052 Column 'id' in where clause is ambiguous
+[2026-03-28 17:34:08] [error] Exception : getArticleById(): Return value must be of type array, null returned dans C:\laragon\www\FashionFamily\src\models\Article.php à la ligne 56
+[2026-03-28 17:35:13] [error] Erreur de requête : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'users.username' in 'field list'
+[2026-03-28 17:35:13] [error] Exception : getArticleById(): Return value must be of type array, null returned dans C:\laragon\www\FashionFamily\src\models\Article.php à la ligne 56
+[2026-03-28 17:35:30] [error] Erreur de requête : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'users.username' in 'field list'
+[2026-03-28 17:35:30] [error] Exception : getArticleById(): Return value must be of type array, null returned dans C:\laragon\www\FashionFamily\src\models\Article.php à la ligne 56
+[2026-03-28 17:39:50] [error] Exception : detail(): Argument #1 ($id) must be of type int, string given, called in C:\laragon\www\FashionFamily\src\helpers\router.php on line 104 dans C:\laragon\www\FashionFamily\src\controllers\shop.php à la ligne 15

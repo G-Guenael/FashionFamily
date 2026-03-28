@@ -47,7 +47,7 @@ function getArticleById(int $id): array
 {
     $db = getDbConnection();
 
-    $query = "SELECT * FROM articles WHERE id = ?";
+    $query = "SELECT articles.*, users.name FROM articles JOIN users ON articles.user_id = users.id WHERE articles.id = ?";
 
     $article = dbQueryOne($db, $query, [$id]);
 

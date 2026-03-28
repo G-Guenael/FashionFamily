@@ -18,7 +18,7 @@ function detail(int $id)
 
 
     $data = [
-        'title' => 'Détails article :' . $article['title'],
+        'title' => $article['title'],
         'description' => '',
         'article' => $article
     ];
