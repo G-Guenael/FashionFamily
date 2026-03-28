@@ -101,7 +101,7 @@ function protectPage(string $role = ''): void
         $_SESSION['user']['connecte'] !== true ||
         !validateSessionFootprint()
     ) {
-        header('Location: ' . APP_URL . '?page=login');
+        header('Location: ' . APP_URL . '/login');
         exit;
     }
 

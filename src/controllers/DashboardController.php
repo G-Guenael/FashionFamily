@@ -4,6 +4,7 @@ class DashboardController
 {
     public function index()
     {
+        protectPage();
         return [
             'titrePage' => 'Votre Dashboard',
             'view' => 'dashboard',
