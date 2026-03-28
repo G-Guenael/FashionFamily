@@ -4,9 +4,6 @@
  * MODÈLE USER
  * =====================================================
  * Gère toutes les opérations liées aux utilisateurs
- * 
- * Ce fichier montre comment structurer un modèle en procédural
- * Chaque fonction = une opération sur les données
  */
 
 /**

@@ -43,46 +43,20 @@
 <section class="best-selling">
     <h3>Best Selling</h3>
     <div class="best_selling_container">
-        <div class="best_selling_card">
-            <div class="best_selling_img">
-                <img src="./img/Tshirt1.png" alt="Tshirt le mieux vendu" />
+        <!-- Génération des articles avec une boucle PHP -->
+        <?php foreach ($articles as $a): ?>
+            <div class="best_selling_card">
+                <div class="best_selling_img">
+                    <img src="<?= $a['image_path'] ?>" alt="Tshirt le mieux vendu" />
+                </div>
+                <p><?= $a['title'] ?></p>
+                <p><?= $a['description'] ?></p>
+                <div class="stock">
+                    <span>En stock : <?= $a['quantity'] ?></span>
+                    <span>€<?= $a['price'] ?></span>
+                </div>
             </div>
-            <p>Classic Monochrome Tees</p>
-            <div class="stock">
-                <span>En stock</span>
-                <span>€35.00</span>
-            </div>
-        </div>
-        <div class="best_selling_card">
-            <div class="best_selling_img">
-                <img src="./img/Tshirt2.png" alt="Tshirt le mieux vendu" />
-            </div>
-            <p> Monochromatic Wardrobe</p>
-            <div class="stock">
-                <span>En stock</span>
-                <span>€27.00</span>
-            </div>
-        </div>
-        <div class="best_selling_card">
-            <div class="best_selling_img">
-                <img src="./img/Tshirt3.png" alt="Tshirt le mieux vendu" />
-            </div>
-            <p>Essential Neutrals</p>
-            <div class="stock">
-                <span>En stock</span>
-                <span>€22.00</span>
-            </div>
-        </div>
-        <div class="best_selling_card">
-            <div class="best_selling_img">
-                <img src="./img/Tshirt4.png" alt="Tshirt le mieux vendu" />
-            </div>
-            <p>UTRAANET Black</p>
-            <div class="stock">
-                <span>En stock</span>
-                <span>€43.00</span>
-            </div>
-        </div>
+        <?php endforeach; ?>
     </div>
 </section>
 

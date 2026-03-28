@@ -1,4 +1,5 @@
 <?php
+require_once MODELS_PATH . '/Article.php';
 /**
  * =====================================================
  * CONTRÔLEUR HOME
@@ -13,13 +14,18 @@
  */
 function index()
 {
+    //TODO : IMPORTER LES DONNEES DES ARTICLES EN DB (exemple : les articles les plus vendus ou tous les articles où on peut chercher par prix, catégories, etc...)
+
+    $articles = getSomeArticles(5);
+
+
     // Préparer les données pour la vue
     $data = [
         'title' => "Page d'accueil - " . APP_NAME,
         'description' => "Page d'accueil - " . APP_NAME,
+        'articles' => $articles
     ];
 
-    //TODO : IMPORTER LES DONNEES DES ARTICLES EN DB (exemple : les articles les plus vendus ou tous les articles où on peut chercher par prix, catégories, etc...)
 
     // Charger la vue
     view('home/index', $data);

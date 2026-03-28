@@ -361,3 +361,14 @@
 [2026-03-28 16:23:46] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
 [2026-03-28 16:23:46] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
 [2026-03-28 16:24:29] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-28 16:52:11] [error] Exception : Call to undefined function getAllArticles() dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 18
+[2026-03-28 16:52:25] [error] Exception : Call to undefined function getAllArticles() dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 18
+[2026-03-28 16:52:36] [error] Exception : Call to undefined function getAllArticles() dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 18
+[2026-03-28 16:53:19] [error] Erreur [2] : require_once(C:\laragon\www\FashionFamily/src/models/Articles.php): Failed to open stream: No such file or directory dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 2
+[2026-03-28 16:53:19] [error] Exception : Failed opening required 'C:\laragon\www\FashionFamily/src/models/Articles.php' (include_path='.;C:/laragon/etc/php/pear') dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 2
+[2026-03-28 16:53:28] [error] Erreur [2] : Undefined array key "id" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 42
+[2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
+[2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
+[2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
+[2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
+[2026-03-28 17:07:36] [error] Erreur [2] : Undefined array key "quantite" dans C:\laragon\www\FashionFamily\src\views\home\index.php à la ligne 53
