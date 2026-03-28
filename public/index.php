@@ -1,62 +1,93 @@
 <?php
 declare(strict_types=1);
+/**
+ * =====================================================
+ * FRONT CONTROLLER
+ * =====================================================
+ * Point d'entrée unique de l'application
+ * Toutes les requêtes passent par ce fichier
+ */
 
+// =====================================================
+// 1. CHARGEMENT DE LA CONFIGURATION
+// =====================================================
+require_once __DIR__ . '/../config/config.php';
 
-require_once __DIR__ . '/../src/config/config.php';
-require_once __DIR__ . '/../src/helpers/security.php';
-require_once __DIR__ . '/../src/helpers/functions.php';
-require_once __DIR__ . '/../src/config/Database.php';
-require_once __DIR__ . '/../src/helpers/crud.php';
+// =====================================================
+// 2. CHARGEMENT DES HELPERS
+// =====================================================
+require_once HELPERS_PATH . '/functions.php';
+require_once HELPERS_PATH . '/database.php';
+require_once HELPERS_PATH . '/router.php';
 
-session_start();
+// =====================================================
+// 3. DÉMARRAGE DE LA SESSION
+// =====================================================
+startSession();
 
-// sendSecurityHeaders(); // --> vérifier car la console du navigateur si fonction appelée => problème de chargement de la police
+// =====================================================
+// 4. GESTION DES ERREURS PERSONNALISÉES
+// =====================================================
+/**
+ * Gestionnaire d'erreurs personnalisé
+ */
+function customErrorHandler($errno, $errstr, $errfile, $errline)
+{
+    $message = "Erreur [$errno] : $errstr dans $errfile à la ligne $errline";
+    logMessage($message, 'error');
 
-//Routage
+    if (ENVIRONMENT === 'development') {
+        echo "<div style='background:#f8d7da;color:#721c24;padding:15px;margin:10px;border:1px solid #f5c6cb;border-radius:5px;'>";
+        echo "<strong>Erreur PHP :</strong> $errstr<br>";
+        echo "<strong>Fichier :</strong> $errfile<br>";
+        echo "<strong>Ligne :</strong> $errline";
+        echo "</div>";
+    }
 
-$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
-$uri = trim(substr($uri, strlen(BASE_PATH)), '/');
-$page = preg_replace('/[^a-z0-9_-]/', '', $uri ?: 'home');
+    // Ne pas exécuter le gestionnaire d'erreurs interne de PHP
+    return true;
+}
 
-$controllerName = ucfirst($page) . 'Controller';
-$controllerPath = __DIR__ . '/../src/Controllers/' . $controllerName . '.php';
+set_error_handler('customErrorHandler');
 
-// Routing par méthode HTTP : POST → store(), GET → index()
-$defaultMethod = ($_SERVER['REQUEST_METHOD'] === 'POST') ? 'store' : 'index';
-$methodName = preg_replace('/[^a-z0-9_-]/', '', $_GET['action'] ?? $defaultMethod);
+// =====================================================
+// 5. GESTION DES EXCEPTIONS
+// =====================================================
+/**
+ * Gestionnaire d'exceptions personnalisé
+ */
+function customExceptionHandler($exception)
+{
+    $message = "Exception : " . $exception->getMessage() . " dans " .
+        $exception->getFile() . " à la ligne " . $exception->getLine();
+    logMessage($message, 'error');
 
-if (file_exists($controllerPath)) {
-    require_once $controllerPath;
-
-    $controller = new $controllerName();
-
-    if (method_exists($controller, $methodName)) {
-        // Le contrôleur retourne un tableau de données ['titrePage' => ..., 'view' => ...]
-        $data = $controller->$methodName();
+    if (ENVIRONMENT === 'development') {
+        echo "<div style='background:#f8d7da;color:#721c24;padding:15px;margin:10px;border:1px solid #f5c6cb;border-radius:5px;'>";
+        echo "<strong>Exception :</strong> " . $exception->getMessage() . "<br>";
+        echo "<strong>Fichier :</strong> " . $exception->getFile() . "<br>";
+        echo "<strong>Ligne :</strong> " . $exception->getLine() . "<br>";
+        echo "<strong>Trace :</strong><pre>" . $exception->getTraceAsString() . "</pre>";
+        echo "</div>";
     } else {
-        http_response_code(500);
-        die("Erreur 500 : la méthode '$methodName' est introuvable dans le contrôleur '$controllerName'");
-    }
-} else {
-    http_response_code(404);
-    require_once __DIR__ . '/../src/controllers/ErrorController.php';
-    $errorController = new ErrorController();
-    $data = $errorController->notFound();
-}
-
-// Rendu complet : on extrait les variables retournées par le contrôleur ($titrePage, $description, etc.)
-extract($data ?? []);
-
-// 1. Header (utilise $titrePage, $description s'ils sont définis)
-require_once __DIR__ . '/../src/templates/header.php';
-
-// 2. Vue (pages/$view.php)
-if (!empty($view)) {
-    $viewPath = __DIR__ . '/../pages/' . $view . '.php';
-    if (file_exists($viewPath)) {
-        require_once $viewPath;
+        echo "Une erreur est survenue. Veuillez réessayer plus tard.";
     }
 }
 
-// 3. Footer
-require_once __DIR__ . '/../src/templates/footer.php';
+set_exception_handler('customExceptionHandler');
+
+// =====================================================
+// 6. ROUTES PERSONNALISÉES (OPTIONNEL)
+// =====================================================
+// Exemples de routes personnalisées
+// addRoute('blog/article/:id', 'blog', 'show');
+// addRoute('users/:username', 'users', 'profile');
+
+// =====================================================
+// 7. LANCEMENT DU ROUTEUR
+// =====================================================
+dispatch();
+
+// =====================================================
+// FIN DU FRONT CONTROLLER
+// =====================================================

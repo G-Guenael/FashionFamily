@@ -1,3 +1,5 @@
+<?php partial('header', ['title' => $title, 'description' => $description]); ?>
+
 <section class="hero">
     <div class="hero_container">
         <div class="hero_title">
@@ -142,3 +144,5 @@
         </div>
     </div>
 </section>
+
+<?php partial('footer'); ?>

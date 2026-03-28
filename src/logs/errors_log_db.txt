@@ -1,1 +1,0 @@
-ERROR_DATE:2026-03-25 16:44:24 --- ERROR_MESSAGE: SQLSTATE[HY000] [1045] Access denied for user 'root'@'localhost' (using password: YES) --- ERROR_CODE:1045
