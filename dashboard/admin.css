@@ -52,7 +52,7 @@ body {
 }
 
 .form-group {
-  width: 320px;  
+  width: 320px;
   display: flex;
   flex-direction: column;
   margin: auto;
@@ -76,16 +76,89 @@ input:focus {
   box-shadow: inset 0 0 0 1px #999;
 }
 
-button{
-    width: 318px;
-    height: 44px;
-    background: #0E1422;
-    color: #ffffff;
-    font-size: 14px;
-    font-weight: 500;
-    line-height: 1.75;
-    border-radius: 4px;
-    cursor: pointer;
-    display: block;
-    margin: 30px auto;    
+button {
+  width: 318px;
+  height: 44px;
+  background: #0e1422;
+  color: #ffffff;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.75;
+  border-radius: 4px;
+  cursor: pointer;
+  display: block;
+  margin: 30px auto;
 }
+
+/* ----------------- acceuil dashboard ------------------ */
+
+.layout {
+  width: 100%;
+  height: 935px;
+  display: flex;
+}
+
+.sidebar {
+  width: 260px;
+  height: 925px;
+  background: #ffffff;
+}
+
+.sidebar nav {
+  width: 212px;
+  height: 326px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.sidebar nav ul {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.sidebar nav ul li {
+  display: flex;
+  justify-content: start;
+  align-items: center;
+  list-style: none;
+  font-size: 14px;
+  font-weight: 500;
+  line-height: 1.75;
+  cursor: pointer;
+  gap: 10px;
+}
+
+.sidebar nav ul a {
+  text-decoration: none;
+  color: inherit;
+}
+
+.content {
+  flex: 1;
+  padding: 20px;
+  overflow-y: auto;
+}
+
+.main {
+  width: 100%;
+  height: 100%;
+}
+.header {
+  width: 100%;
+  height: 72px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 50px;
+  /* border: 1px solid #000; */
+}
+
+.header h1 {
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.5;
+  font-family: "Manrope", sans-serif;
+}
+
