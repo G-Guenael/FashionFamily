@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Mar 28, 2026 at 04:08 PM
+-- Generation Time: Mar 30, 2026 at 10:39 AM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.30
 
@@ -48,10 +48,10 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `user_id`, `title`, `description`, `image_path`, `price`, `currency`, `quantity`, `category`, `article_condition`, `status`, `created_at`, `updated_at`) VALUES
-(31, 1, 'T-shirt1', 'Classic Monochrome Tees', './img/Tshirt1.png', 35.00, 'EUR', 3, 'vetements', 'like_new', 'active', '2026-03-28 15:45:22', '2026-03-28 15:59:45'),
-(32, 2, 'Chaise ergonomique', 'Chaise de bureau confortable avec support lombaire', '', 120.00, 'EUR', 2, 'Maison', 'good', 'active', '2026-03-28 15:45:22', '2026-03-28 15:45:22'),
+(31, 1, 'T-shirt1', 'Classic Monochrome Tees', './img/Tshirt1.png', 35.00, 'EUR', 3, 'vetements', 'like_new', 'active', '2026-03-28 15:47:22', '2026-03-30 10:07:00'),
+(32, 2, 'Chaise ergonomique', 'Chaise de bureau confortable avec support lombaire', '', 120.00, 'EUR', 2, 'Maison', 'good', 'active', '2026-03-28 15:46:21', '2026-03-30 10:07:33'),
 (33, 3, 'Vélo de route Trek', 'Vélo carbone très léger, utilisé 1 saison', '', 950.00, 'EUR', 1, 'Sport', 'good', 'active', '2026-03-28 15:45:22', '2026-03-28 15:45:22'),
-(34, 1, 'PlayStation 5', 'PS5 édition standard avec 2 manettes', '', 500.00, 'EUR', 1, 'Jeux vidéo', 'like_new', 'active', '2026-03-28 15:45:22', '2026-03-28 15:45:22'),
+(34, 1, 'PlayStation 5', 'PS5 édition standard avec 2 manettes', '', 500.00, 'EUR', 1, 'Jeux vidéo', 'like_new', 'active', '2026-03-28 15:44:22', '2026-03-30 10:07:49'),
 (35, 6, 'Table en bois massif', 'Grande table à manger en chêne, quelques traces d’usage', '', 300.00, 'EUR', 1, 'Mobilier', 'fair', 'active', '2026-03-28 15:45:22', '2026-03-28 15:45:22'),
 (36, 2, 'MacBook Air M1', 'Ordinateur portable Apple très bon état, 8GB RAM', '', 800.00, 'EUR', 1, 'Informatique', 'like_new', 'active', '2026-03-28 15:45:22', '2026-03-28 15:45:22'),
 (37, 8, 'Casque Sony WH-1000XM4', 'Casque à réduction de bruit, excellent état', '', 180.00, 'EUR', 1, 'Électronique', 'good', 'active', '2026-03-28 15:45:22', '2026-03-28 15:45:22'),
@@ -124,7 +124,7 @@ CREATE TABLE `users` (
 --
 
 INSERT INTO `users` (`id`, `name`, `email`, `role`, `password`, `created_at`) VALUES
-(1, '', 'kevin.urbain.pro@gmail.com', 'user', 'Keke141291<3', '2026-03-25 16:47:34'),
+(1, 'Paul Gaston', 'kevin.urbain.pro@gmail.com', 'user', 'Keke141291<3', '2026-03-25 16:47:34'),
 (2, 'Alice Nevers', 'alice.nevers@gmail.com', 'user', 'Keke141291<3', '2026-03-25 17:51:07'),
 (3, 'Camille Peters', 'cam.p@gmail.com', 'user', '$2y$10$Fc9vVaN74./2NT89dNcts.MiimDkGV8cPnTOPUgoq31wXpeRNbDyO', '2026-03-25 17:53:50'),
 (6, 'Michael Simon', 'michmich@gmail.com', 'user', '$2y$10$3YvBDlq3oxnd7MEw1f7S8Oe12.Dm7AI3aFAuNpW0b52PUgnn7muiy', '2026-03-25 17:57:01'),
