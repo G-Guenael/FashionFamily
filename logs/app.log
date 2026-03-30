@@ -406,3 +406,9 @@
 [2026-03-28 18:42:46] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 10
 [2026-03-28 18:42:55] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 10
 [2026-03-28 18:43:03] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 10
+[2026-03-30 11:31:36] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 10
+[2026-03-30 11:34:13] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 10
+[2026-03-30 11:34:16] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 10
+[2026-03-30 11:36:29] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 10
+[2026-03-30 11:38:12] [error] Exception : syntax error, unexpected end of file dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 17
+[2026-03-30 11:38:29] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 13
