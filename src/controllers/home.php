@@ -14,16 +14,19 @@ require_once MODELS_PATH . '/Article.php';
  */
 function index()
 {
-    //TODO : IMPORTER LES DONNEES DES ARTICLES EN DB (exemple : les articles les plus vendus ou tous les articles où on peut chercher par prix, catégories, etc...)
+    //TODO : Générer des articles selon ce qu'on veut dans la page d'accueil : meilleurs ventes, 5 derniers articles ajoutés en vente, etc. Ici on a déjà deux fonctions qui retournent des articles selon leur date d'ajout et aléatoirement. Injecter dans $data ensuite et boucler dans la vue home/index.php
 
-    $articles = getSomeArticles(5);
+    $articlesOrderByDateDesc = getSomeArticles(5);
+
+    $articlesByRandom = getRandomArticles(5);
 
 
     // Préparer les données pour la vue
     $data = [
         'title' => APP_NAME . " : Achetez et vendez des articles partout dans le monde",
         'description' => "Achetez ou vendez facilement des articles neufs ou d'occasion sur, près de chez vous ou mis en vente par des particuliers.",
-        'articles' => $articles
+        'articlesByDateDesc' => $articlesOrderByDateDesc,
+        'articlesByRandom' => $articlesByRandom
     ];
 
 

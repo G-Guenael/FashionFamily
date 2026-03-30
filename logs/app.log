@@ -412,3 +412,17 @@
 [2026-03-30 11:36:29] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 10
 [2026-03-30 11:38:12] [error] Exception : syntax error, unexpected end of file dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 17
 [2026-03-30 11:38:29] [error] Erreur [2] : Undefined variable $image dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 13
+[2026-03-30 11:42:31] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 11:55:11] [error] Erreur [2] : Undefined variable $articles dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
+[2026-03-30 11:55:27] [error] Erreur de requête : SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = ?' at line 1
+[2026-03-30 11:56:03] [error] Erreur de requête : SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = ?' at line 1
+[2026-03-30 11:56:21] [error] Erreur de requête : SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = ?' at line 1
+[2026-03-30 11:57:31] [error] Erreur de requête : SQLSTATE[42000]: Syntax error or access violation: 1064 You have an error in your SQL syntax; check the manual that corresponds to your MySQL server version for the right syntax to use near 'WHERE id = ?' at line 1
+[2026-03-30 12:09:38] [error] Erreur [2] : Array to string conversion dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
+[2026-03-30 12:09:38] [error] Erreur [2] : Undefined variable $Array dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
+[2026-03-30 12:09:50] [error] Erreur [2] : Array to string conversion dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
+[2026-03-30 12:09:50] [error] Erreur [2] : Undefined variable $Array dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
+[2026-03-30 12:09:51] [error] Erreur [2] : Array to string conversion dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
+[2026-03-30 12:09:51] [error] Erreur [2] : Undefined variable $Array dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
+[2026-03-30 12:10:04] [error] Erreur [2] : Array to string conversion dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
+[2026-03-30 12:10:04] [error] Erreur [2] : Undefined variable $Array dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26

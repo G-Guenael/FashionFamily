@@ -44,8 +44,8 @@
     <h3>Les derniers articles ajoutés</h3>
     <div class="best_selling_container">
         <!-- Génération des articles avec une boucle PHP -->
-        <?php if (isset($articles)): ?>
-            <?php foreach ($articles as $a): ?>
+        <?php if (isset($articlesByDateDesc)): ?>
+            <?php foreach ($articlesByDateDesc as $a): ?>
                 <div class="best_selling_card">
                     <div class="best_selling_img">
                         <img src="<?= $a['image_path'] ?>" alt="Tshirt le mieux vendu" />
