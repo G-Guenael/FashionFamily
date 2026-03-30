@@ -69,6 +69,22 @@ function getArticleById(int $id): array
  * @param int $numberArticles  Nombres d'articles à choisir
  * @return array Tableau des articles
  */
+function getArticlesCountByMonth(): array
+{
+    $db = getDbConnection();
+
+    $query = "SELECT DATE_FORMAT(created_at, '%Y-%m') as month, COUNT(*) as count
+              FROM articles
+              WHERE created_at >= DATE_SUB(NOW(), INTERVAL 6 MONTH)
+              GROUP BY month
+              ORDER BY month ASC";
+
+    $result = dbQuery($db, $query);
+    closeDbConnection($db);
+
+    return $result;
+}
+
 function getRandomArticles(int $numberArticles): array
 {
     $db = getDbConnection();

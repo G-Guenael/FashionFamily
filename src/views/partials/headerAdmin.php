@@ -9,6 +9,7 @@
         <?= escape($title ?? 'Fashion Family') ?>
     </title>
     <link rel="stylesheet" href="<?= BASE_URL ?>/css/admin.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <?php if (isset($image)): ?>
         <meta property="og:image" content="<?= BASE_URL . '' . $image ?>">
     <?php else: ?>

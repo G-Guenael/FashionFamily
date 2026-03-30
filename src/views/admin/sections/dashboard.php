@@ -3,13 +3,9 @@
     <div class="container_left card">
       <div class="card_header">
         <div class="txt">
-          <h2>Total Articles</h2>
-          <h3>En ligne</h3>
+          <h2>Total Articles</h2><span><?= $totalArticles ?></span>
         </div>
-        <span><?= $totalArticles ?></span>
-      </div>
-      <div class="img">
-        <img src="<?= BASE_URL ?>/img/img-dash/graphique_sales.png" alt="Sales Graph" />
+
       </div>
     </div>
     <div class="container_middle card">
@@ -20,9 +16,6 @@
         </div>
         <span><?= $totalUsers ?></span>
       </div>
-      <div class="img">
-        <img src="<?= BASE_URL ?>/img/img-dash/customer_graph.png" alt="Customer Graph" />
-      </div>
     </div>
     <div class="container_right card">
       <div class="card_header">
@@ -32,14 +25,15 @@
         </div>
         <span>0</span>
       </div>
-      <div class="img">
-        <img src="<?= BASE_URL ?>/img/img-dash/order_graph.png" alt="Order Graph" />
-      </div>
     </div>
   </div>
 
   <div class="container_bottom">
-    <div class="container_bottom_left card"></div>
-    <div class="container_bottom_right card"></div>
+    <div class="container_bottom_left card">
+      <canvas id="chart-articles"></canvas>
+    </div>
+    <div class="container_bottom_right card">
+      <canvas id="chart-users"></canvas>
+    </div>
   </div>
 </section>

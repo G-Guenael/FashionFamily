@@ -48,3 +48,15 @@ function settings()
     requireAdmin();
     view('admin/sections/settings');
 }
+
+function stats()
+{
+    requireAdmin();
+
+    header('Content-Type: application/json');
+    echo json_encode([
+        'articles' => getArticlesCountByMonth(),
+        'users'    => getUsersCountByMonth(),
+    ]);
+    exit;
+}
