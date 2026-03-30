@@ -26,7 +26,7 @@ function index()
         'title' => APP_NAME . " : Achetez et vendez des articles partout dans le monde",
         'description' => "Achetez ou vendez facilement des articles neufs ou d'occasion sur, près de chez vous ou mis en vente par des particuliers.",
         'articlesByDateDesc' => $articlesOrderByDateDesc,
-        'articlesByRandom' => $articlesByRandom
+        'articlesByRandom' => $articlesByRandom //**A ajouter dans home/index.php */
     ];
 
 

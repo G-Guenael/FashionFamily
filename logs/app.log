@@ -426,3 +426,4 @@
 [2026-03-30 12:09:51] [error] Erreur [2] : Undefined variable $Array dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
 [2026-03-30 12:10:04] [error] Erreur [2] : Array to string conversion dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
 [2026-03-30 12:10:04] [error] Erreur [2] : Undefined variable $Array dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
+[2026-03-30 12:17:56] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
