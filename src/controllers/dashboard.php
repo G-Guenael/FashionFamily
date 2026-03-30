@@ -1,5 +1,6 @@
 <?php
 require_once MODELS_PATH . '/User.php';
+require_once MODELS_PATH . '/Article.php';
 
 function index()
 {
@@ -7,14 +8,20 @@ function index()
     //Protection de la page
     protectPage('home');
 
-    $data = [
+    $dataUser = [
         'title' => 'Dashboard',
         'description' => 'Dashboard',
         'user' => currentUser(),
     ];
 
+    $dataAdmin = [
+        'title' => 'Dashboard Administrateur',
+        'description' => 'Dashboard Admin',
+        'user' => currentUser()
+    ];
 
-    // Exemple de données à envoyer à la vue pour un dashboard
+
+    // Exemple de données à envoyer à la vue pour un dashboard Admin
     // $data =
     //     'title'          => 'Dashboard',
     //     'description' => 'Dashboard',
@@ -31,5 +38,9 @@ function index()
     //     'totalFavorites' => countFavoritesByUser($userId),
     // ];
 
-    view('user/dashboard', $data);
+    if (isAdmin()) {
+        view('admin/dashboardAdmin', $dataAdmin);
+    } else {
+        view('user/dashboard', $dataUser);
+    }
 }

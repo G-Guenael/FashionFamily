@@ -427,3 +427,108 @@
 [2026-03-30 12:10:04] [error] Erreur [2] : Array to string conversion dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
 [2026-03-30 12:10:04] [error] Erreur [2] : Undefined variable $Array dans C:\laragon\www\FashionFamily\src\controllers\home.php à la ligne 26
 [2026-03-30 12:17:56] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 21:33:08] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 21:44:18] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 21:44:29] [error] Erreur [2] : Undefined array key "role" dans C:\laragon\www\FashionFamily\src\controllers\login.php à la ligne 46
+[2026-03-30 21:44:43] [error] Erreur [2] : Undefined array key "role" dans C:\laragon\www\FashionFamily\src\views\user\dashboard.php à la ligne 4
+[2026-03-30 21:48:58] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 21:51:45] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:01:34] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:02:01] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:05:59] [error] Exception : syntax error, unexpected token ";" dans C:\laragon\www\FashionFamily\src\views\admin\dashboardAdmin.php à la ligne 3
+[2026-03-30 22:08:20] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:09:24] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:12:58] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:23] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:23] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:24] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:25] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:26] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:26] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:26] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:58] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:59] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:13:59] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:15:47] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:15:48] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:15:49] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:18:25] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:18:31] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:20:30] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:20:53] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:22:55] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:22:58] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:23:25] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:23:25] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:24:02] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:24:54] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:28:40] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:29:10] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:31:37] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:31:39] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:31:40] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:31:40] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:31:58] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:35:03] [error] Erreur [2] : Undefined variable $articles dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 12
+[2026-03-30 22:35:03] [error] Erreur [2] : foreach() argument must be of type array|object, null given dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 12
+[2026-03-30 22:36:06] [error] Exception : syntax error, unexpected identifier "view" dans C:\laragon\www\FashionFamily\src\controllers\admin.php à la ligne 23
+[2026-03-30 22:36:12] [error] Erreur [2] : Undefined variable $articles dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 12
+[2026-03-30 22:36:12] [error] Erreur [2] : foreach() argument must be of type array|object, null given dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 12
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 15
+[2026-03-30 22:36:22] [error] Erreur [8192] : htmlspecialchars(): Passing null to parameter #1 ($string) of type string is deprecated dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 23
+[2026-03-30 22:36:22] [error] Erreur [2] : Undefined variable $user dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:36:22] [error] Erreur [2] : Trying to access array offset on null dans C:\laragon\www\FashionFamily\src\views\admin\sections\products.php à la ligne 16
+[2026-03-30 22:44:12] [error] Erreur [2] : Undefined variable $dataAdmin dans C:\laragon\www\FashionFamily\src\controllers\dashboard.php à la ligne 43
+[2026-03-30 22:44:12] [error] Exception : view(): Argument #2 ($data) must be of type array, null given, called in C:\laragon\www\FashionFamily\src\controllers\dashboard.php on line 43 dans C:\laragon\www\FashionFamily\src\helpers\functions.php à la ligne 142
+[2026-03-30 22:44:28] [error] Erreur [2] : Undefined variable $title dans C:\laragon\www\FashionFamily\src\views\admin\dashboardAdmin.php à la ligne 1
+[2026-03-30 22:44:28] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\admin\dashboardAdmin.php à la ligne 1
+[2026-03-30 22:44:28] [error] Erreur [2] : Undefined variable $title dans C:\laragon\www\FashionFamily\src\views\admin\dashboardAdmin.php à la ligne 51
+[2026-03-30 22:44:28] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\admin\dashboardAdmin.php à la ligne 51
+[2026-03-30 22:50:26] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-30 22:53:02] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7

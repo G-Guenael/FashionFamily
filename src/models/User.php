@@ -33,7 +33,7 @@ function getUserById(int $id): ?array
 {
     $db = getDbConnection();
 
-    $query = "SELECT id, name, email, created_at FROM users WHERE id = ?";
+    $query = "SELECT id, name, email, role, created_at FROM users WHERE id = ?";
     $user = dbQueryOne($db, $query, [$id]);
 
     closeDbConnection($db);
@@ -51,7 +51,7 @@ function getUserByEmail(string $email): ?array
 {
     $db = getDbConnection();
 
-    $query = "SELECT id, name, email, password, created_at FROM users WHERE email = ?";
+    $query = "SELECT id, name, email, role, password, created_at FROM users WHERE email = ?";
     $user = dbQueryOne($db, $query, [$email]);
 
     closeDbConnection($db);

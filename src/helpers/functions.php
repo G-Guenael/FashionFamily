@@ -339,6 +339,29 @@ function currentUser()
 }
 
 /**
+ * Vérifie si l'utilisateur connecté est admin (via session)
+ *
+ * @return bool
+ */
+function isAdmin(): bool
+{
+    return isset($_SESSION['role']) && $_SESSION['role'] === 'admin';
+}
+
+/**
+ * Protège une page réservée aux admins.
+ * Redirige vers 403 si l'utilisateur n'est pas admin.
+ *
+ * @return void
+ */
+function requireAdmin(): void
+{
+    if (!isLoggedIn() || !isAdmin()) {
+        redirect('403');
+    }
+}
+
+/**
  * Enregistre un log
  * 
  * @param string $message Message à logger

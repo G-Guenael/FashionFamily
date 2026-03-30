@@ -16,18 +16,4 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   initHeader(header);
-
-  // NEWSLETTER (optionnelle)
-  const newsPlaceHolder = document.getElementById("newsletter");
-  if (newsPlaceHolder) {
-    const newsLetter = createNewsLetter();
-    newsPlaceHolder.replaceWith(newsLetter);
-  }
-
-  // FOOTER (optionnel)
-  const footerPlaceHolder = document.getElementById("footer");
-  if (footerPlaceHolder) {
-    const footer = createFooter(baseUrl);
-    footerPlaceHolder.replaceWith(footer);
-  }
 });
