@@ -146,13 +146,15 @@ button {
   height: 100%;
 }
 .header {
+  max-width: 1440px;
   width: 100%;
   height: 72px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 50px;
   /* border: 1px solid #000; */
+  margin: 0 auto;
+  padding-left: 25px;
 }
 
 .header h1 {
@@ -161,4 +163,114 @@ button {
   line-height: 1.5;
   font-family: "Manrope", sans-serif;
 }
+
+/* ---------------------content Dashboard------------------ */
+
+.content {
+  max-width: 1440px;
+  width: 100%;
+  height: 750px;
+  /* border: 1px solid #333; */
+  margin: 0px auto;
+}
+
+/* -------------------------- Card----------------------- */
+.container_top {
+  max-width: 1440px;
+  width: 100%;
+  height: 187px;
+  display: flex;    
+  gap: 80px;
+}
+
+.container_left, .container_middle, .container_right {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  padding: 20px;
+}
+
+.container_left .card_header, .container_middle .card_header, .container_right .card_header {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+}
+
+.container_left .txt, .container_middle .txt, .container_right .txt {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+ .container_left .txt h2, .container_middle .txt h2, .container_right .txt h2 {
+  font-size: 16px;  
+  line-height: 1.75;
+} 
+
+.container_left .txt h3, .container_middle .txt h3, .container_right .txt h3 {
+  font-size: 12px;
+  color: #5C5F6A;
+  line-height: 1.75;
+  text-transform: uppercase;
+}
+
+.container_left #sales, .container_middle #customers, .container_right #orders {
+  position: absolute;
+  top: 20px;
+  right: 20px;
+  display: block;
+  font-size: 28px;
+  font-weight: 700;
+  line-height: 1;
+  text-align: right;
+}
+
+.container_left .img, .container_middle .img, .container_right .img {
+  margin-top: auto;
+  display: flex;
+  justify-content: center;
+  align-items: flex-end;
+}
+
+.container_left img, .container_middle img, .container_right img {
+  width: 100%;
+  max-width: 274px;
+  height: auto;
+  display: block;
+}
+
+.card {
+  width: 328px;
+  height: 187px;
+  box-shadow: inset 0 0 3px rgba(233, 233, 235, 1);
+  background: #fff;
+  border-radius: 8px;
+}
+
+.container_bottom {
+  max-width: 1440px;
+  width: 100%;
+  height: 475px;
+  /* border: 1px solid #333; */
+  margin: auto;
+  display: flex; 
+  gap: 115px;
+  margin-top: 30px;
+}
+
+.container_bottom_left {
+  width: 328px;
+  height: 475px;
+  background: #fff;
+}
+
+.container_bottom_right {
+  width: 695px;
+  height: 475px;
+  background: #fff;
+}
+
+
 
