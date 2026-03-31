@@ -10,4 +10,5 @@
     </section>
 
     <a href="<?= BASE_URL ?>/logout" style="display:inline-block; margin-top: 1rem;">Se déconnecter</a>
+    <a href="<?= BASE_URL ?>/edit-profile" style="display:inline-block; margin-top: 1rem;">Editer mon profil</a>
 </div>

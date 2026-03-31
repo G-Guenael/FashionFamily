@@ -82,6 +82,9 @@ $router->get('/logout', 'AuthController', 'logout');
 
 // --- Dashboard utilisateur ---
 $router->get('/dashboard', 'DashboardController', 'index');
+$router->get('/edit-profile', 'DashboardController', 'edit');
+$router->post('/update-profile', 'DashboardController', 'updateProfile');
+$router->post('/update-password', 'DashboardController', 'updatePassword');
 
 // --- Admin : page principale ---
 $router->get('/admin', 'Admin/DashboardController', 'index');
