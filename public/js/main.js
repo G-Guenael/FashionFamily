@@ -7,7 +7,8 @@ window.addEventListener("DOMContentLoaded", () => {
   const headerPlaceholder = document.getElementById("header");
   const isLoggedIn = headerPlaceholder?.dataset.loggedIn === "1";
   const baseUrl = headerPlaceholder?.dataset.baseUrl ?? "";
-  const header = createHeader(isLoggedIn, baseUrl);
+  const cartCount = parseInt(headerPlaceholder?.dataset.cartCount ?? "0", 10);
+  const header = createHeader(isLoggedIn, baseUrl, cartCount);
 
   if (headerPlaceholder) {
     headerPlaceholder.replaceWith(header);

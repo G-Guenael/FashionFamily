@@ -38,6 +38,11 @@
     </div>
 </section>
 
+<?php $successMsg = getFlashMessage('success'); ?>
+<?php if ($successMsg): ?>
+    <p style="color: green; text-align: center; padding: 0.5rem;"><?= escape($successMsg) ?></p>
+<?php endif; ?>
+
 <section class="best-selling">
     <h3>Les derniers articles ajoutés</h3>
     <div class="best_selling_container">
@@ -47,14 +52,23 @@
                     <div class="best_selling_img">
                         <img src="<?= BASE_URL . escape($a['image_path']) ?>" alt="<?= escape($a['title']) ?>" />
                     </div>
-                    <p><?= escape($a['title']) ?></p>
-                    <p><?= escape($a['description']) ?></p>
+                    <p class="card-title"><?= escape($a['title']) ?></p>
                     <div class="stock">
                         <span>En stock : <?= (int) $a['quantity'] ?></span>
                         <span>€<?= number_format((float) $a['price'], 2) ?></span>
                     </div>
-                    <button><a href="<?= BASE_URL ?>/products/show?id=<?= $a['id'] ?>">Voir plus</a></button>
-                    <button><a href="#">Ajouter au panier</a></button>
+                    <a href="<?= BASE_URL ?>/products/show?id=<?= $a['id'] ?>" class="btn-voir-plus">Voir plus</a>
+                    <?php if ((int) $a['quantity'] > 0): ?>
+                        <form action="<?= BASE_URL ?>/cart/add" method="POST">
+                            <input type="hidden" name="csrf_token" value="<?= generateCsrfToken() ?>">
+                            <input type="hidden" name="article_id" value="<?= (int) $a['id'] ?>">
+                            <input type="hidden" name="quantity" value="1">
+                            <input type="hidden" name="redirect" value="/">
+                            <button type="submit" class="btn-panier">Ajouter au panier</button>
+                        </form>
+                    <?php else: ?>
+                        <span class="rupture-stock">Rupture de stock</span>
+                    <?php endif; ?>
                 </div>
             <?php endforeach; ?>
         <?php else: ?>

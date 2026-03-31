@@ -24,12 +24,17 @@ require_once __DIR__ . '/../utils/Auth.php';
 require_once __DIR__ . '/../utils/helpers.php';
 
 // =====================================================
-// 4. SESSION
+// 4. MODELS (chargés globalement)
+// =====================================================
+require_once __DIR__ . '/../app/models/Cart.php';
+
+// =====================================================
+// 5. SESSION
 // =====================================================
 Session::start();
 
 // =====================================================
-// 5. GESTION DES ERREURS
+// 6. GESTION DES ERREURS
 // =====================================================
 set_error_handler(function (int $errno, string $errstr, string $errfile, int $errline): bool {
     $message = "Erreur [$errno] : $errstr dans $errfile à la ligne $errline";
@@ -62,7 +67,7 @@ set_exception_handler(function (Throwable $e): void {
 });
 
 // =====================================================
-// 6. ROUTES
+// 7. ROUTES
 // =====================================================
 $router = new Router();
 
@@ -73,12 +78,24 @@ $router->get('/products', 'ProductController', 'index');
 $router->get('/products/show', 'ProductController', 'show');
 $router->get('/home/contact', 'ContactController', 'index');
 
+
 // --- Authentification ---
 $router->get('/login', 'AuthController', 'loginForm');
 $router->post('/login', 'AuthController', 'login');
 $router->get('/register', 'AuthController', 'registerForm');
 $router->post('/register', 'AuthController', 'register');
 $router->get('/logout', 'AuthController', 'logout');
+
+// --- Mise en vente ---
+$router->get('/sell', 'SellController', 'form');
+$router->post('/sell', 'SellController', 'store');
+
+// --- Panier ---
+$router->get('/cart', 'CartController', 'index');
+$router->post('/cart/add', 'CartController', 'add');
+$router->post('/cart/update', 'CartController', 'update');
+$router->post('/cart/remove', 'CartController', 'remove');
+$router->post('/cart/clear', 'CartController', 'clear');
 
 // --- Dashboard utilisateur ---
 $router->get('/dashboard', 'DashboardController', 'index');
@@ -113,6 +130,6 @@ $router->post('/admin/articles/edit', 'Admin/AdminProductController', 'update');
 $router->post('/admin/articles/delete', 'Admin/AdminProductController', 'delete');
 
 // =====================================================
-// 7. DISPATCH
+// 8. DISPATCH
 // =====================================================
 $router->dispatch();

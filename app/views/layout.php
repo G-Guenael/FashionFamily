@@ -14,7 +14,7 @@
 </head>
 
 <body>
-    <div id="header" data-logged-in="<?= Auth::isLoggedIn() ? '1' : '0' ?>" data-base-url="<?= BASE_URL ?>"></div>
+    <div id="header" data-logged-in="<?= Auth::isLoggedIn() ? '1' : '0' ?>" data-base-url="<?= BASE_URL ?>" data-cart-count="<?= Cart::getCount() ?>"></div>
 
     <?= $content ?>
 

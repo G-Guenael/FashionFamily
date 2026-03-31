@@ -43,6 +43,32 @@ class Article
         return $result !== false ? $result : null;
     }
 
+    public function create(array $data): int
+    {
+        $stmt = $this->db->prepare("
+            INSERT INTO articles (user_id, title, description, image_path, price, currency, quantity, category, article_condition, status)
+            VALUES (?, ?, ?, ?, ?, 'EUR', ?, ?, ?, 'active')
+        ");
+        $stmt->execute([
+            $data['user_id'],
+            $data['title'],
+            $data['description'],
+            $data['image_path'],
+            $data['price'],
+            $data['quantity'],
+            $data['category'],
+            $data['article_condition'],
+        ]);
+        return (int) $this->db->lastInsertId();
+    }
+
+    public function getByUserId(int $userId): array
+    {
+        $stmt = $this->db->prepare("SELECT * FROM articles WHERE user_id = ? ORDER BY created_at DESC");
+        $stmt->execute([$userId]);
+        return $stmt->fetchAll();
+    }
+
     public function update(int $id, array $data): bool
     {
         $stmt = $this->db->prepare("

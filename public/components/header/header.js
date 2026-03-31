@@ -1,4 +1,4 @@
-export function createHeader(isLoggedIn = false, baseUrl = "") {
+export function createHeader(isLoggedIn = false, baseUrl = "", cartCount = 0) {
   const header = document.createElement("header");
 
   const base = baseUrl ? baseUrl + "/" : "./";
@@ -35,6 +35,11 @@ export function createHeader(isLoggedIn = false, baseUrl = "") {
             <li><a href="${about}">About</a></li>
             <li><a href="${contact}">Contact</a></li>
 
+            ${isLoggedIn ? `
+            <li>
+              <a href="${baseUrl}/sell" class="nav-sell-btn">Vendre</a>
+            </li>` : ""}
+
             <li>
               <form role="search" action="/search">
                 <label for="search" class="visually-hidden"> Rechercher </label>
@@ -54,8 +59,9 @@ export function createHeader(isLoggedIn = false, baseUrl = "") {
         <a href="${baseUrl}/dashboard" aria-label="Mon compte">
           <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
         </a>
-        <a href="${baseUrl}/cart" aria-label="Panier">
+        <a href="${baseUrl}/cart" aria-label="Panier" style="position: relative; display: inline-flex;">
           <img src="${base}img/Icon.png" alt="Icône du panier" />
+          ${cartCount > 0 ? `<span style="position: absolute; top: -4px; right: -4px; background: #e00; color: #fff; border-radius: 50%; font-size: 0.55rem; font-weight: bold; width: 13px; height: 13px; display: flex; align-items: center; justify-content: center; line-height: 1;">${cartCount}</span>` : ""}
         </a>
         <a href="${baseUrl}/logout" aria-label="Déconnexion">
           <img src="${base}img/logout.png" alt="Icône de déconnexion" />

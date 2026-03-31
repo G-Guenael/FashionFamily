@@ -29,6 +29,7 @@ class DashboardController extends BaseController
         ], 'Mon Dashboard');
     }
 
+    //GET 
     public function edit(): void
     {
         Auth::requireLogin('/login');
@@ -48,12 +49,12 @@ class DashboardController extends BaseController
             return;
         }
 
-        $id    = Auth::currentUserId();
-        $name  = Sanitizer::clean($_POST['name'] ?? '');
+        $id = Auth::currentUserId();
+        $name = Sanitizer::clean($_POST['name'] ?? '');
         $email = Sanitizer::clean($_POST['email'] ?? '');
 
         $validator = new Validator();
-        $errors    = $validator->validate(
+        $errors = $validator->validate(
             ['name' => $name, 'email' => $email],
             ['name' => ['required'], 'email' => ['required', 'email']]
         );
@@ -89,10 +90,10 @@ class DashboardController extends BaseController
         }
 
         $current = $_POST['current_password'] ?? '';
-        $new     = $_POST['new_password'] ?? '';
+        $new = $_POST['new_password'] ?? '';
         $confirm = $_POST['confirm_password'] ?? '';
 
-        $currentUser      = $this->userModel->getById(Auth::currentUserId());
+        $currentUser = $this->userModel->getById(Auth::currentUserId());
         $userWithPassword = $this->userModel->getByEmail($currentUser['email'] ?? '');
 
         if (!password_verify($current, $userWithPassword['password'] ?? '')) {

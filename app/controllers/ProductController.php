@@ -43,4 +43,6 @@ class ProductController extends BaseController
             'description' => APP_NAME . ' - Découvrez notre article : ' . $article['title'],
         ], $article['title']);
     }
+
+
 }
