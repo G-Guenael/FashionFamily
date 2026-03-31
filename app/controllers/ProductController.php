@@ -16,6 +16,7 @@ class ProductController extends BaseController
     {
         $this->render('products/index', [
             'articles' => $this->articleModel->getAll(),
+            'description' => APP_NAME . ' - Tous les produits'
         ], 'Nos articles');
     }
 
@@ -37,8 +38,8 @@ class ProductController extends BaseController
         }
 
         $this->render('products/show', [
-            'article'     => $article,
-            'image'       => $article['image_path'],
+            'article' => $article,
+            'image' => $article['image_path'],
             'description' => APP_NAME . ' - Découvrez notre article : ' . $article['title'],
         ], $article['title']);
     }
