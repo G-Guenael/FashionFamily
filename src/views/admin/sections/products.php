@@ -25,8 +25,11 @@
                 <td><?= $article['status'] ?></td>
                 <td><?= $article['created_at'] ?></td>
                 <td class="table-actions">
-                    <a class="btn-edit" href="<?= $article['id'] ?>">Modifier</a>
-                    <a class="btn-delete" href="<?= $article['id'] ?>">Supprimer</a>
+                    <a class="btn-edit" href="<?= BASE_URL ?>/admin/editArticle/<?= $article['id'] ?>">Modifier</a>
+                    <form method="POST" action="<?= BASE_URL ?>/admin/removeArticle/<?= $article['id'] ?>" onsubmit="return confirm('Supprimer cet article ?')">
+                        <input type="hidden" name="csrf_token" value="<?= generateCsrfToken() ?>">
+                        <button type="submit" class="btn-delete">Supprimer</button>
+                    </form>
                 </td>
             </tr>
         <?php endforeach; ?>

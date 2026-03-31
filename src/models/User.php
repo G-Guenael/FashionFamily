@@ -95,10 +95,11 @@ function updateUser(int $id, array $data): bool
 {
     $db = getDbConnection();
 
-    $query = "UPDATE users SET name = ?, email = ? WHERE id = ?";
+    $query = "UPDATE users SET name = ?, email = ?, role = ? WHERE id = ?";
     $success = dbExecute($db, $query, [
         $data['name'],
         $data['email'],
+        $data['role'],
         $id
     ]);
 

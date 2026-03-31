@@ -85,6 +85,38 @@ function getArticlesCountByMonth(): array
     return $result;
 }
 
+function updateArticle(int $id, array $data): bool
+{
+    $db = getDbConnection();
+
+    $query = "UPDATE articles SET title = ?, description = ?, price = ?, quantity = ?, article_condition = ?, status = ? WHERE id = ?";
+    $success = dbExecute($db, $query, [
+        $data['title'],
+        $data['description'],
+        $data['price'],
+        $data['quantity'],
+        $data['article_condition'],
+        $data['status'],
+        $id
+    ]);
+
+    closeDbConnection($db);
+
+    return $success;
+}
+
+function deleteArticle(int $id): bool
+{
+    $db = getDbConnection();
+
+    $query = "DELETE FROM articles WHERE id = ?";
+    $success = dbExecute($db, $query, [$id]);
+
+    closeDbConnection($db);
+
+    return $success;
+}
+
 function getRandomArticles(int $numberArticles): array
 {
     $db = getDbConnection();

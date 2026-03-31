@@ -41,7 +41,8 @@
     <div class="main">
         <header class="header">
             <h1>Admin ></h1>
-            <a href=""><img src="<?= BASE_URL ?>/img/img-dash/logout.png" alt="Icone déconnexion" /></a>
+            <a href="<?= BASE_URL ?>/logout"><img src="<?= BASE_URL ?>/img/img-dash/logout.png"
+                    alt="Icone déconnexion" /></a>
         </header>
 
         <div class="content" id="content"></div>
