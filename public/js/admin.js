@@ -1,5 +1,5 @@
 const content = document.getElementById("content");
-const baseUrl = document.getElementById("header").dataset.baseUrl;
+const baseUrl = document.getElementById("header")?.dataset.baseUrl ?? "";
 
 async function initCharts() {
   const response = await fetch(`${baseUrl}/admin/stats`);
@@ -47,6 +47,7 @@ async function initCharts() {
 }
 
 async function loadPage(page) {
+  if (!content) return;
   try {
     content.innerHTML = "<p>Chargement...</p>";
 
@@ -64,8 +65,15 @@ async function loadPage(page) {
 document.querySelectorAll(".sidebar a").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
-    loadPage(link.dataset.page);
+    if (content) {
+      loadPage(link.dataset.page);
+    } else {
+      // Sur les pages d'édition, naviguer vers le dashboard admin
+      window.location.href = baseUrl + "/admin";
+    }
   });
 });
 
-loadPage("dashboard");
+if (content) {
+  loadPage("dashboard");
+}

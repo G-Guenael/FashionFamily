@@ -21,10 +21,15 @@ define('ROOT_PATH', dirname(__DIR__));
 // Chemin du dossier public
 define('PUBLIC_PATH', ROOT_PATH . '/public');
 
-// Chemin du dossier src
+// Chemin du dossier src (ancien — conservé pour compatibilité)
 define('SRC_PATH', ROOT_PATH . '/src');
 
-// Chemins spécifiques
+// Chemins MVC
+define('APP_PATH',   ROOT_PATH . '/app');
+define('CORE_PATH',  ROOT_PATH . '/core');
+define('UTILS_PATH', ROOT_PATH . '/utils');
+
+// Chemins legacy (ancien code procédural)
 define('CONTROLLERS_PATH', SRC_PATH . '/controllers');
 define('VIEWS_PATH', SRC_PATH . '/views');
 define('MODELS_PATH', SRC_PATH . '/models');
@@ -39,7 +44,7 @@ define('LOGS_PATH', ROOT_PATH . '/logs');
 // - Localhost : 'http://localhost/fashionfamily/public'
 // - Serveur local avec virtual host : 'http://monsite.local'
 // - Production : 'https://www.monsite.com'
-define('BASE_URL', 'http://localhost/fashionfamily/public');
+define('BASE_URL', 'http://fashionfamily.test');
 
 // URL des assets
 define('CSS_URL', BASE_URL . '/css');

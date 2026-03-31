@@ -1,93 +1,114 @@
 <?php
 declare(strict_types=1);
-/**
- * =====================================================
- * FRONT CONTROLLER
- * =====================================================
- * Point d'entrée unique de l'application
- * Toutes les requêtes passent par ce fichier
- */
 
 // =====================================================
-// 1. CHARGEMENT DE LA CONFIGURATION
+// 1. CONFIGURATION
 // =====================================================
 require_once __DIR__ . '/../config/config.php';
 
 // =====================================================
-// 2. CHARGEMENT DES HELPERS
+// 2. CORE
 // =====================================================
-require_once HELPERS_PATH . '/functions.php';
-require_once HELPERS_PATH . '/database.php';
-require_once HELPERS_PATH . '/router.php';
+require_once __DIR__ . '/../core/Database.php';
+require_once __DIR__ . '/../core/Session.php';
+require_once __DIR__ . '/../core/Router.php';
+require_once __DIR__ . '/../core/BaseController.php';
 
 // =====================================================
-// 3. DÉMARRAGE DE LA SESSION
+// 3. UTILS
 // =====================================================
-startSession();
+require_once __DIR__ . '/../utils/Validator.php';
+require_once __DIR__ . '/../utils/Sanitizer.php';
+require_once __DIR__ . '/../utils/Flash.php';
+require_once __DIR__ . '/../utils/Auth.php';
+require_once __DIR__ . '/../utils/helpers.php';
 
 // =====================================================
-// 4. GESTION DES ERREURS PERSONNALISÉES
+// 4. SESSION
 // =====================================================
-/**
- * Gestionnaire d'erreurs personnalisé
- */
-function customErrorHandler($errno, $errstr, $errfile, $errline)
-{
+Session::start();
+
+// =====================================================
+// 5. GESTION DES ERREURS
+// =====================================================
+set_error_handler(function (int $errno, string $errstr, string $errfile, int $errline): bool {
     $message = "Erreur [$errno] : $errstr dans $errfile à la ligne $errline";
     logMessage($message, 'error');
 
     if (ENVIRONMENT === 'development') {
         echo "<div style='background:#f8d7da;color:#721c24;padding:15px;margin:10px;border:1px solid #f5c6cb;border-radius:5px;'>";
-        echo "<strong>Erreur PHP :</strong> $errstr<br>";
-        echo "<strong>Fichier :</strong> $errfile<br>";
+        echo "<strong>Erreur PHP :</strong> " . htmlspecialchars($errstr, ENT_QUOTES, 'UTF-8') . "<br>";
+        echo "<strong>Fichier :</strong> " . htmlspecialchars($errfile, ENT_QUOTES, 'UTF-8') . "<br>";
         echo "<strong>Ligne :</strong> $errline";
         echo "</div>";
     }
-
-    // Ne pas exécuter le gestionnaire d'erreurs interne de PHP
     return true;
-}
+});
 
-set_error_handler('customErrorHandler');
-
-// =====================================================
-// 5. GESTION DES EXCEPTIONS
-// =====================================================
-/**
- * Gestionnaire d'exceptions personnalisé
- */
-function customExceptionHandler($exception)
-{
-    $message = "Exception : " . $exception->getMessage() . " dans " .
-        $exception->getFile() . " à la ligne " . $exception->getLine();
+set_exception_handler(function (Throwable $e): void {
+    $message = "Exception : " . $e->getMessage() . " dans " . $e->getFile() . " à la ligne " . $e->getLine();
     logMessage($message, 'error');
 
     if (ENVIRONMENT === 'development') {
         echo "<div style='background:#f8d7da;color:#721c24;padding:15px;margin:10px;border:1px solid #f5c6cb;border-radius:5px;'>";
-        echo "<strong>Exception :</strong> " . $exception->getMessage() . "<br>";
-        echo "<strong>Fichier :</strong> " . $exception->getFile() . "<br>";
-        echo "<strong>Ligne :</strong> " . $exception->getLine() . "<br>";
-        echo "<strong>Trace :</strong><pre>" . $exception->getTraceAsString() . "</pre>";
+        echo "<strong>Exception :</strong> " . htmlspecialchars($e->getMessage(), ENT_QUOTES, 'UTF-8') . "<br>";
+        echo "<strong>Fichier :</strong> " . htmlspecialchars($e->getFile(), ENT_QUOTES, 'UTF-8') . "<br>";
+        echo "<strong>Ligne :</strong> " . $e->getLine() . "<br>";
+        echo "<strong>Trace :</strong><pre>" . htmlspecialchars($e->getTraceAsString(), ENT_QUOTES, 'UTF-8') . "</pre>";
         echo "</div>";
     } else {
         echo "Une erreur est survenue. Veuillez réessayer plus tard.";
     }
-}
-
-set_exception_handler('customExceptionHandler');
+});
 
 // =====================================================
-// 6. ROUTES PERSONNALISÉES (OPTIONNEL)
+// 6. ROUTES
 // =====================================================
-// Exemples de routes personnalisées
-// addRoute('blog/article/:id', 'blog', 'show');
-// addRoute('users/:username', 'users', 'profile');
+$router = new Router();
+
+// --- Routes publiques ---
+$router->get('/', 'HomeController', 'index');
+$router->get('/home', 'HomeController', 'index');
+$router->get('/products', 'ProductController', 'index');
+$router->get('/products/show', 'ProductController', 'show');
+
+// --- Authentification ---
+$router->get('/login', 'AuthController', 'loginForm');
+$router->post('/login', 'AuthController', 'login');
+$router->get('/register', 'AuthController', 'registerForm');
+$router->post('/register', 'AuthController', 'register');
+$router->get('/logout', 'AuthController', 'logout');
+
+// --- Dashboard utilisateur ---
+$router->get('/dashboard', 'DashboardController', 'index');
+
+// --- Admin : page principale ---
+$router->get('/admin', 'Admin/DashboardController', 'index');
+
+// --- Admin : sections AJAX ---
+$router->get('/admin/dashboard', 'Admin/DashboardController', 'dashboardSection');
+$router->get('/admin/products', 'Admin/DashboardController', 'productsSection');
+$router->get('/admin/customers', 'Admin/DashboardController', 'customersSection');
+$router->get('/admin/orders', 'Admin/DashboardController', 'ordersSection');
+$router->get('/admin/reviews', 'Admin/DashboardController', 'reviewsSection');
+$router->get('/admin/settings', 'Admin/DashboardController', 'settingsSection');
+$router->get('/admin/stats', 'Admin/DashboardController', 'stats');
+
+// --- Admin : profil ---
+$router->post('/admin/update-profile', 'Admin/DashboardController', 'updateProfile');
+$router->post('/admin/update-password', 'Admin/DashboardController', 'updatePassword');
+
+// --- Admin : gestion utilisateurs ---
+$router->get('/admin/users/edit', 'Admin/AdminUserController', 'edit');
+$router->post('/admin/users/edit', 'Admin/AdminUserController', 'update');
+$router->post('/admin/users/delete', 'Admin/AdminUserController', 'delete');
+
+// --- Admin : gestion articles ---
+$router->get('/admin/articles/edit', 'Admin/AdminProductController', 'edit');
+$router->post('/admin/articles/edit', 'Admin/AdminProductController', 'update');
+$router->post('/admin/articles/delete', 'Admin/AdminProductController', 'delete');
 
 // =====================================================
-// 7. LANCEMENT DU ROUTEUR
+// 7. DISPATCH
 // =====================================================
-dispatch();
-
-// =====================================================
-// FIN DU FRONT CONTROLLER
-// =====================================================
+$router->dispatch();

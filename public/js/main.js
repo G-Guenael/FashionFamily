@@ -16,4 +16,16 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   initHeader(header);
+
+  // NEWSLETTER
+  const newsletterPlaceholder = document.getElementById("newsletter");
+  if (newsletterPlaceholder) {
+    newsletterPlaceholder.replaceWith(createNewsLetter());
+  }
+
+  // FOOTER
+  const footerPlaceholder = document.getElementById("footer");
+  if (footerPlaceholder) {
+    footerPlaceholder.replaceWith(createFooter(baseUrl));
+  }
 });
