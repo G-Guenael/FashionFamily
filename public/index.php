@@ -71,6 +71,7 @@ $router->get('/', 'HomeController', 'index');
 $router->get('/home', 'HomeController', 'index');
 $router->get('/products', 'ProductController', 'index');
 $router->get('/products/show', 'ProductController', 'show');
+$router->get('/home/contact', 'ContactController', 'index');
 
 // --- Authentification ---
 $router->get('/login', 'AuthController', 'loginForm');

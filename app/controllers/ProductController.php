@@ -17,7 +17,7 @@ class ProductController extends BaseController
         $this->render('products/index', [
             'articles' => $this->articleModel->getAll(),
             'description' => APP_NAME . ' - Tous les produits'
-        ], 'Nos articles');
+        ], APP_NAME . ' - Nos articles');
     }
 
     // GET /products/show?id=5 — détail d'un article

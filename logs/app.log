@@ -539,3 +539,11 @@
 [2026-03-31 10:04:30] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
 [2026-03-31 10:13:02] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
 [2026-03-31 10:15:08] [error] Erreur [2] : Undefined variable $description dans C:\laragon\www\FashionFamily\src\views\partials\header.php à la ligne 7
+[2026-03-31 15:02:48] [error] Exception : Class "ContactController" not found dans C:\laragon\www\FashionFamily\core\Router.php à la ligne 50
+[2026-03-31 15:03:37] [error] Exception : Class "ContactController" not found dans C:\laragon\www\FashionFamily\core\Router.php à la ligne 50
+[2026-03-31 15:03:50] [error] Exception : Class "ContactController" not found dans C:\laragon\www\FashionFamily\core\Router.php à la ligne 50
+[2026-03-31 15:04:31] [error] Exception : Class "ContactController" not found dans C:\laragon\www\FashionFamily\core\Router.php à la ligne 50
+[2026-03-31 15:06:11] [error] Erreur [2] : require(C:\laragon\www\FashionFamily\core/../app/views/contact/index.php): Failed to open stream: No such file or directory dans C:\laragon\www\FashionFamily\core\BaseController.php à la ligne 12
+[2026-03-31 15:06:11] [error] Exception : Failed opening required 'C:\laragon\www\FashionFamily\core/../app/views/contact/index.php' (include_path='.;C:/laragon/etc/php/pear') dans C:\laragon\www\FashionFamily\core\BaseController.php à la ligne 12
+[2026-03-31 15:06:59] [error] Erreur [2] : require(C:\laragon\www\FashionFamily\core/../app/views/contact/index.php): Failed to open stream: No such file or directory dans C:\laragon\www\FashionFamily\core\BaseController.php à la ligne 12
+[2026-03-31 15:06:59] [error] Exception : Failed opening required 'C:\laragon\www\FashionFamily\core/../app/views/contact/index.php' (include_path='.;C:/laragon/etc/php/pear') dans C:\laragon\www\FashionFamily\core\BaseController.php à la ligne 12
