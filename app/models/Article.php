@@ -93,6 +93,13 @@ class Article
         return $stmt->execute([$id]);
     }
 
+    public function getTopByPrice(int $limit): array
+    {
+        $stmt = $this->db->prepare("SELECT * FROM articles ORDER BY price DESC LIMIT ?");
+        $stmt->execute([$limit]);
+        return $stmt->fetchAll();
+    }
+
     public function count(): int
     {
         return (int) $this->db->query("SELECT COUNT(*) FROM articles")->fetchColumn();

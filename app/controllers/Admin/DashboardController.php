@@ -32,8 +32,10 @@ class DashboardController extends BaseController
     {
         Auth::requireAdmin();
         $this->renderPartial('admin/sections/dashboard', [
-            'totalUsers'    => $this->userModel->count(),
-            'totalArticles' => $this->articleModel->count(),
+            'totalUsers'     => $this->userModel->count(),
+            'totalArticles'  => $this->articleModel->count(),
+            'topArticles'    => $this->articleModel->getTopByPrice(3),
+            'recentArticles' => $this->articleModel->getLatest(5),
         ]);
     }
 

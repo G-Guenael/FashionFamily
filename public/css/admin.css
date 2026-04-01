@@ -9,12 +9,11 @@
 }
 
 body {
-  width: 100%;
-  height: 100vh;
   display: flex;
   justify-content: center;
   align-items: center;
   background: #f6f6f6;
+  font-family: "Manrope", sans-serif;
 }
 
 /* --------------------- Login Form------------------------------ */
@@ -35,7 +34,6 @@ body {
   margin: 50px auto;
   gap: 12px;
   padding-inline: 8px;
-  /* border: 1px solid #000; */
 }
 
 .logo img {
@@ -62,6 +60,7 @@ body {
 .form-group label {
   color: #474b57;
 }
+
 .form-group input {
   height: 45px;
   padding: 10px 15px;
@@ -145,6 +144,7 @@ button {
   width: 100%;
   height: 100%;
 }
+
 .header {
   max-width: 1440px;
   width: 100%;
@@ -152,7 +152,6 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  /* border: 1px solid #000; */
   margin: 0 auto;
   padding-left: 25px;
 }
@@ -170,7 +169,6 @@ button {
   max-width: 1440px;
   width: 100%;
   height: 750px;
-  /* border: 1px solid #333; */
   margin: 0px auto;
 }
 
@@ -191,7 +189,19 @@ button {
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
+}
+
+.container_left,
+.container_middle {
   padding: 20px;
+}
+
+.container_right {
+  padding: 20px 0 0;
+}
+
+.container_right .card_header {
+  padding: 0 20px;
 }
 
 .container_left .card_header,
@@ -212,18 +222,21 @@ button {
 
 .container_left .txt h2,
 .container_middle .txt h2,
-.container_right .txt h2 {
+.container_right .txt h2,
+.container_bottom_left .txt h2 {
   font-size: 16px;
   line-height: 1.75;
 }
 
 .container_left .txt h3,
 .container_middle .txt h3,
-.container_right .txt h3 {
+.container_right .txt h3,
+.container_bottom_left .txt h3 {
   font-size: 12px;
   color: #5c5f6a;
   line-height: 1.75;
   text-transform: uppercase;
+  letter-spacing: 5%;
 }
 
 .container_left #sales,
@@ -257,6 +270,44 @@ button {
   display: block;
 }
 
+.container_left .img canvas,
+.container_middle .img canvas {
+  width: 100% !important;
+  max-width: 274px;
+  height: 70px !important;
+}
+
+.orders-progress {
+  padding: 0 20px 20px;
+  margin-top: auto;
+}
+
+.orders-left {
+  font-size: 13px;
+  color: #5c5f6a;
+  margin-bottom: 8px;
+}
+
+.orders-left span {
+  font-weight: 700;
+  color: #0e1422;
+}
+
+.progress-track {
+  width: 100%;
+  height: 8px;
+  background: #e9e9eb;
+  border-radius: 100px;
+  overflow: hidden;
+}
+
+.progress-bar {
+  height: 100%;
+  background: #4a90d9;
+  border-radius: 100px;
+  transition: width 0.8s ease;
+}
+
 .card {
   width: 328px;
   height: 187px;
@@ -266,13 +317,11 @@ button {
 }
 
 .container_bottom {
-  max-width: 1440px;
+  max-width: 1140px;
   width: 100%;
   height: 475px;
-  /* border: 1px solid #333; */
-  margin: auto;
   display: flex;
-  gap: 115px;
+  gap: 80px;
   margin-top: 30px;
 }
 
@@ -283,9 +332,118 @@ button {
 }
 
 .container_bottom_right {
-  width: 695px;
+  width: 730px;
   height: 475px;
   background: #fff;
+}
+
+.container_bottom_left .txt {
+  padding: 20px;
+}
+
+hr {
+  border: none;
+  border-top: 1px solid #e9e9eb;
+}
+
+.total_sales {
+  padding: 20px;
+}
+
+.total_sales :nth-child(1) {
+  font-size: 28px;
+  color: #1c1d22;
+  line-height: 1.75;
+  letter-spacing: 5%;
+  font-weight: bold;
+}
+
+.total {
+  font-size: 14px;
+  color: #5c5f6a;
+  line-height: 1.75;
+  letter-spacing: 5%;
+}
+
+.best_seller_list {
+  padding: 5px 20px;
+}
+
+.best_seller_item {
+  width: 270px;
+  height: 28px;
+  padding: 2px 16px;
+  border: 1px solid #5c5f6a23;
+  border-radius: 100px;
+  gap: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.best_seller_item :nth-child(2) {
+  font-size: 12px;
+  color: #0e1422;
+  line-height: 2.4;
+  font-weight: 600;
+}
+
+.container_bottom_left .img {
+  margin: 20px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
+}
+
+.container_bottom_right .txt {
+  position: relative;
+  padding: 20px;
+}
+
+.container_bottom_right .txt h2 {
+  font-size: 16px;
+  line-height: 1.75;
+}
+
+.container_bottom_right .txt span {
+  position: absolute;
+  top: 20px;
+  left: 130px;
+  font-size: 12px;
+  color: #5c5f6a;
+  line-height: 1.75;
+  letter-spacing: 5%;
+  border: 1px solid #5c5f6a23;
+  border-radius: 8px;
+  padding: 2px 16px;
+  background: #f6f6f6;
+}
+
+table {
+  width: 694px;
+  margin: auto;
+}
+
+thead {
+  margin-bottom: 30px;
+  border-top: 1px solid #ddd;
+}
+
+th,
+td {
+  padding: 12px 10px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+th {
+  background-color: #f6f6f6;
+  font-weight: bold;
+}
+
+tr:nth-child(even) {
+  background-color: #fafafa;
 }
 
 /* --------------------- Table produits --------------------- */
@@ -304,6 +462,7 @@ button {
 .admin-table thead {
   background: #0e1422;
   color: #fff;
+  border-top: none;
 }
 
 .admin-table thead th {
@@ -311,6 +470,7 @@ button {
   text-align: left;
   font-weight: 600;
   white-space: nowrap;
+  background-color: #0e1422;
 }
 
 .admin-table tbody tr {

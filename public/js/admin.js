@@ -7,6 +7,56 @@ async function initCharts() {
 
   const { articles, users } = await response.json();
 
+  const formatMonth = (raw) => {
+    if (!raw) return "";
+    const [year, month] = raw.split("-");
+    return new Date(year, month - 1).toLocaleDateString("fr-FR", { month: "short", year: "2-digit" });
+  };
+
+  const miniBarOptions = (months) => ({
+    responsive: true,
+    maintainAspectRatio: false,
+    plugins: {
+      legend: {
+        display: true,
+        position: "top",
+        labels: {
+          font: { size: 11, family: "Manrope, sans-serif" },
+          color: "#474b57",
+          boxWidth: 12,
+          padding: 6,
+        },
+      },
+      tooltip: {
+        enabled: true,
+        callbacks: {
+          title: (items) => `Mois : ${formatMonth(months[items[0].dataIndex])}`,
+          label: (item) => ` ${item.formattedValue} ajouté(s)`,
+        },
+        backgroundColor: "#0e1422",
+        titleColor: "#fff",
+        bodyColor: "#ccc",
+        padding: 10,
+        cornerRadius: 6,
+        displayColors: false,
+      },
+    },
+    scales: {
+      x: {
+        display: true,
+        ticks: {
+          font: { size: 10, family: "Manrope, sans-serif" },
+          color: "#5c5f6a",
+          maxRotation: 0,
+          callback: (_, i) => formatMonth(months[i]),
+        },
+        grid: { display: false },
+      },
+      y: { display: false, beginAtZero: true },
+    },
+    animation: { duration: 600 },
+  });
+
   new Chart(document.getElementById("chart-articles"), {
     type: "bar",
     data: {
@@ -16,14 +66,12 @@ async function initCharts() {
           label: "Articles ajoutés",
           data: articles.map((r) => Number(r.count)),
           backgroundColor: "#0e1422",
-          borderRadius: 4,
+          borderRadius: 3,
+          borderSkipped: false,
         },
       ],
     },
-    options: {
-      plugins: { legend: { display: true } },
-      scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
-    },
+    options: miniBarOptions(articles.map((r) => r.month)),
   });
 
   new Chart(document.getElementById("chart-users"), {
@@ -35,15 +83,51 @@ async function initCharts() {
           label: "Utilisateurs inscrits",
           data: users.map((r) => Number(r.count)),
           backgroundColor: "#c0392b",
-          borderRadius: 4,
+          borderRadius: 3,
+          borderSkipped: false,
         },
       ],
     },
-    options: {
-      plugins: { legend: { display: true } },
-      scales: { y: { beginAtZero: true, ticks: { stepSize: 1 } } },
-    },
+    options: miniBarOptions(users.map((r) => r.month)),
   });
+
+  // Barre de progression commandes
+  const ordersEl = document.getElementById("orders");
+  const currentOrders = ordersEl ? parseInt(ordersEl.textContent, 10) : 0;
+  const goal = 1000;
+  const pct = Math.min((currentOrders / goal) * 100, 100);
+  const bar = document.getElementById("orders-bar");
+  const leftEl = document.getElementById("orders-left");
+  if (bar) bar.style.width = pct + "%";
+  if (leftEl) leftEl.textContent = Math.max(goal - currentOrders, 0);
+
+  // Donut chart — répartition articles vs utilisateurs
+  const topCanvas = document.getElementById("chart-top-articles");
+  if (topCanvas) {
+    const totalArticles = articles.reduce((s, r) => s + Number(r.count), 0);
+    const totalUsers = users.reduce((s, r) => s + Number(r.count), 0);
+    new Chart(topCanvas, {
+      type: "doughnut",
+      data: {
+        labels: ["Articles (6 mois)", "Utilisateurs (6 mois)"],
+        datasets: [
+          {
+            data: [totalArticles, totalUsers],
+            backgroundColor: ["#0e1422", "#c0392b"],
+            borderWidth: 0,
+          },
+        ],
+      },
+      options: {
+        responsive: true,
+        maintainAspectRatio: true,
+        plugins: {
+          legend: { display: true, position: "bottom", labels: { font: { size: 10 } } },
+        },
+        cutout: "65%",
+      },
+    });
+  }
 }
 
 async function loadPage(page) {
