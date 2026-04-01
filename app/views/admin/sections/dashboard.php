@@ -73,7 +73,7 @@
                 </div>
             <?php endif; ?>
             <div class="img" style="margin-top: auto;">
-                <canvas id="chart-top-articles" style="max-width: 270px;"></canvas>
+                <canvas id="chart-top-articles" style="max-width: 140px; max-height: 140px;"></canvas>
             </div>
         </div>
         <div class="container_bottom_right card">

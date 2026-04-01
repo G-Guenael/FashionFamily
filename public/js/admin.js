@@ -119,8 +119,8 @@ async function initCharts() {
         ],
       },
       options: {
-        responsive: true,
-        maintainAspectRatio: true,
+        responsive: false,
+        maintainAspectRatio: false,
         plugins: {
           legend: { display: true, position: "bottom", labels: { font: { size: 10 } } },
         },
