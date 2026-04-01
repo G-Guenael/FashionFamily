@@ -139,20 +139,33 @@ async function loadPage(page) {
     if (!response.ok) throw new Error(response.status);
 
     content.innerHTML = await response.text();
+    history.pushState({ page }, "", `${baseUrl}/admin#${page}`);
 
     if (page === "dashboard") initCharts();
+
+    // Re-bind les liens data-page chargés dynamiquement dans le nouveau contenu
+    bindPageLinks(content);
   } catch (error) {
     content.innerHTML = "<p>Erreur de chargement.</p>";
   }
 }
 
-document.querySelectorAll(".sidebar a").forEach((link) => {
+function bindPageLinks(root) {
+  root.querySelectorAll("[data-page]").forEach((link) => {
+    link.addEventListener("click", (e) => {
+      e.preventDefault();
+      loadPage(link.dataset.page);
+    });
+  });
+}
+
+// Liens de la sidebar (présents dès le chargement initial)
+document.querySelectorAll(".sidebar a[data-page]").forEach((link) => {
   link.addEventListener("click", (e) => {
     e.preventDefault();
     if (content) {
       loadPage(link.dataset.page);
     } else {
-      // Sur les pages d'édition, naviguer vers le dashboard admin
       window.location.href = baseUrl + "/admin";
     }
   });
