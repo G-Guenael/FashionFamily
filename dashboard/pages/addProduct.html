@@ -1,0 +1,53 @@
+<section class="content product-page">
+    <div class="container_product">
+        <div class="header_product">
+            <h1>Add New Product</h1>
+        </div>
+        <div class="add_product_form">
+            <form id="productForm">
+                <div class="form-group">
+                    <label for="productName">Product Name</label>
+                    <input type="text" id="productName" name="productName" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productRef">Reference</label>
+                    <input type="text" id="productRef" name="productRef" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productPrice">Price (€)</label>
+                    <input type="number" id="productPrice" name="productPrice" step="0.01" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productStock">Stock</label>
+                    <input type="number" id="productStock" name="productStock" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="productCategory">Category</label>
+                    <select id="productCategory" name="productCategory" required>
+                        <option value="">Select a category</option>
+                        <option value="t-shirt">T-shirt</option>
+                        <option value="pants">Pants</option>
+                        <option value="shoes">Shoes</option>
+                        <option value="accessories">Accessories</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="productDescription">Description</label>
+                    <textarea id="productDescription" name="productDescription" rows="4"></textarea>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="btn-secondary" onclick="loadPage('products')">Cancel</button>
+                    <button type="submit" class="btn-primary">Add Product</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</section>
+
+<script src="../admin.js"></script>
