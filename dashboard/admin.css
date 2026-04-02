@@ -500,6 +500,126 @@ body {
 
 .dashboard-page .product-page .add_product {
   display: flex;
+  gap: 16px;
+  align-items: center;
+}
+
+.dashboard-page .product-page .add_product button {
+  padding: 10px 16px;
+  background: #0e1422;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.dashboard-page .product-page .add_product button:hover {
+  background: #1a1f2e;
+}
+
+.dashboard-page .product-page .add_product input {
+  height: 40px;
+  padding: 0 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  width: 250px;
+}
+
+.dashboard-page .product-page .add_product input:focus {
+  outline: none;
+  border-color: #0e1422;
+  box-shadow: 0 0 0 2px rgba(14, 20, 34, 0.1);
+}
+
+/* ---------------------Add Product Form------------------ */
+
+.dashboard-page .product-page .add_product_form {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.dashboard-page .product-page .form-group {
+  margin-bottom: 20px;
+}
+
+.dashboard-page .product-page .form-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #1c1d22;
+}
+
+.dashboard-page .product-page .form-group input,
+.dashboard-page .product-page .form-group select,
+.dashboard-page .product-page .form-group textarea {
+  width: 100%;
+  padding: 12px;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: border-color 0.2s ease;
+}
+
+.dashboard-page .product-page .form-group input:focus,
+.dashboard-page .product-page .form-group select:focus,
+.dashboard-page .product-page .form-group textarea:focus {
+  outline: none;
+  border-color: #0e1422;
+  box-shadow: 0 0 0 2px rgba(14, 20, 34, 0.1);
+}
+
+.dashboard-page .product-page .form-group textarea {
+  resize: vertical;
+  min-height: 100px;
+}
+
+.dashboard-page .product-page .form-actions {
+  display: flex;
+  gap: 12px;
+  justify-content: flex-end;
+  margin-top: 30px;
+}
+
+.dashboard-page .product-page .btn-primary {
+  padding: 12px 24px;
+  background: #0e1422;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: background-color 0.2s ease;
+}
+
+.dashboard-page .product-page .btn-primary:hover {
+  background: #1a1f2e;
+}
+
+.dashboard-page .product-page .btn-secondary {
+  padding: 12px 24px;
+  background: #f8f9fa;
+  color: #5c5f6a;
+  border: 1px solid #ddd;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.dashboard-page .product-page .btn-secondary:hover {
+  background: #e9ecef;
+  border-color: #adb5bd;
+}
+
+.dashboard-page .product-page .add_product {
+  display: flex;
   gap: 12px;
   align-items: center;
 }

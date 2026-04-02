@@ -14,6 +14,9 @@ async function loadPage(page) {
     if (page === "dashboard") {
       initDashboard();
     }
+    if (page === "addProduct") {
+      initAddProductForm();
+    }
   } catch (error) {
     content.innerHTML = "<h1>Erreur de chargement</h1>";
   }
@@ -47,7 +50,7 @@ function initDashboard() {
     sales: 4.235,
     orders: 734,
     revenue: 12450,
-    customers: 180,    
+    customers: 180,
   };
 
   const salesEl = document.getElementById("sales");
@@ -66,6 +69,35 @@ function initDashboard() {
 
   if (ordersEl) {
     ordersEl.textContent = `${data.orders}`;
+  }
+}
+
+// Initialize add product form
+function initAddProductForm() {
+  const form = document.getElementById("productForm");
+
+  if (form) {
+    form.addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      // Get form data
+      const formData = new FormData(form);
+      const productData = {
+        name: formData.get("productName"),
+        ref: formData.get("productRef"),
+        price: parseFloat(formData.get("productPrice")),
+        stock: parseInt(formData.get("productStock")),
+        category: formData.get("productCategory"),
+        description: formData.get("productDescription")
+      };
+
+   
+      console.log("Product data:", productData);
+
+      
+      alert("Product added successfully!");
+      loadPage("products");
+    });
   }
 }
 
