@@ -7,24 +7,24 @@ class SellController extends BaseController
     private Article $articleModel;
 
     private const CATEGORIES = [
-        'vetements'    => 'Vêtements',
-        'chaussures'   => 'Chaussures',
-        'accessoires'  => 'Accessoires',
+        'vetements' => 'Vêtements',
+        'chaussures' => 'Chaussures',
+        'accessoires' => 'Accessoires',
         'electronique' => 'Électronique',
         'informatique' => 'Informatique',
-        'mobilier'     => 'Mobilier',
-        'maison'       => 'Maison',
-        'sport'        => 'Sport',
-        'jeux-video'   => 'Jeux vidéo',
-        'autre'        => 'Autre',
+        'mobilier' => 'Mobilier',
+        'maison' => 'Maison',
+        'sport' => 'Sport',
+        'jeux-video' => 'Jeux vidéo',
+        'autre' => 'Autre',
     ];
 
     private const CONDITIONS = [
-        'new'      => 'Neuf',
+        'new' => 'Neuf',
         'like_new' => 'Comme neuf',
-        'good'     => 'Bon état',
-        'fair'     => 'État correct',
-        'poor'     => 'Usé',
+        'good' => 'Bon état',
+        'fair' => 'État correct',
+        'poor' => 'Usé',
     ];
 
     public function __construct()
@@ -38,8 +38,8 @@ class SellController extends BaseController
         Auth::requireLogin();
 
         $this->render('sell/form', [
-            'categories'  => self::CATEGORIES,
-            'conditions'  => self::CONDITIONS,
+            'categories' => self::CATEGORIES,
+            'conditions' => self::CONDITIONS,
             'description' => APP_NAME . ' - Mettre un article en vente',
         ], APP_NAME . ' - Vendre un article');
     }
@@ -60,10 +60,10 @@ class SellController extends BaseController
         if (!empty($errors)) {
             // Repasser les données saisies pour pré-remplir le formulaire
             $this->render('sell/form', [
-                'categories'  => self::CATEGORIES,
-                'conditions'  => self::CONDITIONS,
-                'errors'      => $errors,
-                'old'         => $_POST,
+                'categories' => self::CATEGORIES,
+                'conditions' => self::CONDITIONS,
+                'errors' => $errors,
+                'old' => $_POST,
                 'description' => APP_NAME . ' - Mettre un article en vente',
             ], APP_NAME . ' - Vendre un article');
             return;
@@ -73,23 +73,23 @@ class SellController extends BaseController
 
         if ($imagePath === null) {
             $this->render('sell/form', [
-                'categories'  => self::CATEGORIES,
-                'conditions'  => self::CONDITIONS,
-                'errors'      => ["L'image n'a pas pu être enregistrée. Veuillez réessayer."],
-                'old'         => $_POST,
+                'categories' => self::CATEGORIES,
+                'conditions' => self::CONDITIONS,
+                'errors' => ["L'image n'a pas pu être enregistrée. Veuillez réessayer."],
+                'old' => $_POST,
                 'description' => APP_NAME . ' - Mettre un article en vente',
             ], APP_NAME . ' - Vendre un article');
             return;
         }
 
         $this->articleModel->create([
-            'user_id'           => Auth::currentUserId(),
-            'title'             => Sanitizer::clean($_POST['title']),
-            'description'       => Sanitizer::clean($_POST['description'] ?? ''),
-            'image_path'        => $imagePath,
-            'price'             => (float) $_POST['price'],
-            'quantity'          => (int) $_POST['quantity'],
-            'category'          => $_POST['category'],
+            'user_id' => Auth::currentUserId(),
+            'title' => Sanitizer::clean($_POST['title']),
+            'description' => Sanitizer::clean($_POST['description'] ?? ''),
+            'image_path' => $imagePath,
+            'price' => (float) $_POST['price'],
+            'quantity' => (int) $_POST['quantity'],
+            'category' => $_POST['category'],
             'article_condition' => $_POST['article_condition'],
         ]);
 
@@ -151,9 +151,9 @@ class SellController extends BaseController
             mkdir($uploadDir, 0755, true);
         }
 
-        $ext      = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
+        $ext = strtolower(pathinfo($file['name'], PATHINFO_EXTENSION));
         $filename = uniqid('article_', true) . '.' . $ext;
-        $dest     = $uploadDir . $filename;
+        $dest = $uploadDir . $filename;
 
         if (!move_uploaded_file($file['tmp_name'], $dest)) {
             return null;
