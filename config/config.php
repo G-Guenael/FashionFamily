@@ -25,8 +25,8 @@ define('PUBLIC_PATH', ROOT_PATH . '/public');
 define('SRC_PATH', ROOT_PATH . '/src');
 
 // Chemins MVC
-define('APP_PATH',   ROOT_PATH . '/app');
-define('CORE_PATH',  ROOT_PATH . '/core');
+define('APP_PATH', ROOT_PATH . '/app');
+define('CORE_PATH', ROOT_PATH . '/core');
 define('UTILS_PATH', ROOT_PATH . '/utils');
 
 // Chemins legacy (ancien code procédural)
@@ -42,7 +42,7 @@ define('LOGS_PATH', ROOT_PATH . '/logs');
 // URL de base de votre site (à adapter selon votre environnement)
 // Exemples :
 // - Localhost : 'http://localhost/fashionfamily/public'
-// - Serveur local avec virtual host : 'http://monsite.local'
+// - Serveur local avec virtual host : 'http://monsite.test'
 // - Production : 'https://www.monsite.com'
 define('BASE_URL', 'http://fashionfamily.test');
 
