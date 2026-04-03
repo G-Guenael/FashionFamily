@@ -106,11 +106,10 @@ body {
 
 .dashboard-page input {
   border: 1px solid #ccc;
-  box-shadow: inset 0 0 2px rgba(0,0,0,0.05);
+  box-shadow: inset 0 0 2px rgba(0, 0, 0, 0.05);
   border-radius: 6px;
   padding: 8px 10px;
 }
-
 
 /* ----------------- acceuil dashboard ------------------ */
 
@@ -124,7 +123,7 @@ body {
   width: 260px;
   min-height: 100vh;
   background: #ffffff;
-  box-shadow: 2px 0 5px rgba(0,0,0,0.1);
+  box-shadow: 2px 0 5px rgba(0, 0, 0, 0.1);
 }
 
 .dashboard-page .sidebar .logo {
@@ -174,7 +173,7 @@ body {
   font-weight: 500;
   line-height: 1.75;
   cursor: pointer;
-  gap: 10px;  
+  gap: 10px;
   padding: 12px 16px;
   border-radius: 8px;
   margin: 0 8px;
@@ -188,7 +187,7 @@ body {
 
 .dashboard-page .sidebar nav ul li.active {
   background-color: #0e1422;
-  color: #5C5F6A;
+  color: #5c5f6a;
 }
 
 .dashboard-page .sidebar nav ul li.active a {
@@ -472,39 +471,53 @@ body {
   background-color: #fafafa;
 }
 
-
-
 /* ---------------------Product block------------------ */
 
-.dashboard-page .product-page .container_product {
+.dashboard-page .product-page .container_product,
+.dashboard-page .orders-page .container_orders,
+.dashboard-page .customers-page .container_customers,
+.dashboard-page .reviews-page .container_reviews,
+.dashboard-page .setting-page .container_setting {
   max-width: 1068px;
   height: auto;
   margin: 20px auto;
   padding: 20px;
   background: #fff;
   border-radius: 8px;
-  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.05);
 }
 
-.dashboard-page .product-page .header_product {
+.dashboard-page .product-page .header_product,
+.dashboard-page .orders-page .header_orders,
+.dashboard-page .customers-page .header_customers,
+.dashboard-page .reviews-page .header_reviews,
+.dashboard-page .setting-page .header_setting {
   display: flex;
   justify-content: space-between;
   align-items: center;
   padding: 20px;
 }
 
-.dashboard-page .product-page .header_product h1{
+.dashboard-page .product-page .header_product h1,
+.dashboard-page .orders-page .header_orders h1,
+.dashboard-page .customers-page .header_customers h1,
+.dashboard-page .reviews-page .header_reviews h1,
+.dashboard-page .setting-page .header_setting h1 {
   font-size: 18px;
-  color: #0E1422;
+  color: #0e1422;
 }
 
-.dashboard-page .product-page .add_product {
+.dashboard-page .product-page .add_product,
+.dashboard-page .orders-page .search_order,
+.dashboard-page .customers-page .search_customer,
+.dashboard-page .reviews-page .search_review {
   display: flex;
   gap: 16px;
   align-items: center;
 }
 
-.dashboard-page .product-page .add_product button {
+.dashboard-page .product-page .add_product button,
+ .dashboard-page .setting-page .setting_form button {
   padding: 10px 16px;
   background: #0e1422;
   color: white;
@@ -631,7 +644,6 @@ body {
   border: none;
   border-radius: 6px;
   cursor: pointer;
-  
 }
 
 .dashboard-page .product-page .add_product button:hover {
@@ -649,6 +661,35 @@ body {
   outline: 2px solid #0e1422;
 }
 
-.dashboard-page .product-page .table{
+.dashboard-page .product-page .table {
   margin-top: 50px;
+}
+
+/* --------------------Settings Page--------------------- */
+
+.content .setting-page .container_setting {
+  max-width: 1068px;
+  height: 588px;
+  margin: 50px ;  
+}
+
+.setting_form {
+  max-width: 320px;
+  height: 239px;
+  padding: 20px;
+  margin-bottom: 20px;
+}
+
+.setting_form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 20px;
+}
+
+.setting_form .form-group label {
+  font-size: 14px;
+  line-height: 1.75;
+  margin-bottom: 8px;
+  font-weight: 500;
+  color: #474B57;
 }
