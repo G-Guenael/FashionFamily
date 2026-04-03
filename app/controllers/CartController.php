@@ -16,8 +16,8 @@ class CartController extends BaseController
     public function index(): void
     {
         $this->render('cart/index', [
-            'items'       => Cart::getItems(),
-            'total'       => Cart::getTotal(),
+            'items' => Cart::getItems(),
+            'total' => Cart::getTotal(),
             'description' => APP_NAME . ' - Mon panier',
         ], APP_NAME . ' - Mon panier');
     }
@@ -31,7 +31,7 @@ class CartController extends BaseController
             return;
         }
 
-        $id       = (int) ($_POST['article_id'] ?? 0);
+        $id = (int) ($_POST['article_id'] ?? 0);
         $quantity = max(1, (int) ($_POST['quantity'] ?? 1));
 
         if ($id <= 0) {
@@ -70,7 +70,7 @@ class CartController extends BaseController
             return;
         }
 
-        $id       = (int) ($_POST['article_id'] ?? 0);
+        $id = (int) ($_POST['article_id'] ?? 0);
         $quantity = (int) ($_POST['quantity'] ?? 0);
 
         if ($id <= 0) {

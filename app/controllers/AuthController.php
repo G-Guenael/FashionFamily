@@ -7,7 +7,7 @@ require_once __DIR__ . '/../models/User.php';
 
 class AuthController extends BaseController
 {
-    private User      $userModel;
+    private User $userModel;
     private Validator $validator;
 
     public function __construct()
@@ -38,7 +38,7 @@ class AuthController extends BaseController
             return;
         }
 
-        $email    = Sanitizer::clean($_POST['email'] ?? '');
+        $email = Sanitizer::clean($_POST['email'] ?? '');
         $password = $_POST['password'] ?? '';
 
         $errors = $this->validator->validate(
@@ -87,16 +87,16 @@ class AuthController extends BaseController
             return;
         }
 
-        $name            = Sanitizer::clean($_POST['name'] ?? '');
-        $email           = Sanitizer::clean($_POST['email'] ?? '');
-        $password        = $_POST['password'] ?? '';
+        $name = Sanitizer::clean($_POST['name'] ?? '');
+        $email = Sanitizer::clean($_POST['email'] ?? '');
+        $password = $_POST['password'] ?? '';
         $confirmPassword = $_POST['confirm_password'] ?? '';
 
         $errors = $this->validator->validate(
             ['name' => $name, 'email' => $email, 'password' => $password],
             [
-                'name'     => ['required', 'min:2', 'max:100'],
-                'email'    => ['required', 'email'],
+                'name' => ['required', 'min:2', 'max:100'],
+                'email' => ['required', 'email'],
                 'password' => ['required', 'min:6', 'max:72'],
             ]
         );
@@ -108,7 +108,7 @@ class AuthController extends BaseController
         if (!empty($errors)) {
             $this->render('auth/register', [
                 'errors' => Validator::flattenErrors($errors),
-                'old'    => ['name' => $name, 'email' => $email],
+                'old' => ['name' => $name, 'email' => $email],
             ], 'Inscription');
             return;
         }
@@ -116,7 +116,7 @@ class AuthController extends BaseController
         if ($this->userModel->emailExists($email)) {
             $this->render('auth/register', [
                 'errors' => ['Cette adresse email est déjà utilisée.'],
-                'old'    => ['name' => $name, 'email' => $email],
+                'old' => ['name' => $name, 'email' => $email],
             ], 'Inscription');
             return;
         }
