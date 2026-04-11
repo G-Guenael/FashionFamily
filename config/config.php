@@ -42,8 +42,8 @@ define('LOGS_PATH', ROOT_PATH . '/logs');
 // URL de base de votre site (à adapter selon votre environnement)
 // Exemples :
 // - Localhost : 'http://localhost/fashionfamily/public'
-// - Serveur local avec virtual host : 'http://monsite.test'
-// - Production : 'https://www.monsite.com'
+// - Serveur local avec virtual host : 'http://fashionfamily.test'
+// - Production : 'https://www.fashionfamily.com'
 define('BASE_URL', 'http://fashionfamily.test');
 
 // URL des assets
