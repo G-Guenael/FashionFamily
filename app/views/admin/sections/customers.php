@@ -1,4 +1,17 @@
-<h2>Utilisateurs</h2>
+<div class="section-header">
+    <h2>Utilisateurs : <?= count($users) ?></h2>
+    <div class="search-bar">
+        <input type="text" id="search-input" value="<?= escape($search ?? '') ?>" placeholder="Rechercher par nom ou email…" autocomplete="off" />
+        <button type="button" id="search-btn">Rechercher</button>
+        <?php if (!empty($search)): ?>
+            <button type="button" id="search-reset-btn">Réinitialiser</button>
+        <?php endif; ?>
+    </div>
+</div>
+
+<?php if (empty($users)): ?>
+    <p class="no-results">Aucun utilisateur trouvé<?= !empty($search) ? ' pour « ' . escape($search) . ' »' : '' ?>.</p>
+<?php else: ?>
 <table class="admin-table">
     <thead>
         <tr>
@@ -31,3 +44,4 @@
         <?php endforeach; ?>
     </tbody>
 </table>
+<?php endif; ?>

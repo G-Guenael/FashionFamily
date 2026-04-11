@@ -87,9 +87,13 @@
                 </p>
                 <div style="display: flex; align-items: center; gap: 1rem;">
                     <a href="<?= BASE_URL ?>/products">Continuer mes achats</a>
-                    <a href="#" style="padding: 0.75rem 1.5rem; background: #333; color: #fff; border-radius: 4px; text-decoration: none;">
-                        Passer la commande
-                    </a>
+                    <form action="<?= BASE_URL ?>/cart/checkout" method="POST">
+                        <input type="hidden" name="csrf_token" value="<?= generateCsrfToken() ?>">
+                        <button type="submit" onclick="return confirm('Confirmer la commande ?')"
+                                style="padding: 0.75rem 1.5rem; background: #333; color: #fff; border-radius: 4px; cursor: pointer; border: none; font-size: 1rem;">
+                            Passer la commande
+                        </button>
+                    </form>
                 </div>
             </div>
         </div>

@@ -78,6 +78,18 @@ class User
         return false;
     }
 
+    public function search(string $query): array
+    {
+        $stmt = $this->db->prepare("
+            SELECT id, name, email, role, created_at FROM users
+            WHERE name LIKE ? OR email LIKE ?
+            ORDER BY created_at DESC
+        ");
+        $like = '%' . $query . '%';
+        $stmt->execute([$like, $like]);
+        return $stmt->fetchAll();
+    }
+
     public function count(): int
     {
         return (int) $this->db->query("SELECT COUNT(*) FROM users")->fetchColumn();

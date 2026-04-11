@@ -1,6 +1,5 @@
 <div class="dashboard-wrapper" style="padding: 2rem;">
-    <h1>Bienvenue, <?= escape($user['name']) ?> !</h1>
-    <p>Rôle : <?= escape($user['role']) ?></p>
+    <h2>Profil de <?= escape($user['name']) ?> !</h2>
 
     <section style="margin-top: 2rem;">
         <h2>Votre profil</h2>

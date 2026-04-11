@@ -145,9 +145,55 @@ async function loadPage(page) {
 
     // Re-bind les liens data-page chargés dynamiquement dans le nouveau contenu
     bindPageLinks(content);
+    bindSearchForm(page);
   } catch (error) {
     content.innerHTML = "<p>Erreur de chargement.</p>";
   }
+}
+
+function bindSearchForm(page) {
+  const input = content?.querySelector("#search-input");
+  const btn   = content?.querySelector("#search-btn");
+  const reset = content?.querySelector("#search-reset-btn");
+
+  if (!input || !btn) return;
+
+  const endpoint = `${baseUrl}/admin/${page}`;
+
+  async function doSearch() {
+    const q = input.value.trim();
+    const url = q ? `${endpoint}?q=${encodeURIComponent(q)}` : endpoint;
+    content.innerHTML = "<p>Chargement...</p>";
+    try {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(response.status);
+      content.innerHTML = await response.text();
+      bindPageLinks(content);
+      bindSearchForm(page);
+      content.querySelector("#search-input")?.focus();
+    } catch {
+      content.innerHTML = "<p>Erreur de chargement.</p>";
+    }
+  }
+
+  btn.addEventListener("click", doSearch);
+
+  input.addEventListener("keydown", (e) => {
+    if (e.key === "Enter") doSearch();
+  });
+
+  reset?.addEventListener("click", async () => {
+    content.innerHTML = "<p>Chargement...</p>";
+    try {
+      const response = await fetch(endpoint);
+      if (!response.ok) throw new Error(response.status);
+      content.innerHTML = await response.text();
+      bindPageLinks(content);
+      bindSearchForm(page);
+    } catch {
+      content.innerHTML = "<p>Erreur de chargement.</p>";
+    }
+  });
 }
 
 function bindPageLinks(root) {
@@ -172,5 +218,11 @@ document.querySelectorAll(".sidebar a[data-page]").forEach((link) => {
 });
 
 if (content) {
-  loadPage("dashboard");
+  const validPages = ["dashboard", "products", "customers", "orders", "reviews", "settings"];
+  const hash = window.location.hash.replace("#", "");
+  loadPage(validPages.includes(hash) ? hash : "dashboard");
 }
+
+window.addEventListener("popstate", (e) => {
+  if (e.state?.page) loadPage(e.state.page);
+});

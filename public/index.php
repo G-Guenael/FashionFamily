@@ -96,6 +96,7 @@ $router->post('/cart/add', 'CartController', 'add');
 $router->post('/cart/update', 'CartController', 'update');
 $router->post('/cart/remove', 'CartController', 'remove');
 $router->post('/cart/clear', 'CartController', 'clear');
+$router->post('/cart/checkout', 'CartController', 'checkout');
 
 // --- Dashboard utilisateur ---
 $router->get('/dashboard', 'DashboardController', 'index');
@@ -128,6 +129,9 @@ $router->post('/admin/users/delete', 'Admin/AdminUserController', 'delete');
 $router->get('/admin/articles/edit', 'Admin/AdminProductController', 'edit');
 $router->post('/admin/articles/edit', 'Admin/AdminProductController', 'update');
 $router->post('/admin/articles/delete', 'Admin/AdminProductController', 'delete');
+
+// --- Admin : gestion commandes ---
+$router->post('/admin/orders/status', 'Admin/AdminOrderController', 'updateStatus');
 
 // =====================================================
 // 8. DISPATCH

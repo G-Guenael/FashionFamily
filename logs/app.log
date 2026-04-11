@@ -549,3 +549,4 @@
 [2026-03-31 15:06:59] [error] Exception : Failed opening required 'C:\laragon\www\FashionFamily\core/../app/views/contact/index.php' (include_path='.;C:/laragon/etc/php/pear') dans C:\laragon\www\FashionFamily\core\BaseController.php à la ligne 12
 [2026-03-31 17:14:21] [error] Exception : Too few arguments to function Session::getFlash(), 0 passed in C:\laragon\www\FashionFamily\app\views\user\edit-profile.php on line 3 and exactly 1 expected dans C:\laragon\www\FashionFamily\core\Session.php à la ligne 58
 [2026-03-31 17:40:34] [error] Exception : Call to undefined method Sanitizer::input() dans C:\laragon\www\FashionFamily\app\controllers\SellController.php à la ligne 87
+[2026-04-03 18:54:25] [error] Exception : syntax error, unexpected end of file dans C:\laragon\www\FashionFamily\app\views\admin\sections\products.php à la ligne 52

@@ -2,6 +2,7 @@
 require_once __DIR__ . '/../../core/BaseController.php';
 require_once __DIR__ . '/../models/Cart.php';
 require_once __DIR__ . '/../models/Article.php';
+require_once __DIR__ . '/../models/Order.php';
 
 class CartController extends BaseController
 {
@@ -103,6 +104,35 @@ class CartController extends BaseController
 
         Cart::remove($id);
         Flash::set('success', 'Article retiré du panier.');
+        $this->redirect('/cart');
+    }
+
+    // POST /cart/checkout — passer la commande
+    public function checkout(): void
+    {
+        Auth::requireLogin();
+
+        if (!Session::verifyCsrfToken($_POST['csrf_token'] ?? '')) {
+            Flash::set('error', 'Token CSRF invalide.');
+            $this->redirect('/cart');
+            return;
+        }
+
+        if (Cart::isEmpty()) {
+            Flash::set('error', 'Votre panier est vide.');
+            $this->redirect('/cart');
+            return;
+        }
+
+        $items   = Cart::getItems();
+        $total   = Cart::getTotal();
+        $buyerId = Auth::currentUserId();
+
+        $orderModel = new Order();
+        $orderId    = $orderModel->create($buyerId, array_values($items), $total);
+
+        Cart::clear();
+        Flash::set('success', 'Commande #' . $orderId . ' passée avec succès ! Nous vous recontacterons sous peu.');
         $this->redirect('/cart');
     }
 

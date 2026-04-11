@@ -100,6 +100,18 @@ class Article
         return $stmt->fetchAll();
     }
 
+    public function search(string $query): array
+    {
+        $stmt = $this->db->prepare("
+            SELECT * FROM articles
+            WHERE title LIKE ? OR description LIKE ?
+            ORDER BY created_at DESC
+        ");
+        $like = '%' . $query . '%';
+        $stmt->execute([$like, $like]);
+        return $stmt->fetchAll();
+    }
+
     public function count(): int
     {
         return (int) $this->db->query("SELECT COUNT(*) FROM articles")->fetchColumn();

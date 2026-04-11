@@ -5,16 +5,19 @@ require_once __DIR__ . '/../../../utils/Validator.php';
 require_once __DIR__ . '/../../../utils/Sanitizer.php';
 require_once __DIR__ . '/../../models/User.php';
 require_once __DIR__ . '/../../models/Article.php';
+require_once __DIR__ . '/../../models/Order.php';
 
 class DashboardController extends BaseController
 {
     private User    $userModel;
     private Article $articleModel;
+    private Order   $orderModel;
 
     public function __construct()
     {
         $this->userModel    = new User();
         $this->articleModel = new Article();
+        $this->orderModel   = new Order();
     }
 
     // GET /admin — page principale du dashboard (avec sidebar)
@@ -43,8 +46,11 @@ class DashboardController extends BaseController
     public function productsSection(): void
     {
         Auth::requireAdmin();
+        $query    = Sanitizer::clean($_GET['q'] ?? '');
+        $articles = $query !== '' ? $this->articleModel->search($query) : $this->articleModel->getAll();
         $this->renderPartial('admin/sections/products', [
-            'articles' => $this->articleModel->getAll(),
+            'articles' => $articles,
+            'search'   => $query,
         ]);
     }
 
@@ -52,16 +58,24 @@ class DashboardController extends BaseController
     public function customersSection(): void
     {
         Auth::requireAdmin();
+        $query = Sanitizer::clean($_GET['q'] ?? '');
+        $users = $query !== '' ? $this->userModel->search($query) : $this->userModel->getAll();
         $this->renderPartial('admin/sections/customers', [
-            'users' => $this->userModel->getAll(),
+            'users'  => $users,
+            'search' => $query,
         ]);
     }
 
-    // GET /admin/orders
+    // GET /admin/orders — section commandes (chargée via AJAX)
     public function ordersSection(): void
     {
         Auth::requireAdmin();
-        $this->renderPartial('admin/sections/orders', []);
+        $query  = Sanitizer::clean($_GET['q'] ?? '');
+        $orders = $query !== '' ? $this->orderModel->search($query) : $this->orderModel->getAll();
+        $this->renderPartial('admin/sections/orders', [
+            'orders' => $orders,
+            'search' => $query,
+        ]);
     }
 
     // GET /admin/reviews
