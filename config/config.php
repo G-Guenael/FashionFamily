@@ -39,12 +39,20 @@ define('LOGS_PATH', ROOT_PATH . '/logs');
 // =====================================================
 // URLs DE BASE
 // =====================================================
-// URL de base de votre site (à adapter selon votre environnement)
-// Exemples :
-// - Localhost : 'http://localhost/fashionfamily/public'
-// - Serveur local avec virtual host : 'http://fashionfamily.test'
-// - Production : 'https://www.fashionfamily.com'
-define('BASE_URL', 'http://fashionfamily.test');
+/**
+ * URL de base de votre site (à adapter selon votre environnement)
+ * Exemples :
+ *- Localhost : 'http://localhost/fashionfamily/public'
+ *- Serveur local avec virtual host : 'http://fashionfamily.test'
+ *- Production : 'https://www.fashionfamily.com'
+ *define('BASE_URL', 'http://fashionfamily.test');
+ */
+
+// URL de base détectée automatiquement selon l'hôte courant
+// X-Forwarded-Host/Proto sont utilisés quand le site passe par un proxy (ngrok, reverse proxy...)
+$scheme = $_SERVER['HTTP_X_FORWARDED_PROTO'] ?? ((!empty($_SERVER['HTTPS']) && $_SERVER['HTTPS'] !== 'off') ? 'https' : 'http');
+$host = $_SERVER['HTTP_X_FORWARDED_HOST'] ?? $_SERVER['HTTP_HOST'] ?? 'fashionfamily.test';
+define('BASE_URL', "{$scheme}://{$host}");
 
 // URL des assets
 define('CSS_URL', BASE_URL . '/css');
