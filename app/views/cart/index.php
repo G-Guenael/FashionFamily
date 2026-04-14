@@ -11,7 +11,15 @@
     <h1>Mon panier</h1>
 
     <?php if (empty($items)): ?>
-        <p>Votre panier est vide. <a href="<?= BASE_URL ?>/products">Parcourir les articles</a></p>
+        <div class="cart-empty">
+            <svg xmlns="http://www.w3.org/2000/svg" width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#d1d5db" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                <circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/>
+                <path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/>
+            </svg>
+            <p class="cart-empty__title">Votre panier est vide</p>
+            <p class="cart-empty__sub">Vous n'avez encore rien ajouté.</p>
+            <a class="cart-empty__cta" href="<?= BASE_URL ?>/products">Parcourir les articles</a>
+        </div>
     <?php else: ?>
 
         <table style="width: 100%; border-collapse: collapse;">

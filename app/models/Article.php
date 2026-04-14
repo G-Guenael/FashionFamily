@@ -5,14 +5,46 @@ class Article
 {
     private PDO $db;
 
+    // Slug → label (utilisé partout : header, vues, filtres)
+    public const CATEGORIES = [
+        'vetements'    => 'Vêtements',
+        'chaussures'   => 'Chaussures',
+        'accessoires'  => 'Accessoires',
+        'electronique' => 'Électronique',
+        'informatique' => 'Informatique',
+        'mobilier'     => 'Mobilier',
+        'maison'       => 'Maison',
+        'sport'        => 'Sport',
+        'jeux-video'   => 'Jeux vidéo',
+        'sacs'         => 'Sacs',
+        'bijoux'       => 'Bijoux',
+        'sous-vetements' => 'Sous-vêtements',
+        'autre'        => 'Autre',
+    ];
+
     public function __construct()
     {
         $this->db = Database::getInstance();
     }
 
-    public function getAll(): array
+    /**
+     * Retourne le label d'une catégorie depuis son slug.
+     * Gère aussi les anciens articles où le label était stocké directement.
+     */
+    public static function categoryLabel(string $slug): string
     {
-        $stmt = $this->db->query("SELECT * FROM articles ORDER BY created_at DESC");
+        return self::CATEGORIES[$slug] ?? ucfirst($slug);
+    }
+
+    public function getAll(string $sort = 'newest'): array
+    {
+        $order = match($sort) {
+            'price_asc'  => 'price ASC',
+            'price_desc' => 'price DESC',
+            'oldest'     => 'created_at ASC',
+            default      => 'created_at DESC', // newest
+        };
+        $stmt = $this->db->query("SELECT * FROM articles ORDER BY $order");
         return $stmt->fetchAll();
     }
 
@@ -100,15 +132,36 @@ class Article
         return $stmt->fetchAll();
     }
 
+    /**
+     * Retourne les articles d'une catégorie.
+     * Gère les deux formats stockés en DB : slug ('vetements') ou label ('Vêtements').
+     */
+    public function getByCategory(string $slug): array
+    {
+        $label = self::CATEGORIES[$slug] ?? $slug;
+
+        $stmt = $this->db->prepare("
+            SELECT articles.*, users.name AS seller_name
+            FROM articles
+            JOIN users ON articles.user_id = users.id
+            WHERE articles.category = ? OR articles.category = ?
+            ORDER BY articles.created_at DESC
+        ");
+        $stmt->execute([$slug, $label]);
+        return $stmt->fetchAll();
+    }
+
     public function search(string $query): array
     {
         $stmt = $this->db->prepare("
-            SELECT * FROM articles
-            WHERE title LIKE ? OR description LIKE ?
-            ORDER BY created_at DESC
+            SELECT articles.*, users.name AS seller_name
+            FROM articles
+            JOIN users ON articles.user_id = users.id
+            WHERE articles.title LIKE ? OR articles.description LIKE ? OR articles.category LIKE ?
+            ORDER BY articles.created_at DESC
         ");
-        $like = '%' . $query . '%';
-        $stmt->execute([$like, $like]);
+        $like = "%$query%";
+        $stmt->execute([$like, $like, $like]);
         return $stmt->fetchAll();
     }
 

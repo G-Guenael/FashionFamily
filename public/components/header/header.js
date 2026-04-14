@@ -22,13 +22,16 @@ export function createHeader(isLoggedIn = false, baseUrl = "", cartCount = 0) {
               <a href="#" aria-expanded="false"> Category </a>
 
               <ul class="submenu">
-                <li><a href="#">Vêtements</a></li>
-                <li><a href="#">Accessoires</a></li>
-                <li><a href="#">Chaussures</a></li>
-                <li><a href="#">Sacs</a></li>
-                <li><a href="#">Bijoux</a></li>
-                <li><a href="#">Sous-vêtements</a></li>
-                <li><a href="#">Sport</a></li>
+                <li><a href="${baseUrl}/products/category?cat=vetements">Vêtements</a></li>
+                <li><a href="${baseUrl}/products/category?cat=accessoires">Accessoires</a></li>
+                <li><a href="${baseUrl}/products/category?cat=chaussures">Chaussures</a></li>
+                <li><a href="${baseUrl}/products/category?cat=sacs">Sacs</a></li>
+                <li><a href="${baseUrl}/products/category?cat=bijoux">Bijoux</a></li>
+                <li><a href="${baseUrl}/products/category?cat=sous-vetements">Sous-vêtements</a></li>
+                <li><a href="${baseUrl}/products/category?cat=sport">Sport</a></li>
+                <li><a href="${baseUrl}/products/category?cat=maison">Maison</a></li>
+                <li><a href="${baseUrl}/products/category?cat=electronique">Électronique</a></li>
+                <li><a href="${baseUrl}/products/category?cat=jeux-video">Jeux vidéo</a></li>
               </ul>
             </li>
 
@@ -41,11 +44,13 @@ export function createHeader(isLoggedIn = false, baseUrl = "", cartCount = 0) {
             </li>` : ""}
 
             <li>
-              <form role="search" action="/search">
-                <label for="search" class="visually-hidden"> Rechercher </label>
-                <img src="${base}img/Search.png" alt="" aria-hidden="true" />
-
-                <input id="search" type="search" name="search" placeholder="Recherche..." />
+              <form role="search" action="${baseUrl}/search">
+                <label for="search-input" class="visually-hidden">Rechercher</label>
+                <button type="submit" class="search-icon-btn" aria-label="Lancer la recherche">
+                  <img src="${base}img/Search.png" alt="" aria-hidden="true" />
+                </button>
+                <input id="search-input" type="search" name="q" placeholder="Recherche..."
+                       autocomplete="off" />
               </form>
             </li>
           </ul>

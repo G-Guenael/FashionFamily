@@ -2,14 +2,23 @@
 require_once __DIR__ . '/../../core/BaseController.php';
 require_once __DIR__ . '/../../utils/Auth.php';
 require_once __DIR__ . '/../models/User.php';
+require_once __DIR__ . '/../models/Order.php';
+require_once __DIR__ . '/../models/Article.php';
+require_once __DIR__ . '/../models/Message.php';
 
 class DashboardController extends BaseController
 {
-    private User $userModel;
+    private User    $userModel;
+    private Order   $orderModel;
+    private Article $articleModel;
+    private Message $messageModel;
 
     public function __construct()
     {
-        $this->userModel = new User();
+        $this->userModel    = new User();
+        $this->orderModel   = new Order();
+        $this->articleModel = new Article();
+        $this->messageModel = new Message();
     }
 
     public function index(): void
@@ -22,10 +31,16 @@ class DashboardController extends BaseController
             return;
         }
 
-        $user = $this->userModel->getById(Auth::currentUserId());
+        $userId  = Auth::currentUserId();
+        $user    = $this->userModel->getStatsById($userId);
+        $orders  = $this->orderModel->getByBuyerIdWithItems($userId);
+        $articles = $this->articleModel->getByUserId($userId);
 
         $this->render('user/dashboard', [
-            'user' => $user,
+            'user'         => $user,
+            'orders'       => $orders,
+            'articles'     => $articles,
+            'unreadCount'  => $this->messageModel->countUnread($userId),
         ], 'Mon Dashboard');
     }
 

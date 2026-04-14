@@ -112,7 +112,7 @@ if (ENVIRONMENT === 'production') {
 define('APP_NAME', 'Fashion Family');
 
 // Version
-define('APP_VERSION', '1.0.0');
+define('APP_VERSION', '1.2.0');
 
 // Email de contact
 define('CONTACT_EMAIL', 'contact@monsite.com');

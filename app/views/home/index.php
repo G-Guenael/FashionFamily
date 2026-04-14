@@ -1,12 +1,13 @@
 <section class="hero">
     <div class="hero_container">
         <div class="hero_title">
-            <h1>Fresh Arrivals Online</h1>
-            <p>Discover Our Newest Collection Today.</p>
-            <button>View Collection &rarr;</button>
+            <h1>Nouvelles Arrivées en Ligne</h1>
+            <p>Découvrez notre toute dernière collection dès aujourd'hui.</p>
+            <a href="<?= BASE_URL ?>/products?sort=newest" class="hero-btn">Voir la collection &rarr;</a>
         </div>
         <div class="hero_image">
-            <img src="<?= BASE_URL ?>/img/Hero Image.png" alt="Modèle masculin portant un tshirt de la nouvelle collection" />
+            <img src="<?= BASE_URL ?>/img/Hero Image.png"
+                alt="Modèle masculin portant un tshirt de la nouvelle collection" />
             <img src="<?= BASE_URL ?>/img/Burst-pucker.png" alt="" aria-hidden="true" />
         </div>
     </div>
@@ -80,9 +81,9 @@
 <section class="cta">
     <div class="cta_container">
         <div class="content_left">
-            <h3>Browse our Fashion Paradise</h3>
-            <p>Step into a world of style and explore our diverse collection of clothing categories.</p>
-            <a href="<?= BASE_URL ?>/products">Start Browsing &#8594;</a>
+            <h3>Explorez notre univers mode</h3>
+            <p>Plongez dans un monde de style et découvrez notre large sélection de catégories de vêtements.</p>
+            <a href="<?= BASE_URL ?>/products">Commencer à explorer</a>
         </div>
         <div class="content_right">
             <img src="<?= BASE_URL ?>/img/Category Image.png" alt="">

@@ -93,6 +93,43 @@ class Order
         return $stmt->fetchAll();
     }
 
+    public function getByBuyerIdWithItems(int $buyerId): array
+    {
+        $stmt = $this->db->prepare("
+            SELECT o.id, o.total_price, o.status, o.created_at,
+                   COUNT(oi.id) AS item_count
+            FROM orders o
+            LEFT JOIN order_items oi ON oi.order_id = o.id
+            WHERE o.buyer_id = ?
+            GROUP BY o.id
+            ORDER BY o.created_at DESC
+        ");
+        $stmt->execute([$buyerId]);
+        $orders = $stmt->fetchAll();
+
+        $itemStmt = $this->db->prepare("
+            SELECT oi.quantity, oi.price,
+                   a.title, a.image_path, a.id AS article_id
+            FROM order_items oi
+            JOIN articles a ON a.id = oi.article_id
+            WHERE oi.order_id = ?
+        ");
+
+        foreach ($orders as &$order) {
+            $itemStmt->execute([$order['id']]);
+            $order['items'] = $itemStmt->fetchAll();
+        }
+
+        return $orders;
+    }
+
+    public function countByBuyerId(int $buyerId): int
+    {
+        $stmt = $this->db->prepare("SELECT COUNT(*) FROM orders WHERE buyer_id = ?");
+        $stmt->execute([$buyerId]);
+        return (int) $stmt->fetchColumn();
+    }
+
     public function updateStatus(int $id, string $status): bool
     {
         $allowed = ['pending', 'paid', 'shipped', 'delivered', 'cancelled'];

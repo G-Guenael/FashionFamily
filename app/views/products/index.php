@@ -8,7 +8,18 @@
 <?php endif; ?>
 
 <section class="best-selling">
-    <h1>Tous nos articles</h1>
+    <div class="products-toolbar">
+        <h1>Tous nos articles</h1>
+        <form class="products-sort" method="GET" action="<?= BASE_URL ?>/products">
+            <label for="sort-select">Trier par</label>
+            <select id="sort-select" name="sort" onchange="this.form.submit()">
+                <option value="newest"     <?= ($sort ?? 'newest') === 'newest'     ? 'selected' : '' ?>>Plus récents</option>
+                <option value="oldest"     <?= ($sort ?? '') === 'oldest'     ? 'selected' : '' ?>>Plus anciens</option>
+                <option value="price_asc"  <?= ($sort ?? '') === 'price_asc'  ? 'selected' : '' ?>>Prix croissant</option>
+                <option value="price_desc" <?= ($sort ?? '') === 'price_desc' ? 'selected' : '' ?>>Prix décroissant</option>
+            </select>
+        </form>
+    </div>
     <div class="best_selling_container">
         <?php if (!empty($articles)): ?>
             <?php foreach ($articles as $a): ?>

@@ -1,6 +1,7 @@
-import { createHeader, initHeader } from "../components/header/header.js";
-import { createNewsLetter } from "../components/newsletter.js/newsLetter.js";
-import { createFooter } from "../components/footer/footer.js";
+// v1.2.0
+import { createHeader, initHeader } from "../components/header/header.js?v=4";
+
+import { createFooter } from "../components/footer/footer.js?v=2";
 
 window.addEventListener("DOMContentLoaded", () => {
   // HEADER
@@ -17,12 +18,6 @@ window.addEventListener("DOMContentLoaded", () => {
   }
 
   initHeader(header);
-
-  // NEWSLETTER
-  const newsletterPlaceholder = document.getElementById("newsletter");
-  if (newsletterPlaceholder) {
-    newsletterPlaceholder.replaceWith(createNewsLetter());
-  }
 
   // FOOTER
   const footerPlaceholder = document.getElementById("footer");

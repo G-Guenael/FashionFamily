@@ -76,7 +76,15 @@ $router->get('/', 'HomeController', 'index');
 $router->get('/home', 'HomeController', 'index');
 $router->get('/products', 'ProductController', 'index');
 $router->get('/products/show', 'ProductController', 'show');
+$router->get('/products/category', 'ProductController', 'category');
+$router->get('/search', 'ProductController', 'search');
+$router->get('/home/about',   'HomeController', 'about');
+$router->get('/home/faq',     'HomeController', 'faq');
+$router->get('/home/terms',   'HomeController', 'terms');
+$router->get('/home/privacy', 'HomeController', 'privacy');
+$router->get('/home/careers', 'HomeController', 'careers');
 $router->get('/home/contact', 'ContactController', 'index');
+$router->post('/home/contact', 'ContactController', 'send');
 
 
 // --- Authentification ---
@@ -97,6 +105,11 @@ $router->post('/cart/update', 'CartController', 'update');
 $router->post('/cart/remove', 'CartController', 'remove');
 $router->post('/cart/clear', 'CartController', 'clear');
 $router->post('/cart/checkout', 'CartController', 'checkout');
+
+// --- Messagerie ---
+$router->get('/messages', 'MessageController', 'index');
+$router->get('/messages/conversation', 'MessageController', 'conversation');
+$router->post('/messages/send', 'MessageController', 'send');
 
 // --- Dashboard utilisateur ---
 $router->get('/dashboard', 'DashboardController', 'index');

@@ -108,6 +108,29 @@ class User
         return $stmt->fetchAll();
     }
 
+    public function getStatsById(int $id): array
+    {
+        $stmt = $this->db->prepare("
+            SELECT
+                u.id,
+                u.name,
+                u.email,
+                u.role,
+                u.created_at,
+                COUNT(DISTINCT o.id)  AS total_orders,
+                COUNT(DISTINCT a.id)  AS total_articles,
+                COALESCE(SUM(o.total_price), 0) AS total_spent
+            FROM users u
+            LEFT JOIN orders  o ON o.buyer_id = u.id
+            LEFT JOIN articles a ON a.user_id  = u.id
+            WHERE u.id = ?
+            GROUP BY u.id
+        ");
+        $stmt->execute([$id]);
+        $result = $stmt->fetch();
+        return $result !== false ? $result : [];
+    }
+
     public function changePassword(int $id, string $newPassword): bool
     {
         $hashed = password_hash($newPassword, PASSWORD_DEFAULT);

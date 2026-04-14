@@ -24,18 +24,24 @@
                 <canvas id="chart-users"></canvas>
             </div>
         </div>
+        <?php
+        $ordersGoal = 1000;
+        $ordersPct = min(100, (int) round($totalOrders / $ordersGoal * 100));
+        $ordersLeft = max(0, $ordersGoal - $totalOrders);
+        ?>
         <div class="container_right card">
             <div class="card_header">
                 <div class="txt">
                     <h2>Commandes</h2>
-                    <h3>Objectif mensuel : 1000</h3>
+                    <h3>Objectif mensuel : <?= $ordersGoal ?></h3>
                 </div>
-                <span id="orders">0</span>
+                <span id="orders"><?= (int) $totalOrders ?></span>
             </div>
             <div class="orders-progress">
-                <p class="orders-left"><span id="orders-left">1000</span> restantes</p>
+                <p class="orders-left"><span id="orders-left"><?= $ordersLeft ?></span>
+                    restante<?= $ordersLeft > 1 ? 's' : '' ?></p>
                 <div class="progress-track">
-                    <div class="progress-bar" id="orders-bar" style="width: 0%"></div>
+                    <div class="progress-bar" id="orders-bar" style="width: <?= $ordersPct ?>%"></div>
                 </div>
             </div>
         </div>

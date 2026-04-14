@@ -13,10 +13,10 @@ export function createFooter(baseUrl = "") {
         <h3>Fashion Family</h3>
       </div>
 
-      <p>DevCut is a YouTube channel for practical project-based learning.</p>
+      <p>Fashion Family : Achetez et vendez des articles partout dans le monde</p>
 
       <div class="footer_icon">
-        <a href="#" aria-label="GitHub"><img src="${base}img/Github.png" alt=""></a>
+        <a href="https://github.com/G-Guenael/FashionFamily" aria-label="GitHub"><img src="${base}img/Github.png" alt=""></a>
         <a href="#" aria-label="Instagram"><img src="${base}img/Insta.png" alt=""></a>
         <a href="#" aria-label="YouTube"><img src="${base}img/Youtube.png" alt=""></a>
       </div>
@@ -27,27 +27,27 @@ export function createFooter(baseUrl = "") {
       <nav aria-label="Support">
         <h3>Support</h3>
         <ul>
-          <li><a href="#">FAQ</a></li>
-          <li><a href="#">Terms of use</a></li>
-          <li><a href="#">Privacy Policy</a></li>
+          <li><a href="${baseUrl}/home/faq">FAQ</a></li>
+          <li><a href="${baseUrl}/home/terms">Conditions d'utilisation</a></li>
+          <li><a href="${baseUrl}/home/privacy">Politique de confidentialité</a></li>
         </ul>
       </nav>
-  
+
       <nav aria-label="Company">
         <h3>Compagny</h3>
         <ul>
-          <li><a href="#">About us</a></li>
-          <li><a href="#">Contact</a></li>
-          <li><a href="#">Careers</a></li>
+          <li><a href="${baseUrl}/home/about">À propos</a></li>
+          <li><a href="${baseUrl}/home/contact">Contact</a></li>
+          <li><a href="${baseUrl}/home/careers">Carrières</a></li>
         </ul>
       </nav>
-  
+
       <nav aria-label="Shop">
         <h3>Shop</h3>
         <ul>
-          <li><a href="#">My Account</a></li>
-          <li><a href="#">Checkout</a></li>
-          <li><a href="#">Cart</a></li>
+          <li><a href="${baseUrl}/dashboard">Mon compte</a></li>
+          <li><a href="${baseUrl}/cart">Panier</a></li>
+          <li><a href="${baseUrl}/sell">Vendre</a></li>
         </ul>
       </nav>
   

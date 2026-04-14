@@ -37,6 +37,7 @@ class DashboardController extends BaseController
         $this->renderPartial('admin/sections/dashboard', [
             'totalUsers'     => $this->userModel->count(),
             'totalArticles'  => $this->articleModel->count(),
+            'totalOrders'    => $this->orderModel->count(),
             'topArticles'    => $this->articleModel->getTopByPrice(3),
             'recentArticles' => $this->articleModel->getLatest(5),
         ]);
