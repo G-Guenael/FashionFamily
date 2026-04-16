@@ -551,3 +551,5 @@
 [2026-03-31 17:40:34] [error] Exception : Call to undefined method Sanitizer::input() dans C:\laragon\www\FashionFamily\app\controllers\SellController.php à la ligne 87
 [2026-04-03 18:54:25] [error] Exception : syntax error, unexpected end of file dans C:\laragon\www\FashionFamily\app\views\admin\sections\products.php à la ligne 52
 [2026-04-14 11:03:07] [error] Exception : Call to undefined method Sanitizer::input() dans C:\laragon\www\FashionFamily\app\controllers\ContactController.php à la ligne 17
+[2026-04-16 09:47:49] [error] Exception : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'read_at' in 'where clause' dans C:\laragon\www\FashionFamily\app\models\Message.php à la ligne 96
+[2026-04-16 09:50:58] [error] Exception : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'read_at' in 'where clause' dans C:\laragon\www\FashionFamily\app\models\Message.php à la ligne 96
