@@ -14,9 +14,9 @@ class HomeController extends BaseController
     public function index(): void
     {
         $this->render('home/index', [
-            'description'        => APP_NAME . " : Achetez et vendez des articles partout dans le monde",
+            'description' => APP_NAME . " : Achetez et vendez des articles partout dans le monde",
             'articlesByDateDesc' => $this->articleModel->getLatest(5),
-            'articlesByRandom'   => $this->articleModel->getRandom(5),
+            'articlesByRandom' => $this->articleModel->getRandom(5),
         ], APP_NAME . ' : Achetez et vendez des articles partout dans le monde');
     }
 
@@ -37,7 +37,7 @@ class HomeController extends BaseController
     public function terms(): void
     {
         $this->render('home/terms', [
-            'description' => APP_NAME .' - Conditions générales d\'utilisation',
+            'description' => APP_NAME . ' - Conditions générales d\'utilisation',
         ], 'CGU — ' . APP_NAME);
     }
 

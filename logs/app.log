@@ -553,3 +553,5 @@
 [2026-04-14 11:03:07] [error] Exception : Call to undefined method Sanitizer::input() dans C:\laragon\www\FashionFamily\app\controllers\ContactController.php à la ligne 17
 [2026-04-16 09:47:49] [error] Exception : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'read_at' in 'where clause' dans C:\laragon\www\FashionFamily\app\models\Message.php à la ligne 96
 [2026-04-16 09:50:58] [error] Exception : SQLSTATE[42S22]: Column not found: 1054 Unknown column 'read_at' in 'where clause' dans C:\laragon\www\FashionFamily\app\models\Message.php à la ligne 96
+[2026-04-16 12:47:33] [error] Exception : Class "HomeController" not found dans C:\laragon\www\FashionFamily\core\Router.php à la ligne 50
+[2026-04-16 12:49:26] [error] Exception : Class "Artile" not found dans C:\laragon\www\FashionFamily\app\controllers\HomeController.php à la ligne 11
