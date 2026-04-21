@@ -9,12 +9,19 @@ class AdminProductController extends BaseController
 {
     private Article $articleModel;
 
+    /**
+     * Initialise le contrôleur avec le modèle Article.
+     */
     public function __construct()
     {
         $this->articleModel = new Article();
     }
 
-    // GET /admin/articles/edit?id=5
+    /**
+     * Affiche le formulaire d'édition d'un article.
+     *
+     * @route GET /admin/articles/edit?id={id}
+     */
     public function edit(): void
     {
         Auth::requireAdmin();
@@ -32,7 +39,11 @@ class AdminProductController extends BaseController
         ], 'Modifier article');
     }
 
-    // POST /admin/articles/edit
+    /**
+     * Traite la mise à jour des informations d'un article.
+     *
+     * @route POST /admin/articles/edit
+     */
     public function update(): void
     {
         Auth::requireAdmin();
@@ -79,7 +90,11 @@ class AdminProductController extends BaseController
         $this->redirect('/admin');
     }
 
-    // POST /admin/articles/delete
+    /**
+     * Supprime un article après vérification du token CSRF.
+     *
+     * @route POST /admin/articles/delete
+     */
     public function delete(): void
     {
         Auth::requireAdmin();

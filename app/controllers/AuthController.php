@@ -10,12 +10,21 @@ class AuthController extends BaseController
     private User $userModel;
     private Validator $validator;
 
+    /**
+     * Initialise le contrôleur avec le modèle User et le validateur.
+     */
     public function __construct()
     {
         $this->userModel = new User();
         $this->validator = new Validator();
     }
 
+    /**
+     * Affiche le formulaire de connexion.
+     * Redirige vers le dashboard si l'utilisateur est déjà connecté.
+     *
+     * @route GET /login
+     */
     public function loginForm(): void
     {
         if (Auth::isLoggedIn()) {
@@ -25,6 +34,12 @@ class AuthController extends BaseController
         $this->render('auth/login', [], 'Connexion');
     }
 
+    /**
+     * Traite la soumission du formulaire de connexion.
+     * Authentifie l'utilisateur et démarre sa session en cas de succès.
+     *
+     * @route POST /login
+     */
     public function login(): void
     {
         if (Auth::isLoggedIn()) {
@@ -65,6 +80,12 @@ class AuthController extends BaseController
         $this->redirect('/dashboard');
     }
 
+    /**
+     * Affiche le formulaire d'inscription.
+     * Redirige vers le dashboard si l'utilisateur est déjà connecté.
+     *
+     * @route GET /register
+     */
     public function registerForm(): void
     {
         if (Auth::isLoggedIn()) {
@@ -74,6 +95,12 @@ class AuthController extends BaseController
         $this->render('auth/register', [], 'Inscription');
     }
 
+    /**
+     * Traite la soumission du formulaire d'inscription.
+     * Valide les données, vérifie l'unicité de l'email et crée le compte.
+     *
+     * @route POST /register
+     */
     public function register(): void
     {
         if (Auth::isLoggedIn()) {
@@ -134,6 +161,11 @@ class AuthController extends BaseController
         $this->redirect('/login');
     }
 
+    /**
+     * Déconnecte l'utilisateur et détruit sa session.
+     *
+     * @route GET /logout
+     */
     public function logout(): void
     {
         Auth::logout();

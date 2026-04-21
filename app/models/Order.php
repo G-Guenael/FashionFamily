@@ -5,11 +5,24 @@ class Order
 {
     private PDO $db;
 
+    /**
+     * Initialise le modèle avec la connexion PDO singleton.
+     */
     public function __construct()
     {
         $this->db = Database::getInstance();
     }
 
+    /**
+     * Crée une commande et insère ses lignes dans une transaction atomique.
+     * En cas d'erreur, la transaction est annulée et l'exception est relancée.
+     *
+     * @param int   $buyerId Identifiant de l'acheteur.
+     * @param array $items   Tableau d'articles du panier (chaque élément doit avoir id, quantity et price).
+     * @param float $total   Montant total de la commande.
+     * @return int Identifiant de la commande créée.
+     * @throws \Exception En cas d'échec de l'insertion.
+     */
     public function create(int $buyerId, array $items, float $total): int
     {
         $this->db->beginTransaction();
@@ -35,6 +48,11 @@ class Order
         }
     }
 
+    /**
+     * Retourne toutes les commandes avec les informations de l'acheteur, triées par date décroissante.
+     *
+     * @return array<int, array<string, mixed>>
+     */
     public function getAll(): array
     {
         $stmt = $this->db->query("
@@ -46,6 +64,12 @@ class Order
         return $stmt->fetchAll();
     }
 
+    /**
+     * Recherche des commandes par nom d'acheteur, email ou statut (recherche partielle).
+     *
+     * @param string $query Terme de recherche.
+     * @return array<int, array<string, mixed>>
+     */
     public function search(string $query): array
     {
         $stmt = $this->db->prepare("
@@ -60,6 +84,12 @@ class Order
         return $stmt->fetchAll();
     }
 
+    /**
+     * Retourne une commande par son identifiant avec le détail de ses lignes et les informations de l'acheteur.
+     *
+     * @param int $id Identifiant de la commande.
+     * @return array<string, mixed>|null null si introuvable.
+     */
     public function getById(int $id): ?array
     {
         $stmt = $this->db->prepare("
@@ -84,6 +114,12 @@ class Order
         return $order;
     }
 
+    /**
+     * Retourne toutes les commandes d'un acheteur sans le détail des lignes.
+     *
+     * @param int $buyerId Identifiant de l'acheteur.
+     * @return array<int, array<string, mixed>>
+     */
     public function getByBuyerId(int $buyerId): array
     {
         $stmt = $this->db->prepare("
@@ -93,6 +129,13 @@ class Order
         return $stmt->fetchAll();
     }
 
+    /**
+     * Retourne les commandes d'un acheteur avec le détail des articles de chaque commande.
+     * Effectue une requête supplémentaire par commande pour récupérer les lignes.
+     *
+     * @param int $buyerId Identifiant de l'acheteur.
+     * @return array<int, array<string, mixed>> Chaque commande contient une clé « items ».
+     */
     public function getByBuyerIdWithItems(int $buyerId): array
     {
         $stmt = $this->db->prepare("
@@ -123,6 +166,12 @@ class Order
         return $orders;
     }
 
+    /**
+     * Retourne le nombre de commandes passées par un acheteur.
+     *
+     * @param int $buyerId Identifiant de l'acheteur.
+     * @return int
+     */
     public function countByBuyerId(int $buyerId): int
     {
         $stmt = $this->db->prepare("SELECT COUNT(*) FROM orders WHERE buyer_id = ?");
@@ -130,6 +179,14 @@ class Order
         return (int) $stmt->fetchColumn();
     }
 
+    /**
+     * Met à jour le statut d'une commande.
+     * Retourne false si le statut fourni n'est pas dans la liste des valeurs autorisées.
+     *
+     * @param int    $id     Identifiant de la commande.
+     * @param string $status Nouveau statut : pending, paid, shipped, delivered ou cancelled.
+     * @return bool true si la mise à jour a réussi, false si le statut est invalide.
+     */
     public function updateStatus(int $id, string $status): bool
     {
         $allowed = ['pending', 'paid', 'shipped', 'delivered', 'cancelled'];
@@ -139,6 +196,11 @@ class Order
         return $stmt->execute([$status, $id]);
     }
 
+    /**
+     * Retourne le nombre total de commandes en base de données.
+     *
+     * @return int
+     */
     public function count(): int
     {
         return (int) $this->db->query("SELECT COUNT(*) FROM orders")->fetchColumn();

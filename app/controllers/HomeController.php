@@ -6,11 +6,19 @@ class HomeController extends BaseController
 {
     private Article $articleModel;
 
+    /**
+     * Initialise le contrôleur avec le modèle Article.
+     */
     public function __construct()
     {
         $this->articleModel = new Article();
     }
 
+    /**
+     * Affiche la page d'accueil avec les derniers articles et une sélection aléatoire.
+     *
+     * @route GET /
+     */
     public function index(): void
     {
         $this->render('home/index', [
@@ -20,6 +28,11 @@ class HomeController extends BaseController
         ], APP_NAME . ' : Achetez et vendez des articles partout dans le monde');
     }
 
+    /**
+     * Affiche la page « À propos ».
+     *
+     * @route GET /home/about
+     */
     public function about(): void
     {
         $this->render('home/about', [
@@ -27,6 +40,11 @@ class HomeController extends BaseController
         ], 'À propos — ' . APP_NAME);
     }
 
+    /**
+     * Affiche la page des questions fréquentes (FAQ).
+     *
+     * @route GET /home/faq
+     */
     public function faq(): void
     {
         $this->render('home/faq', [
@@ -34,6 +52,11 @@ class HomeController extends BaseController
         ], 'FAQ — ' . APP_NAME);
     }
 
+    /**
+     * Affiche les conditions générales d'utilisation.
+     *
+     * @route GET /home/terms
+     */
     public function terms(): void
     {
         $this->render('home/terms', [
@@ -41,6 +64,11 @@ class HomeController extends BaseController
         ], 'CGU — ' . APP_NAME);
     }
 
+    /**
+     * Affiche la politique de confidentialité.
+     *
+     * @route GET /home/privacy
+     */
     public function privacy(): void
     {
         $this->render('home/privacy', [
@@ -48,6 +76,11 @@ class HomeController extends BaseController
         ], 'Confidentialité — ' . APP_NAME);
     }
 
+    /**
+     * Affiche la page des offres d'emploi.
+     *
+     * @route GET /home/careers
+     */
     public function careers(): void
     {
         $this->render('home/careers', [

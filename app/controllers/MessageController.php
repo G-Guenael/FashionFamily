@@ -9,12 +9,19 @@ class MessageController extends BaseController
 {
     private Message $messageModel;
 
+    /**
+     * Initialise le contrôleur avec le modèle Message.
+     */
     public function __construct()
     {
         $this->messageModel = new Message();
     }
 
-    // GET /messages — liste des conversations
+    /**
+     * Affiche la liste des conversations de l'utilisateur connecté.
+     *
+     * @route GET /messages
+     */
     public function index(): void
     {
         Auth::requireLogin();
@@ -26,7 +33,13 @@ class MessageController extends BaseController
         ], 'Messagerie');
     }
 
-    // GET /messages/conversation?user=X[&article=Y]
+    /**
+     * Affiche le fil de conversation entre l'utilisateur connecté et un partenaire.
+     * Autorise l'accès uniquement si un historique existe ou si un article lie les deux parties.
+     * Marque les messages reçus comme lus à l'ouverture.
+     *
+     * @route GET /messages/conversation?user={partnerId}[&article={articleId}]
+     */
     public function conversation(): void
     {
         Auth::requireLogin();
@@ -80,7 +93,12 @@ class MessageController extends BaseController
         ], 'Conversation avec ' . htmlspecialchars($partner['name'], ENT_QUOTES, 'UTF-8'));
     }
 
-    // POST /messages/send
+    /**
+     * Envoie un message à un autre utilisateur.
+     * Le premier message doit obligatoirement être lié à un article appartenant au destinataire.
+     *
+     * @route POST /messages/send
+     */
     public function send(): void
     {
         Auth::requireLogin();

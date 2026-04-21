@@ -27,12 +27,20 @@ class SellController extends BaseController
         'poor' => 'Usé',
     ];
 
+    /**
+     * Initialise le contrôleur avec le modèle Article.
+     */
     public function __construct()
     {
         $this->articleModel = new Article();
     }
 
-    // GET /sell — afficher le formulaire de mise en vente
+    /**
+     * Affiche le formulaire de mise en vente d'un article.
+     * Requiert que l'utilisateur soit connecté.
+     *
+     * @route GET /sell
+     */
     public function form(): void
     {
         Auth::requireLogin();
@@ -44,7 +52,12 @@ class SellController extends BaseController
         ], APP_NAME . ' - Vendre un article');
     }
 
-    // POST /sell — traiter la soumission du formulaire
+    /**
+     * Traite la soumission du formulaire de mise en vente.
+     * Valide les champs, gère l'upload de l'image puis crée l'article en base.
+     *
+     * @route POST /sell
+     */
     public function store(): void
     {
         Auth::requireLogin();
@@ -97,7 +110,14 @@ class SellController extends BaseController
         $this->redirect('/products');
     }
 
-    // --- Validation ---
+    /**
+     * Valide les données du formulaire de vente.
+     * Contrôle le titre, le prix, la quantité, la catégorie, la condition et le fichier image.
+     *
+     * @param array      $post Données POST du formulaire.
+     * @param array|null $file Fichier uploadé ($_FILES['image']) ou null si absent.
+     * @return array Liste des messages d'erreur (vide si tout est valide).
+     */
     private function validate(array $post, ?array $file): array
     {
         $errors = [];
@@ -142,7 +162,13 @@ class SellController extends BaseController
         return $errors;
     }
 
-    // --- Upload de l'image ---
+    /**
+     * Déplace le fichier uploadé vers le dossier public/uploads et retourne son chemin relatif.
+     * Génère un nom de fichier unique pour éviter les collisions.
+     *
+     * @param array $file Entrée du tableau $_FILES pour l'image.
+     * @return string|null Chemin relatif public (ex. /uploads/article_xxx.jpg) ou null en cas d'échec.
+     */
     private function handleUpload(array $file): ?string
     {
         $uploadDir = PUBLIC_PATH . '/uploads/';

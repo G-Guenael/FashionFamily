@@ -7,12 +7,19 @@ class ProductController extends BaseController
 {
     private Article $articleModel;
 
+    /**
+     * Initialise le contrôleur avec le modèle Article.
+     */
     public function __construct()
     {
         $this->articleModel = new Article();
     }
 
-    // GET /products[?sort=newest|oldest|price_asc|price_desc]
+    /**
+     * Affiche la liste de tous les articles avec tri optionnel.
+     *
+     * @route GET /products[?sort=newest|oldest|price_asc|price_desc]
+     */
     public function index(): void
     {
         $allowed = ['newest', 'oldest', 'price_asc', 'price_desc'];
@@ -25,7 +32,12 @@ class ProductController extends BaseController
         ], APP_NAME . ' - Nos articles');
     }
 
-    // GET /products/category?cat=vetements
+    /**
+     * Affiche les articles filtrés par catégorie.
+     * Redirige vers le catalogue si le slug de catégorie est absent.
+     *
+     * @route GET /products/category?cat={slug}
+     */
     public function category(): void
     {
         $slug  = Sanitizer::clean($_GET['cat'] ?? '');
@@ -46,7 +58,12 @@ class ProductController extends BaseController
         ], "$label — " . APP_NAME);
     }
 
-    // GET /search?q=... — recherche parmi les articles
+    /**
+     * Recherche des articles par mots-clés dans le titre, la description et la catégorie.
+     * Nécessite au moins 2 caractères pour déclencher la recherche.
+     *
+     * @route GET /search?q={query}
+     */
     public function search(): void
     {
         $query   = Sanitizer::clean($_GET['q'] ?? $_GET['search'] ?? '');
@@ -63,7 +80,12 @@ class ProductController extends BaseController
         ], 'Recherche : ' . $query);
     }
 
-    // GET /products/show?id=5 — détail d'un article
+    /**
+     * Affiche la fiche détaillée d'un article avec le nom du vendeur.
+     * Redirige vers le catalogue si l'identifiant est invalide ou introuvable.
+     *
+     * @route GET /products/show?id={id}
+     */
     public function show(): void
     {
         $id = (int) ($_GET['id'] ?? 0);

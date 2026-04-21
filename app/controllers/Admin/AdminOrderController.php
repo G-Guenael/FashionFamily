@@ -7,12 +7,20 @@ class AdminOrderController extends BaseController
 {
     private Order $orderModel;
 
+    /**
+     * Initialise le contrôleur avec le modèle Order.
+     */
     public function __construct()
     {
         $this->orderModel = new Order();
     }
 
-    // POST /admin/orders/status — mettre à jour le statut d'une commande
+    /**
+     * Met à jour le statut d'une commande existante.
+     * Valide le token CSRF et vérifie que le statut fourni est autorisé.
+     *
+     * @route POST /admin/orders/status
+     */
     public function updateStatus(): void
     {
         Auth::requireAdmin();

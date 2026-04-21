@@ -5,6 +5,11 @@ require_once __DIR__ . '/../../utils/Flash.php';
 
 class ContactController extends BaseController
 {
+    /**
+     * Affiche la page de contact.
+     *
+     * @route GET /home/contact
+     */
     public function index(): void
     {
         $this->render('home/contact', [
@@ -12,6 +17,12 @@ class ContactController extends BaseController
         ], 'Contact');
     }
 
+    /**
+     * Traite la soumission du formulaire de contact.
+     * Valide les champs, puis envoie un email à l'adresse CONTACT_EMAIL.
+     *
+     * @route POST /home/contact
+     */
     public function send(): void
     {
         $name = Sanitizer::clean($_POST['name'] ?? '');

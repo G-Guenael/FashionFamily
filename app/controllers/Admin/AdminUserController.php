@@ -9,12 +9,19 @@ class AdminUserController extends BaseController
 {
     private User $userModel;
 
+    /**
+     * Initialise le contrôleur avec le modèle User.
+     */
     public function __construct()
     {
         $this->userModel = new User();
     }
 
-    // GET /admin/users/edit?id=5
+    /**
+     * Affiche le formulaire d'édition d'un utilisateur.
+     *
+     * @route GET /admin/users/edit?id={id}
+     */
     public function edit(): void
     {
         Auth::requireAdmin();
@@ -32,7 +39,11 @@ class AdminUserController extends BaseController
         ], 'Modifier utilisateur');
     }
 
-    // POST /admin/users/edit
+    /**
+     * Traite la mise à jour des informations d'un utilisateur.
+     *
+     * @route POST /admin/users/edit
+     */
     public function update(): void
     {
         Auth::requireAdmin();
@@ -74,7 +85,11 @@ class AdminUserController extends BaseController
         $this->redirect('/admin');
     }
 
-    // POST /admin/users/delete
+    /**
+     * Supprime un utilisateur après vérification du token CSRF.
+     *
+     * @route POST /admin/users/delete
+     */
     public function delete(): void
     {
         Auth::requireAdmin();

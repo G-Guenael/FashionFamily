@@ -8,12 +8,19 @@ class CartController extends BaseController
 {
     private Article $articleModel;
 
+    /**
+     * Initialise le contrôleur avec le modèle Article.
+     */
     public function __construct()
     {
         $this->articleModel = new Article();
     }
 
-    // GET /cart — afficher le panier
+    /**
+     * Affiche le contenu du panier de l'utilisateur.
+     *
+     * @route GET /cart
+     */
     public function index(): void
     {
         $this->render('cart/index', [
@@ -23,7 +30,11 @@ class CartController extends BaseController
         ], APP_NAME . ' - Mon panier');
     }
 
-    // POST /cart/add — ajouter un article au panier
+    /**
+     * Ajoute un article au panier après validation du token CSRF et du stock disponible.
+     *
+     * @route POST /cart/add
+     */
     public function add(): void
     {
         if (!Session::verifyCsrfToken($_POST['csrf_token'] ?? '')) {
@@ -62,7 +73,12 @@ class CartController extends BaseController
         $this->redirect($redirect);
     }
 
-    // POST /cart/update — modifier la quantité d'un article
+    /**
+     * Modifie la quantité d'un article dans le panier.
+     * Supprime l'article si la quantité est inférieure ou égale à zéro.
+     *
+     * @route POST /cart/update
+     */
     public function update(): void
     {
         if (!Session::verifyCsrfToken($_POST['csrf_token'] ?? '')) {
@@ -85,7 +101,11 @@ class CartController extends BaseController
         $this->redirect('/cart');
     }
 
-    // POST /cart/remove — supprimer un article du panier
+    /**
+     * Retire un article du panier.
+     *
+     * @route POST /cart/remove
+     */
     public function remove(): void
     {
         if (!Session::verifyCsrfToken($_POST['csrf_token'] ?? '')) {
@@ -107,7 +127,12 @@ class CartController extends BaseController
         $this->redirect('/cart');
     }
 
-    // POST /cart/checkout — passer la commande
+    /**
+     * Convertit le panier en commande et vide le panier après confirmation.
+     * Requiert que l'utilisateur soit connecté et que le panier ne soit pas vide.
+     *
+     * @route POST /cart/checkout
+     */
     public function checkout(): void
     {
         Auth::requireLogin();
@@ -136,7 +161,11 @@ class CartController extends BaseController
         $this->redirect('/cart');
     }
 
-    // POST /cart/clear — vider le panier
+    /**
+     * Vide entièrement le panier de l'utilisateur.
+     *
+     * @route POST /cart/clear
+     */
     public function clear(): void
     {
         if (!Session::verifyCsrfToken($_POST['csrf_token'] ?? '')) {

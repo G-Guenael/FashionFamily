@@ -13,6 +13,9 @@ class DashboardController extends BaseController
     private Article $articleModel;
     private Message $messageModel;
 
+    /**
+     * Initialise le contrôleur avec les modèles User, Order, Article et Message.
+     */
     public function __construct()
     {
         $this->userModel    = new User();
@@ -21,6 +24,12 @@ class DashboardController extends BaseController
         $this->messageModel = new Message();
     }
 
+    /**
+     * Affiche le tableau de bord de l'utilisateur connecté.
+     * Agrège ses commandes, ses annonces et le nombre de messages non lus.
+     *
+     * @route GET /dashboard
+     */
     public function index(): void
     {
         Auth::requireLogin('/login');
@@ -38,7 +47,11 @@ class DashboardController extends BaseController
         ], 'Mon Dashboard');
     }
 
-    //GET 
+    /**
+     * Affiche le formulaire de modification du profil de l'utilisateur connecté.
+     *
+     * @route GET /edit-profile
+     */
     public function edit(): void
     {
         Auth::requireLogin('/login');
@@ -48,7 +61,12 @@ class DashboardController extends BaseController
         $this->render('user/edit-profile', ['user' => $user], 'Modifier mon profil');
     }
 
-    // POST /update-profile
+    /**
+     * Traite la mise à jour du profil (nom et email) de l'utilisateur connecté.
+     * Vérifie l'unicité de l'email avant d'appliquer les modifications.
+     *
+     * @route POST /update-profile
+     */
     public function updateProfile(): void
     {
         Auth::requireLogin('/login');
@@ -88,7 +106,12 @@ class DashboardController extends BaseController
         $this->redirect('/edit-profile');
     }
 
-    // POST /update-password
+    /**
+     * Traite le changement de mot de passe de l'utilisateur connecté.
+     * Vérifie l'ancien mot de passe et contrôle la confirmation avant d'appliquer.
+     *
+     * @route POST /update-password
+     */
     public function updatePassword(): void
     {
         Auth::requireLogin('/login');

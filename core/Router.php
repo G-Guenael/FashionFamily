@@ -3,6 +3,13 @@ class Router
 {
     private array $routes = [];
 
+    /**
+     * Enregistre une route GET.
+     *
+     * @param string $path       URL relative à faire correspondre (ex. "/products").
+     * @param string $controller Chemin du contrôleur relatif à app/controllers/ (ex. "Admin/DashboardController").
+     * @param string $method     Méthode publique à appeler sur le contrôleur.
+     */
     public function get(string $path, string $controller, string $method): void
     {
         $this->routes[] = [
@@ -13,6 +20,13 @@ class Router
         ];
     }
 
+    /**
+     * Enregistre une route POST.
+     *
+     * @param string $path       URL relative à faire correspondre (ex. "/cart/add").
+     * @param string $controller Chemin du contrôleur relatif à app/controllers/.
+     * @param string $method     Méthode publique à appeler sur le contrôleur.
+     */
     public function post(string $path, string $controller, string $method): void
     {
         $this->routes[] = [
@@ -23,6 +37,11 @@ class Router
         ];
     }
 
+    /**
+     * Résout la requête courante et instancie le contrôleur correspondant.
+     * Normalise l'URL en retirant le chemin de base du script.
+     * Retourne une page 404 si aucune route ne correspond.
+     */
     public function dispatch(): void
     {
         $url = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);

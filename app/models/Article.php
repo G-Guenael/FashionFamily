@@ -22,6 +22,9 @@ class Article
         'autre'        => 'Autre',
     ];
 
+    /**
+     * Initialise le modèle avec la connexion PDO singleton.
+     */
     public function __construct()
     {
         $this->db = Database::getInstance();
@@ -30,12 +33,21 @@ class Article
     /**
      * Retourne le label d'une catégorie depuis son slug.
      * Gère aussi les anciens articles où le label était stocké directement.
+     *
+     * @param string $slug Slug ou label de la catégorie.
+     * @return string Label lisible (ex. "Vêtements") ou le slug capitalisé si inconnu.
      */
     public static function categoryLabel(string $slug): string
     {
         return self::CATEGORIES[$slug] ?? ucfirst($slug);
     }
 
+    /**
+     * Retourne tous les articles avec un tri optionnel.
+     *
+     * @param string $sort Critère de tri : newest, oldest, price_asc ou price_desc.
+     * @return array<int, array<string, mixed>>
+     */
     public function getAll(string $sort = 'newest'): array
     {
         $order = match($sort) {
@@ -48,6 +60,12 @@ class Article
         return $stmt->fetchAll();
     }
 
+    /**
+     * Retourne les N articles les plus récents.
+     *
+     * @param int $limit Nombre maximum d'articles à retourner.
+     * @return array<int, array<string, mixed>>
+     */
     public function getLatest(int $limit): array
     {
         $stmt = $this->db->prepare("SELECT * FROM articles ORDER BY created_at DESC LIMIT ?");
@@ -55,6 +73,12 @@ class Article
         return $stmt->fetchAll();
     }
 
+    /**
+     * Retourne N articles choisis aléatoirement.
+     *
+     * @param int $limit Nombre maximum d'articles à retourner.
+     * @return array<int, array<string, mixed>>
+     */
     public function getRandom(int $limit): array
     {
         $stmt = $this->db->prepare("SELECT * FROM articles ORDER BY RAND() LIMIT ?");
@@ -62,6 +86,12 @@ class Article
         return $stmt->fetchAll();
     }
 
+    /**
+     * Retourne un article par son identifiant avec le nom du vendeur joint.
+     *
+     * @param int $id Identifiant de l'article.
+     * @return array<string, mixed>|null null si introuvable.
+     */
     public function getById(int $id): ?array
     {
         $stmt = $this->db->prepare("
@@ -75,6 +105,12 @@ class Article
         return $result !== false ? $result : null;
     }
 
+    /**
+     * Crée un nouvel article en base de données avec le statut « active » et la devise EUR.
+     *
+     * @param array{user_id: int, title: string, description: string, image_path: string, price: float, quantity: int, category: string, article_condition: string} $data
+     * @return int Identifiant du nouvel article.
+     */
     public function create(array $data): int
     {
         $stmt = $this->db->prepare("
@@ -94,6 +130,12 @@ class Article
         return (int) $this->db->lastInsertId();
     }
 
+    /**
+     * Retourne tous les articles publiés par un utilisateur donné.
+     *
+     * @param int $userId Identifiant du vendeur.
+     * @return array<int, array<string, mixed>>
+     */
     public function getByUserId(int $userId): array
     {
         $stmt = $this->db->prepare("SELECT * FROM articles WHERE user_id = ? ORDER BY created_at DESC");
@@ -101,6 +143,13 @@ class Article
         return $stmt->fetchAll();
     }
 
+    /**
+     * Met à jour les informations modifiables d'un article (titre, description, prix, quantité, condition, statut).
+     *
+     * @param int   $id   Identifiant de l'article.
+     * @param array{title: string, description: string, price: float, quantity: int, article_condition: string, status: string} $data
+     * @return bool true si la mise à jour a réussi.
+     */
     public function update(int $id, array $data): bool
     {
         $stmt = $this->db->prepare("
@@ -119,12 +168,25 @@ class Article
         ]);
     }
 
+    /**
+     * Supprime un article par son identifiant.
+     *
+     * @param int $id Identifiant de l'article à supprimer.
+     * @return bool true si la suppression a réussi.
+     */
     public function delete(int $id): bool
     {
         $stmt = $this->db->prepare("DELETE FROM articles WHERE id = ?");
         return $stmt->execute([$id]);
     }
 
+    /**
+     * Retourne les N articles les plus chers.
+     * Utilisé dans le dashboard admin pour la mise en avant.
+     *
+     * @param int $limit Nombre maximum d'articles à retourner.
+     * @return array<int, array<string, mixed>>
+     */
     public function getTopByPrice(int $limit): array
     {
         $stmt = $this->db->prepare("SELECT * FROM articles ORDER BY price DESC LIMIT ?");
@@ -135,6 +197,9 @@ class Article
     /**
      * Retourne les articles d'une catégorie.
      * Gère les deux formats stockés en DB : slug ('vetements') ou label ('Vêtements').
+     *
+     * @param string $slug Slug de la catégorie (ex. "vetements").
+     * @return array<int, array<string, mixed>>
      */
     public function getByCategory(string $slug): array
     {
@@ -151,6 +216,13 @@ class Article
         return $stmt->fetchAll();
     }
 
+    /**
+     * Recherche des articles par mots-clés dans le titre, la description et la catégorie.
+     * Inclut le nom du vendeur dans les résultats.
+     *
+     * @param string $query Terme de recherche.
+     * @return array<int, array<string, mixed>>
+     */
     public function search(string $query): array
     {
         $stmt = $this->db->prepare("
@@ -165,11 +237,22 @@ class Article
         return $stmt->fetchAll();
     }
 
+    /**
+     * Retourne le nombre total d'articles en base de données.
+     *
+     * @return int
+     */
     public function count(): int
     {
         return (int) $this->db->query("SELECT COUNT(*) FROM articles")->fetchColumn();
     }
 
+    /**
+     * Retourne le nombre de publications par mois sur les 6 derniers mois.
+     * Utilisé pour les graphiques du dashboard admin.
+     *
+     * @return array<int, array{month: string, count: int}>
+     */
     public function countByMonth(): array
     {
         $stmt = $this->db->prepare("

@@ -3,9 +3,24 @@ class Database
 {
     private static ?PDO $instance = null;
 
+    /**
+     * Empêche l'instanciation directe (pattern Singleton).
+     */
     private function __construct() {}
+
+    /**
+     * Empêche le clonage de l'instance (pattern Singleton).
+     */
     private function __clone() {}
 
+    /**
+     * Retourne l'instance PDO unique, en la créant à la première demande.
+     * Configure le mode d'erreur en exceptions, le fetch en tableaux associatifs
+     * et désactive les requêtes préparées émulées.
+     *
+     * @return PDO
+     * @throws \PDOException Si la connexion à la base de données échoue.
+     */
     public static function getInstance(): PDO
     {
         if (self::$instance === null) {

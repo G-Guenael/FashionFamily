@@ -13,6 +13,9 @@ class DashboardController extends BaseController
     private Article $articleModel;
     private Order   $orderModel;
 
+    /**
+     * Initialise le contrôleur avec les modèles User, Article et Order.
+     */
     public function __construct()
     {
         $this->userModel    = new User();
@@ -20,7 +23,11 @@ class DashboardController extends BaseController
         $this->orderModel   = new Order();
     }
 
-    // GET /admin — page principale du dashboard (avec sidebar)
+    /**
+     * Affiche la page principale du panel d'administration avec la sidebar.
+     *
+     * @route GET /admin
+     */
     public function index(): void
     {
         Auth::requireAdmin();
@@ -30,7 +37,12 @@ class DashboardController extends BaseController
         ], 'Admin Dashboard');
     }
 
-    // GET /admin/dashboard — section dashboard (chargée via AJAX)
+    /**
+     * Retourne la section dashboard chargée via AJAX.
+     * Fournit les KPIs globaux et les articles récents / les plus chers.
+     *
+     * @route GET /admin/dashboard
+     */
     public function dashboardSection(): void
     {
         Auth::requireAdmin();
@@ -43,7 +55,12 @@ class DashboardController extends BaseController
         ]);
     }
 
-    // GET /admin/products — section produits (chargée via AJAX)
+    /**
+     * Retourne la section produits chargée via AJAX.
+     * Supporte une recherche optionnelle via le paramètre GET `q`.
+     *
+     * @route GET /admin/products
+     */
     public function productsSection(): void
     {
         Auth::requireAdmin();
@@ -55,7 +72,12 @@ class DashboardController extends BaseController
         ]);
     }
 
-    // GET /admin/customers — section clients (chargée via AJAX)
+    /**
+     * Retourne la section clients chargée via AJAX.
+     * Supporte une recherche optionnelle via le paramètre GET `q`.
+     *
+     * @route GET /admin/customers
+     */
     public function customersSection(): void
     {
         Auth::requireAdmin();
@@ -67,7 +89,12 @@ class DashboardController extends BaseController
         ]);
     }
 
-    // GET /admin/orders — section commandes (chargée via AJAX)
+    /**
+     * Retourne la section commandes chargée via AJAX.
+     * Supporte une recherche optionnelle via le paramètre GET `q`.
+     *
+     * @route GET /admin/orders
+     */
     public function ordersSection(): void
     {
         Auth::requireAdmin();
@@ -79,14 +106,23 @@ class DashboardController extends BaseController
         ]);
     }
 
-    // GET /admin/reviews
+    /**
+     * Retourne la section avis chargée via AJAX.
+     *
+     * @route GET /admin/reviews
+     */
     public function reviewsSection(): void
     {
         Auth::requireAdmin();
         $this->renderPartial('admin/sections/reviews', []);
     }
 
-    // GET /admin/settings — section paramètres (chargée via AJAX)
+    /**
+     * Retourne la section paramètres chargée via AJAX.
+     * Passe le profil de l'administrateur connecté à la vue.
+     *
+     * @route GET /admin/settings
+     */
     public function settingsSection(): void
     {
         Auth::requireAdmin();
@@ -95,7 +131,12 @@ class DashboardController extends BaseController
         ]);
     }
 
-    // GET /admin/stats — données JSON pour les graphiques
+    /**
+     * Retourne les données de statistiques au format JSON pour les graphiques.
+     * Contient les inscriptions et publications par mois (6 derniers mois).
+     *
+     * @route GET /admin/stats
+     */
     public function stats(): void
     {
         Auth::requireAdmin();
@@ -105,7 +146,11 @@ class DashboardController extends BaseController
         ]);
     }
 
-    // POST /admin/update-profile
+    /**
+     * Met à jour le profil (nom et email) de l'administrateur connecté.
+     *
+     * @route POST /admin/update-profile
+     */
     public function updateProfile(): void
     {
         Auth::requireAdmin();
@@ -136,7 +181,12 @@ class DashboardController extends BaseController
         $this->redirect('/admin');
     }
 
-    // POST /admin/update-password
+    /**
+     * Met à jour le mot de passe de l'administrateur connecté.
+     * Vérifie l'ancien mot de passe avant d'appliquer le changement.
+     *
+     * @route POST /admin/update-password
+     */
     public function updatePassword(): void
     {
         Auth::requireAdmin();
