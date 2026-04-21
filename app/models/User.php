@@ -78,6 +78,7 @@ class User
         return false;
     }
 
+
     public function search(string $query): array
     {
         $stmt = $this->db->prepare("
@@ -134,7 +135,7 @@ class User
     public function changePassword(int $id, string $newPassword): bool
     {
         $hashed = password_hash($newPassword, PASSWORD_DEFAULT);
-        $stmt   = $this->db->prepare("UPDATE users SET password = ? WHERE id = ?");
+        $stmt = $this->db->prepare("UPDATE users SET password = ? WHERE id = ?");
         return $stmt->execute([$hashed, $id]);
     }
 }
