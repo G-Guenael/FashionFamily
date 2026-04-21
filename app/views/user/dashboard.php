@@ -10,6 +10,9 @@
             <span class="ud-role"><?= $user['role'] === 'admin' ? 'Administrateur' : 'Membre' ?></span>
         </div>
         <div class="ud-header-actions">
+            <?php if ($user['role'] === 'admin'): ?>
+                <a href="<?= BASE_URL ?>/admin" class="ud-btn ud-btn--outline">Back office</a>
+            <?php endif; ?>
             <a href="<?= BASE_URL ?>/messages" class="ud-btn ud-btn--outline ud-btn--msg">
                 <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
                      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">

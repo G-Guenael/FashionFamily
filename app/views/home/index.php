@@ -1,9 +1,9 @@
 <section class="hero">
     <div class="hero_container">
         <div class="hero_title">
-            <h1>Nouvelles Arrivées en Ligne</h1>
-            <p>Découvrez notre toute dernière collection dès aujourd'hui.</p>
-            <a href="<?= BASE_URL ?>/products?sort=newest" class="hero-btn">Voir la collection &rarr;</a>
+            <h1>Achetez et vendez des articles partout dans le monde</h1>
+            <p>Découvrez tous nos produits disponibles en ligne</p>
+            <a href="<?= BASE_URL ?>/products?sort=newest" class="hero-btn">Voir nos produits &rarr;</a>
         </div>
         <div class="hero_image">
             <img src="<?= BASE_URL ?>/img/Hero Image.png"
@@ -19,7 +19,7 @@
             <div class="feature_img">
                 <img src="<?= BASE_URL ?>/img/camion.png" aria-hidden="true" alt="">
             </div>
-            <h3>Free Shipping</h3>
+            <h3>Livraison gratuite</h3>
             <p>Livraison gratuite sur toutes vos commandes.</p>
         </div>
         <div class="feature_cart">
@@ -45,7 +45,7 @@
 <?php endif; ?>
 
 <section class="best-selling">
-    <h3>Les derniers articles ajoutés</h3>
+    <h3>Les articles les plus récents</h3>
     <div class="best_selling_container">
         <?php if (!empty($articlesByDateDesc)): ?>
             <?php foreach ($articlesByDateDesc as $a): ?>
@@ -73,7 +73,8 @@
                 </div>
             <?php endforeach; ?>
         <?php else: ?>
-            <p>Aucun article pour le moment. Revenez plus tard !</p>
+            <p style="text-align: center; width: 100%; padding: 2rem 0;">Aucun article pour le moment. Revenez plus tard !
+            </p>
         <?php endif; ?>
     </div>
 </section>

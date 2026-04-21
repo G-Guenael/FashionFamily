@@ -16,6 +16,22 @@
                 </span>
                 <span class="msg-thread__partner-name"><?= escape($partner['name']) ?></span>
             </div>
+            <?php
+                $reportSubject = 'Signalement – ' . $partner['name'];
+                $reportMessage = 'Je souhaite signaler l\'utilisateur ' . $partner['name']
+                               . ' (ID : ' . (int) $partner['id'] . ').'
+                               . "\n\nMotif du signalement :\n";
+            ?>
+            <a class="msg-report-btn"
+               href="<?= BASE_URL ?>/home/contact?subject=<?= urlencode($reportSubject) ?>&message=<?= urlencode($reportMessage) ?>"
+               title="Signaler cet utilisateur">
+                <svg xmlns="http://www.w3.org/2000/svg" width="15" height="15" viewBox="0 0 24 24"
+                     fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M4 15s1-1 4-1 5 2 8 2 4-1 4-1V3s-1 1-4 1-5-2-8-2-4 1-4 1z"/>
+                    <line x1="4" y1="22" x2="4" y2="15"/>
+                </svg>
+                Signaler
+            </a>
         </div>
 
         <!-- Contexte article (si on vient d'une fiche produit) -->

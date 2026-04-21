@@ -16,10 +16,10 @@ export function createHeader(isLoggedIn = false, baseUrl = "", cartCount = 0) {
 
         <nav aria-label="Navigation principale">
           <ul>
-            <li><a href="${homeLink}">Home</a></li>
+            <li><a href="${homeLink}">Accueil</a></li>
 
             <li class="dropdown">
-              <a href="#" aria-expanded="false"> Category </a>
+              <a href="#" aria-expanded="false"> Catégorie </a>
 
               <ul class="submenu">
                 <li><a href="${baseUrl}/products/category?cat=vetements">Vêtements</a></li>
@@ -35,13 +35,17 @@ export function createHeader(isLoggedIn = false, baseUrl = "", cartCount = 0) {
               </ul>
             </li>
 
-            <li><a href="${about}">About</a></li>
+            <li><a href="${about}">À propos</a></li>
             <li><a href="${contact}">Contact</a></li>
 
-            ${isLoggedIn ? `
+            ${
+              isLoggedIn
+                ? `
             <li>
               <a href="${baseUrl}/sell" class="nav-sell-btn">Vendre</a>
-            </li>` : ""}
+            </li>`
+                : ""
+            }
 
             <li>
               <form role="search" action="${baseUrl}/search">
@@ -58,29 +62,27 @@ export function createHeader(isLoggedIn = false, baseUrl = "", cartCount = 0) {
       </div>
 
       <div class="header-actions">
-        ${
-          isLoggedIn
-            ? `
+        ${isLoggedIn ? `
         <a href="${baseUrl}/dashboard" aria-label="Mon compte">
           <img src="${base}img/Vector.png" alt="Icône du compte utilisateur" />
         </a>
+        ` : `
+        <a href="${baseUrl}/login" aria-label="Se connecter">
+          <img src="${base}img/Vector.png" alt="Icône de connexion" />
+        </a>
+        <a href="${baseUrl}/register" aria-label="S'inscrire">
+          <img src="${base}img/user-plus-solid.png" alt="Icône d'inscription" />
+        </a>
+        `}
         <a href="${baseUrl}/cart" aria-label="Panier" style="position: relative; display: inline-flex;">
           <img src="${base}img/Icon.png" alt="Icône du panier" />
           ${cartCount > 0 ? `<span style="position: absolute; top: -4px; right: -4px; background: #e00; color: #fff; border-radius: 50%; font-size: 0.55rem; font-weight: bold; width: 13px; height: 13px; display: flex; align-items: center; justify-content: center; line-height: 1;">${cartCount}</span>` : ""}
         </a>
+        ${isLoggedIn ? `
         <a href="${baseUrl}/logout" aria-label="Déconnexion">
           <img src="${base}img/logout.png" alt="Icône de déconnexion" />
         </a>
-        `
-            : `
-        <a href="${baseUrl}/login" aria-label="Se connecter">
-          <img src="${base}img/Vector.png" alt="Icône de connexion" />
-        </a>
-        <a href="${baseUrl}/register" aria-label="Se connecter">
-          <img src="${base}img/user-plus-solid.png" alt="Icône de connexion" />
-        </a>
-        `
-        }
+        ` : ""}
       </div>
       <img src="${base}img/hamburger.png" alt="Menu" class="hamburger" aria-label="Menu de navigation mobile" />
     </div>

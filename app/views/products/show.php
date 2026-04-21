@@ -99,6 +99,10 @@ $conditionClass  = $conditionBadge[$rawCondition]   ?? '';
                 <?php endif; ?>
 
                 <a class="pd-cart-link" href="<?= BASE_URL ?>/cart">Voir mon panier</a>
+
+                <a class="pd-btn-report" href="<?= BASE_URL ?>/home/contact?subject=<?= urlencode('Signalement article #' . (int) $article['id']) ?>">
+                    Signaler cet article
+                </a>
             </div>
 
         </div>

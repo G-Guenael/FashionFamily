@@ -40,9 +40,12 @@
     <div class="main">
         <header class="header">
             <h1>Admin ></h1>
-            <a href="<?= BASE_URL ?>/logout">
-                <img src="<?= BASE_URL ?>/img/img-dash/logout.png" alt="Déconnexion" />
-            </a>
+            <div class="header-actions-admin">
+                <a href="<?= BASE_URL ?>/home" class="btn-back-site">Retour au site</a>
+                <a href="<?= BASE_URL ?>/logout">
+                    <img src="<?= BASE_URL ?>/img/img-dash/logout.png" alt="Déconnexion" />
+                </a>
+            </div>
         </header>
         <div class="content" id="content"></div>
     </div>

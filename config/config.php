@@ -115,7 +115,7 @@ define('APP_NAME', 'Fashion Family');
 define('APP_VERSION', '1.2.0');
 
 // Email de contact
-define('CONTACT_EMAIL', 'contact@monsite.com');
+define('CONTACT_EMAIL', 'contact@fashionfamily.com');
 
 // Nombre d'éléments par page (pagination)
 define('ITEMS_PER_PAGE', 10);

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost:3306
--- Generation Time: Apr 21, 2026 at 02:38 PM
+-- Generation Time: Apr 21, 2026 at 07:20 PM
 -- Server version: 8.4.3
 -- PHP Version: 8.3.30
 
@@ -48,23 +48,22 @@ CREATE TABLE `articles` (
 --
 
 INSERT INTO `articles` (`id`, `user_id`, `title`, `description`, `image_path`, `price`, `currency`, `quantity`, `category`, `article_condition`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 'test de vente', 'je vends un test', '/uploads/article_69e09f5d687522.37790684.png', 10.00, 'EUR', 1, 'informatique', 'new', 'active', '2026-04-16 08:35:41', '2026-04-16 09:30:22'),
-(2, 1, 'Montre Michael kors gold', 'Montre Michael Kors Femme Gold – Élégance intemporelle\r\n\r\nApportez une touche de luxe à votre style avec cette magnifique montre Michael Kors pour femme, au design raffiné et moderne. Son boîtier et son bracelet en finition dorée offrent une allure chic et sophistiquée, idéale pour toutes les occasions.\r\n\r\nDotée d’un cadran élégant et lumineux, cette montre allie parfaitement esthétique et fonctionnalité. Que ce soit pour une tenue de soirée ou un look quotidien, elle s’adapte à tous les styles.\r\n\r\nCaractéristiques :\r\n\r\nCouleur : Or brillant\r\nBracelet : Acier inoxydable\r\nMouvement : Quartz précis\r\nStyle : Élégant et tendance\r\nFermeture : Boucle déployante sécurisée', '/uploads/article_69e0a1ecc997d7.29970089.png', 449.99, 'EUR', 1, 'accessoires', 'new', 'active', '2026-04-16 08:46:36', '2026-04-16 08:46:36'),
-(3, 3, 'T-shirt Nike Jamais Porté', 'T-shirt Nike jamais porté. De bonne qualité, il a été acheté directement au Nike Store. Toujours dans son emballage.', '/uploads/article_69e0a38d80c5b5.96870802.jpg', 40.00, 'EUR', 1, 'vetements', 'new', 'active', '2026-04-16 08:53:33', '2026-04-16 08:53:33'),
-(4, 1, 'Appareil Photo Reflex', 'Canon EOS avec objectif 18-55mm.', '/uploads/article_69e09f5d687522.37790684.png', 450.00, 'EUR', 1, 'Électronique', 'like_new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(5, 2, 'VTT Rockrider', 'Vélo tout terrain taille L, révisé.', '/uploads/article_5f3a2b1c4d5e6f.12345678.png', 280.00, 'EUR', 1, 'Sport', 'good', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(6, 3, 'MacBook Air M1', '8Go RAM, 256Go SSD. État impeccable.', '/uploads/article_7a8b9c0d1e2f3a.87654321.png', 750.00, 'EUR', 1, 'Informatique', 'new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(7, 4, 'Chaise de Bureau', 'Chaise ergonomique noire.', '/uploads/article_1a2b3c4d5e6f7g.11223344.png', 45.00, 'EUR', 2, 'Maison', 'fair', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
+(2, 1, 'Montre Michael kors gold', 'Montre Michael Kors Femme Gold – Élégance intemporelle\r\n\r\nApportez une touche de luxe à votre style avec cette magnifique montre Michael Kors pour femme, au design raffiné et moderne. Son boîtier et son bracelet en finition dorée offrent une allure chic et sophistiquée, idéale pour toutes les occasions.\r\n\r\nDotée d’un cadran élégant et lumineux, cette montre allie parfaitement esthétique et fonctionnalité. Que ce soit pour une tenue de soirée ou un look quotidien, elle s’adapte à tous les styles.\r\n\r\nCaractéristiques :\r\n\r\nCouleur : Or brillant\r\nBracelet : Acier inoxydable\r\nMouvement : Quartz précis\r\nStyle : Élégant et tendance\r\nFermeture : Boucle déployante sécurisée', '/uploads/article_69e0a1ecc997d7.29970089.png', 449.99, 'EUR', 1, 'accessoires', 'new', 'active', '2025-07-16 08:46:36', '2026-04-21 19:19:04'),
+(3, 3, 'T-shirt Nike Jamais Porté', 'T-shirt Nike jamais porté. De bonne qualité, il a été acheté directement au Nike Store. Toujours dans son emballage.', '/uploads/article_69e0a38d80c5b5.96870802.jpg', 40.00, 'EUR', 1, 'vetements', 'new', 'active', '2025-04-01 08:53:33', '2026-04-21 19:18:59'),
+(4, 1, 'Appareil Photo Reflex', 'Canon EOS avec objectif 18-55mm.', '/uploads/article_69e09f5d687522.37790684.png', 450.00, 'EUR', 1, 'Électronique', 'like_new', 'active', '2026-04-01 12:20:50', '2026-04-21 19:18:01'),
+(5, 2, 'VTT Rockrider', 'Vélo tout terrain taille L, révisé.', '/uploads/article_5f3a2b1c4d5e6f.12345678.png', 280.00, 'EUR', 1, 'Sport', 'good', 'active', '2025-12-03 10:40:50', '2026-04-21 19:17:25'),
+(6, 3, 'MacBook Air M1', '8Go RAM, 256Go SSD. État impeccable.', '/uploads/article_7a8b9c0d1e2f3a.87654321.png', 750.00, 'EUR', 1, 'Informatique', 'new', 'active', '2025-07-08 09:40:50', '2026-04-21 19:17:38'),
+(7, 4, 'Chaise de Bureau', 'Chaise ergonomique noire.', '/uploads/article_1a2b3c4d5e6f7g.11223344.png', 45.00, 'EUR', 2, 'Maison', 'fair', 'active', '2026-04-02 11:40:50', '2026-04-21 19:18:04'),
 (8, 5, 'Livre PHP 8', 'Apprendre le PHP procédural et la POO.', '/uploads/article_9z8y7x6w5v4u3t.99887766.png', 25.50, 'EUR', 5, 'Livres', 'new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(9, 6, 'Casque Audio Sony', 'Réduction de bruit active.', '/uploads/article_4k3j2i1h0g9f8e.55443322.png', 120.00, 'EUR', 1, 'Électronique', 'good', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(10, 7, 'Guitare Acoustique', 'Guitare pour débutant avec housse.', '/uploads/article_1p2q3r4s5t6u7v.66554433.png', 80.00, 'EUR', 1, 'Musique', 'good', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(11, 8, 'Console PS5', 'Édition standard avec deux manettes.', '/uploads/article_2m3n4o5p6q7r8s.22334455.png', 400.00, 'EUR', 1, 'Jeux Vidéo', 'like_new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(12, 9, 'Table Basse', 'Table en bois massif style industriel.', '/uploads/article_8w7x6y5z4a3b2c.77889900.png', 110.00, 'EUR', 1, 'Mobilier', 'good', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(13, 10, 'Smartphone Android', 'Écran 6.5 pouces, 128Go stockage.', '/uploads/article_5d4c3b2a1z0y9x.10203040.png', 199.99, 'EUR', 3, 'Téléphonie', 'new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(14, 1, 'Clavier Mécanique', 'Switchs rouges, rétroéclairage RGB.', '/uploads/article_bc123de456fg78.98765432.png', 65.00, 'EUR', 1, 'Informatique', 'new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
+(9, 6, 'Casque Audio Sony', 'Réduction de bruit active.', '/uploads/article_4k3j2i1h0g9f8e.55443322.png', 120.00, 'EUR', 1, 'Électronique', 'good', 'active', '2025-11-04 02:40:50', '2026-04-21 19:18:20'),
+(10, 7, 'Guitare Acoustique', 'Guitare pour débutant avec housse.', '/uploads/article_1p2q3r4s5t6u7v.66554433.png', 80.00, 'EUR', 1, 'Musique', 'good', 'active', '2025-12-08 10:40:50', '2026-04-21 19:18:15'),
+(11, 8, 'Console PS5', 'Édition standard avec deux manettes.', '/uploads/article_2m3n4o5p6q7r8s.22334455.png', 400.00, 'EUR', 1, 'Jeux Vidéo', 'like_new', 'active', '2026-03-10 10:40:50', '2026-04-21 19:18:10'),
+(12, 9, 'Table Basse', 'Table en bois massif style industriel.', '/uploads/article_8w7x6y5z4a3b2c.77889900.png', 110.00, 'EUR', 1, 'Mobilier', 'good', 'active', '2026-04-15 09:40:50', '2026-04-21 19:18:25'),
+(13, 10, 'Smartphone Android', 'Écran 6.5 pouces, 128Go stockage.', '/uploads/article_5d4c3b2a1z0y9x.10203040.png', 199.99, 'EUR', 3, 'Téléphonie', 'new', 'active', '2026-01-06 04:40:50', '2026-04-21 19:17:46'),
+(14, 1, 'Clavier Mécanique', 'Switchs rouges, rétroéclairage RGB.', '/uploads/article_bc123de456fg78.98765432.png', 65.00, 'EUR', 1, 'Informatique', 'new', 'active', '2026-04-16 02:40:50', '2026-04-21 19:18:31'),
 (15, 2, 'Veste de Pluie', 'Imperméable taille M.', '/uploads/article_de456fg789hi01.12121212.png', 35.00, 'EUR', 1, 'Vêtements', 'good', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(16, 3, 'Écran 27 pouces', 'Dalle IPS, résolution 4K.', '/uploads/article_fg789hi012jk34.34343434.png', 220.00, 'EUR', 2, 'Informatique', 'like_new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(17, 4, 'Enceinte Bluetooth', 'Étanche, autonomie 12h.', '/uploads/article_hi012jk345lm67.56565656.png', 55.00, 'EUR', 1, 'Audio', 'good', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
+(16, 3, 'Écran 27 pouces', 'Dalle IPS, résolution 4K.', '/uploads/article_fg789hi012jk34.34343434.png', 220.00, 'EUR', 2, 'Informatique', 'like_new', 'active', '2025-10-05 05:40:50', '2026-04-21 19:18:39'),
+(17, 4, 'Enceinte Bluetooth', 'Étanche, autonomie 12h.', '/uploads/article_hi012jk345lm67.56565656.png', 55.00, 'EUR', 1, 'Audio', 'good', 'active', '2025-06-10 09:40:50', '2026-04-21 19:19:47'),
 (18, 5, 'Jeu de Société', 'Stratégie et gestion.', '/uploads/article_jk345lm678no90.78787878.png', 30.00, 'EUR', 1, 'Loisirs', 'new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
 (19, 11, 'Set de Casseroles', 'Inox, compatible induction.', '/uploads/article_mn678no901pq23.90909090.png', 85.00, 'EUR', 1, 'Cuisine', 'new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
 (20, 12, 'Sac à Dos Trekking', 'Contenance 50L.', '/uploads/article_pq234rs567tu89.13131313.png', 95.00, 'EUR', 1, 'Sport', 'like_new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
@@ -74,13 +73,13 @@ INSERT INTO `articles` (`id`, `user_id`, `title`, `description`, `image_path`, `
 (24, 16, 'Machine à Café', 'À grains, broyeur intégré.', '/uploads/article_yz456ab789cd01.17171717.png', 320.00, 'EUR', 1, 'Cuisine', 'good', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
 (25, 17, 'Lampe de Chevet', 'Design moderne, LED.', '/uploads/article_ab789cd012ef34.18181818.png', 15.00, 'EUR', 2, 'Maison', 'new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
 (26, 18, 'Drone Compact', 'Caméra 4K, stabilisateur.', '/uploads/article_cd012ef345gh67.19191919.png', 290.00, 'EUR', 1, 'Loisirs', 'like_new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(27, 19, 'Baskets Running', 'Taille 42, très légères.', '/uploads/article_ef345gh678ij90.20202020.png', 60.00, 'EUR', 1, 'Vêtements', 'new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(28, 20, 'Micro Ondes', 'Puissance 800W.', '/uploads/article_gh678ij901kl23.21212121.png', 50.00, 'EUR', 1, 'Cuisine', 'poor', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
+(27, 19, 'Baskets Running', 'Taille 42, très légères.', '/uploads/article_ef345gh678ij90.20202020.png', 60.00, 'EUR', 1, 'Vêtements', 'new', 'active', '2026-01-12 20:07:24', '2026-04-21 19:19:15'),
+(28, 20, 'Micro Ondes', 'Puissance 800W.', '/uploads/article_gh678ij901kl23.21212121.png', 50.00, 'EUR', 1, 'Cuisine', 'poor', 'active', '2025-11-10 10:40:50', '2026-04-21 19:19:08'),
 (29, 21, 'Tablette Tactile', '10 pouces, streaming.', '/uploads/article_ij901kl234mn56.22222222.png', 180.00, 'EUR', 1, 'Informatique', 'good', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
 (30, 22, 'Canapé 2 places', 'Tissu gris, pieds bois.', '/uploads/article_kl234mn567op89.23232323.png', 250.00, 'EUR', 1, 'Mobilier', 'fair', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(31, 23, 'Radiateur Électrique', 'À inertie sèche.', '/uploads/article_mn567op890qr12.24242424.png', 90.00, 'EUR', 1, 'Maison', 'good', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(32, 24, 'Aspirateur Robot', 'Connecté Wi-Fi.', '/uploads/article_op890qr123st45.25252525.png', 210.00, 'EUR', 1, 'Maison', 'like_new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50'),
-(33, 25, 'Souris Gamer', 'Capteur optique.', '/uploads/article_qr123st456uv78.26262626.png', 40.00, 'EUR', 1, 'Informatique', 'new', 'active', '2026-04-16 09:40:50', '2026-04-16 09:40:50');
+(31, 23, 'Radiateur Électrique', 'À inertie sèche.', '/uploads/article_mn567op890qr12.24242424.png', 90.00, 'EUR', 1, 'Maison', 'good', 'active', '2026-03-30 15:40:50', '2026-04-21 19:18:46'),
+(32, 24, 'Aspirateur Robot', 'Connecté Wi-Fi.', '/uploads/article_op890qr123st45.25252525.png', 210.00, 'EUR', 1, 'Maison', 'like_new', 'active', '2026-04-16 20:40:50', '2026-04-21 19:18:49'),
+(33, 25, 'Souris Gamer', 'Capteur optique.', '/uploads/article_qr123st456uv78.26262626.png', 40.00, 'EUR', 1, 'Informatique', 'new', 'active', '2025-12-08 10:40:50', '2026-04-21 19:18:53');
 
 -- --------------------------------------------------------
 
@@ -106,7 +105,8 @@ INSERT INTO `messages` (`id`, `sender_id`, `receiver_id`, `article_id`, `body`, 
 (1, 3, 1, 2, 'Je l\'ai moins cher au Maroc faut arrêter les arnaques', '2026-04-16 08:49:32', '2026-04-16 08:48:59'),
 (2, 2, 1, 2, 'vous faites une réduction de 90 pourcent :) ?', '2026-04-16 08:50:56', '2026-04-16 08:49:01'),
 (3, 1, 3, 2, 'Vous etes libre Monsieur , Un grand bien vous fasse de la commander au maroc', '2026-04-16 08:51:10', '2026-04-16 08:50:46'),
-(4, 1, 2, 2, 'bien evidemment vous recevrez une mniature de l\'article avec une reduction de sa quantite a 90%', '2026-04-16 08:52:02', '2026-04-16 08:51:48');
+(4, 1, 2, 2, 'bien evidemment vous recevrez une mniature de l\'article avec une reduction de sa quantite a 90%', '2026-04-16 08:52:02', '2026-04-16 08:51:48'),
+(5, 3, 4, 7, 'coucou', NULL, '2026-04-21 17:47:00');
 
 -- --------------------------------------------------------
 
@@ -128,7 +128,8 @@ CREATE TABLE `orders` (
 --
 
 INSERT INTO `orders` (`id`, `buyer_id`, `total_price`, `status`, `created_at`, `updated_at`) VALUES
-(1, 2, 10.00, 'shipped', '2026-04-16 08:39:04', '2026-04-16 09:32:12');
+(1, 2, 10.00, 'shipped', '2026-04-16 08:39:04', '2026-04-16 09:32:12'),
+(2, 3, 40.00, 'pending', '2026-04-21 17:46:26', '2026-04-21 17:46:26');
 
 -- --------------------------------------------------------
 
@@ -149,7 +150,7 @@ CREATE TABLE `order_items` (
 --
 
 INSERT INTO `order_items` (`id`, `order_id`, `article_id`, `quantity`, `price`) VALUES
-(1, 1, 1, 1, 10.00);
+(2, 2, 33, 1, 40.00);
 
 -- --------------------------------------------------------
 
@@ -334,19 +335,19 @@ ALTER TABLE `articles`
 -- AUTO_INCREMENT for table `messages`
 --
 ALTER TABLE `messages`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT for table `orders`
 --
 ALTER TABLE `orders`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `order_items`
 --
 ALTER TABLE `order_items`
-  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT for table `users`

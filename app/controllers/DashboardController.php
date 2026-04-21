@@ -25,12 +25,6 @@ class DashboardController extends BaseController
     {
         Auth::requireLogin('/login');
 
-        // Les admins sont redirigés vers le dashboard admin
-        if (Auth::isAdmin()) {
-            $this->redirect('/admin');
-            return;
-        }
-
         $userId  = Auth::currentUserId();
         $user    = $this->userModel->getStatsById($userId);
         $orders  = $this->orderModel->getByBuyerIdWithItems($userId);

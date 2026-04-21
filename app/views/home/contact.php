@@ -75,13 +75,14 @@
                 <div class="contact-form__group">
                     <label class="contact-form__label" for="cf-subject">Sujet</label>
                     <input class="contact-form__input" type="text" id="cf-subject" name="subject"
-                           placeholder="Objet de votre message" required>
+                           placeholder="Objet de votre message"
+                           value="<?= escape($_GET['subject'] ?? '') ?>" required>
                 </div>
 
                 <div class="contact-form__group">
                     <label class="contact-form__label" for="cf-message">Message</label>
                     <textarea class="contact-form__textarea" id="cf-message" name="message"
-                              rows="6" placeholder="Décrivez votre demande..." required></textarea>
+                              rows="6" placeholder="Décrivez votre demande..." required><?= escape($_GET['message'] ?? '') ?></textarea>
                 </div>
 
                 <button class="contact-form__submit" type="submit">
