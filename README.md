@@ -229,7 +229,7 @@ users ──< articles ──< order_items >── orders
 - Protection **CSRF** sur tous les formulaires POST
 - Requêtes SQL **préparées** (PDO) — pas d'injection possible
 - **Sanitisation** des entrées utilisateurs
-- Cookies de session `httpOnly` + `SameSite=Lax`
+- Cookies de session
 - En production : sessions limitées au protocole **HTTPS**
 - `.htaccess` bloque l'accès direct aux fichiers sensibles
 
